@@ -1,0 +1,64 @@
+
+{% macro isActive(slug) %}
+    {% if slug in craft.request.firstSegment %} class="active" {% endif %}
+    {% if slug in craft.request.segments %} class="active"{% endif %}
+{% endmacro %}
+
+
+{% macro isActiveChildClass(slug) %}
+    {% if slug in craft.app.request.segments|last|trim %} child active {% endif %}
+{% endmacro %}
+
+{% macro activeLinkClass(linkUri, requestSegmentNumber) %}
+
+    {# Request the relevant path segment in the URL #}
+    {% set nthRequestSegment = craft.app.request.segment(requestSegmentNumber) %}
+
+    {# Split the link's URI into a list of path segments #}
+    {% set linkSegments = linkUri|split('/') %}
+
+    {# Get the path segment relevant for our comparison #}
+    {% set nthLinkSegment = linkSegments[requestSegmentNumber - 1] %}
+
+    {# Return `active` if the nthLinkSegment equals the nthRequestSegment #}
+    {% if nthLinkSegment == nthRequestSegment %}active{% endif %}
+
+{% endmacro %}
+
+{% macro isMenuActive(slug) %}
+    {% if slug in craft.app.request.segments %} active {% endif %}
+{% endmacro %}
+
+{% macro getNavLink(entry) %}
+    {% if entry.entryLink.first|length %}
+        {% set navlink = entry.entryLink.first.uri %}
+    {% else %}
+        {% set navlink = entry.customLink %}
+    {% endif %}
+{% endmacro %}
+
+    {% macro addSpan(str) %}
+       {{ str |replace({'[': "<span>", ']': "</span>"}) | raw }}
+    {% endmacro %}
+
+    {%  macro getIcon(field) %}
+        {%  if col.customIcon |length %}
+            {% set icon =  col.customIcon.one() %}
+                {%  else %}
+            {% set icon =  col.icon %}
+        {%  endif %}
+    {% endmacro %}
+
+{% macro setOrientaton(pdfImage) %}
+    {% set Orientation = null %}
+    {% if pdfImage %}
+        {% if pdfImage.getWidth() < pdfImage.getHeight() %}
+            {% set Orientation = "portrait" %}
+        {% elseif pdfImage.getWidth() > pdfImage.getHeight() %}
+            {% set Orientation = "landscape" %}
+        {% else %}
+            {# square #}
+            {% set Orientation = "square" %}
+        {% endif %}
+    {% endif %}
+{% endmacro %}

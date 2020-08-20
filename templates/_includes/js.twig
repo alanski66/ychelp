@@ -1,0 +1,5 @@
+<!-- Bootstrap core JavaScript -->
+<script src="{{baseUrl}}/js/all-min.js"></script>
+{% if tracking.includeTrackingScripts | length %}
+   {{ tracking.includeTrackingScripts | raw }}
+{% endif %}

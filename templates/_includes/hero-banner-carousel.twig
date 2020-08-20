@@ -1,0 +1,80 @@
+<!-- carousel hero -->
+<section class="hero ">
+    <div class="banner-owl owl-carousel owl-theme">
+
+        {% if entry.carousel |length %}
+
+            {% for slide in entry.carousel.all() %}
+                <div class="item">
+                    <figure class="image-holder">
+
+                        {% set asset = slide.image[0] ?? null %}
+                        {% if asset %}
+                            {#{% if asset.hasFocalPoint %}#}
+                            {#{% set focalPoint = asset.getFocalPoint() %}#}
+                            {#{% set position = focalPoint.x * 100 ~ '% ' ~ focalPoint.y * 100 ~ '%' %}#}
+                            {#{% else %}#}
+                            {#{% set position = 'center center' %}#}
+                            {#{% endif %}#}
+
+                            {% set imgCredit =  asset.imageCredit ?? null %}
+                            {% set imgCaption =  asset.imageCaption ?? null %}
+
+                            {% set transformedBannerImages = craft.imager.transformImage(asset,
+                            [
+                            { width: 550, height: 300, position: asset.getFocalPoint(), jpegQuality: 75,ratio: 4/3, cropZoom:1.5 },
+                            { width: 768, height:451,ratio: 2/1, jpegQuality: 85, zoom: 1 },
+                            { width: 1024, height:451,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                            { width: 1200, height:451, position: asset.getFocalPoint(), ratio: 2/1 },
+                            { width: 2400, height: 722, position: asset.getFocalPoint() }
+                            ],
+                            {
+                            format: 'jpg',
+                            allowUpscale: true,
+                            mode: 'crop',
+                            jpegQuality: 90,
+                            interlace: true
+                            }
+                            ) %}
+                        {% endif %}
+                        <picture>
+                            <source media="(max-width: 550px)" sizes="100vw" srcset="{{ transformedBannerImages[0].url }}">
+                            <source media="(max-width: 768px)" sizes="100vw" srcset="{{ transformedBannerImages[1].url }}">
+                            <source media="(max-width: 1024px)" sizes="100vw" srcset="{{ transformedBannerImages[2].url }}">
+                            <source media="(max-width: 2400px)" sizes="100vw" srcset="{{ transformedBannerImages[3].url }}">
+                            <img class="" src="{{ transformedBannerImages[2].url }}" alt="{{ asset.title }} {{ imgCredit }} {{ imgCaption }}">
+                            {%  if imgCredit %}
+                                <span class="picture-credit d-md-none">&copy; {{ asset.imageCredit }}</span>
+                            {% endif %}
+                        </picture>
+
+
+
+                        <figcaption class="text-box ">
+                            <div class="container rel-v-middle">
+                                <div class="row">
+                                    <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                                        <div class="text-inner ml-auto {{  slide.position }}">
+
+                                            <span class="cat">{{  slide.category }} </span>
+                                            <h1><a class="" href="{{ slide.buttonLink.one().url }}">{{ slide.slideTitle }}</a></h1>
+                                            <p class="slide-intro">{{ slide.intro }}</p>
+                                            <a class="mt-2 btn btn-blue" href="{{ slide.buttonLink.one().url }}">{{  slide.buttonText }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </figcaption>
+                        {%  if imgCredit %}
+                            <span class="picture-credit d-none d-md-block">&copy; {{ asset.imageCredit }}</span>
+                        {% endif %}
+                    </figure>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+
+
+    </div>
+</section>

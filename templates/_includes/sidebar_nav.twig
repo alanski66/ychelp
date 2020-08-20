@@ -1,0 +1,43 @@
+{% if entry.level > 1 and entry.section.handle == 'pages' %}
+
+    {% set rootOfSection = craft.entries.section('pages').ancestorOf(entry).level(1).one() %}
+
+{% elseif entry.level == 1 and entry.section.handle == 'pages' %}
+
+    {% set rootOfSection = entry %}
+{#{{ entry.level }}#}
+    {#{{ entry.type }}#}
+
+    {% else %}
+    {% set rootOfSection = entry %}
+{% endif %}
+
+{% import '_macros' as macros %}
+
+
+{% if rootOfSection.hasDescendants() %}
+
+<div class="side-box">
+    <h3>{{ rootOfSection.title }}</h3>
+    <ul class="list-unstyled">
+        {#Get entries to build the sub-menu#}
+        {% set subMenu = craft.entries.descendantOf(rootOfSection) %}
+
+        {#Output the sub menu#}
+        {% for entry in subMenu.all() %}
+            {#{% if entry.entryLink.first|length %}#}
+              {##}
+            {#{% else %}#}
+                {#{% set navlink = entry.customLink %}#}
+            {#{% endif %}#}
+            {% set navlink = entry.uri %}
+            <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
+                <a href="{{ siteUrl }}{{ entry.uri }}"
+                   class="  level{{ entry.level }}">{{ entry.title }}</a>
+            </li>
+
+        {% endfor %}
+
+    </ul>
+    </div>
+{% endif %}

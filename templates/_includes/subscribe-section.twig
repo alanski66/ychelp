@@ -1,0 +1,68 @@
+<!-- Call to Action subscribe Section -->
+
+{% set sections = subscribe.showOnSection ?? null %}
+{%  set btnColor = "btn-" ~ donate.ctaButtonColor ?? null %}
+{%  set bgColor = subscribe.ctaSectionBgColor ?? null %}
+{% if sections | length %}
+
+    {#subscribe.showGlobalSubscribeOnSection#}
+    {#{% set section = craft.entries.sectionId(sections) %}#}
+
+    {% for section in sections %}
+
+
+
+    {% endfor %}
+
+{% endif %}
+{#{% if align is defined %}#}
+{#{% set textalign = "" %}#}
+{#{{ align ?? align }}#}
+{#{{ align ?? textalign ?? null }}#}
+{#{% endif %}#}
+
+{% if align is defined and align is not null %}
+    {%  set textalign = align %}
+{% else %}
+    {%  set textalign = 'text-center' %}
+{% endif %}
+<section class="subscribe {{ bgColor }} pt-4 pb-4 ">
+    <div class="container  ">
+        <div class="row no-gutters  " >
+            <div class="col-md-12 my-auto  {{ textalign }}  ">
+
+                <div class="mr-2 cta-intro d-inline-block align-middle">
+                    <span class="cta-subscribe-text">{{ subscribe.ctaText }}</span>
+                    <a class="ml-md-3 btn {{ btnColor }} " id="subscribe"
+                       data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
+                        <i class="fa" aria-hidden="true"></i>
+                        {{ subscribe.ctaButtonText }}</a>
+                </div>
+
+                <div class="collapse  mt-4 mb-4 text-center" id="collapseForm">
+                    {%  if subscribe.form | length %}
+                    {% set form = subscribe.form %}
+                    {#{%  set form = "subscribe" %}#}
+                    {{ craft.freeform.form(subscribe.form, {
+                        labelClass: "form-label",
+                        inputClass: "form-control",
+                        class: "subscribe",
+                        instructionsBelowField: true,
+                        overrideValues: {
+
+                        }
+                    }).render() }}
+                        {% else %}
+                        <p class="alert alert-warning">No form configured in global settings. Please add a form</p>
+                    {%  endif %}
+                </div>
+
+
+            </div>
+        </div>
+    </div><!-- /.container -->
+</section>
+
+
+{% do view.registerJsFile(siteUrl ~ '/js/forms.js') %}
+<!-- end cta section -->

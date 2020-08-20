@@ -1,0 +1,49 @@
+
+
+
+{% if entry is defined and  entry.id  != '2' and entry.hideBanner != "1" %}
+
+
+        {% set asset = entry.bannerImage[0] ?? null %}
+
+{#{% set transformedAsset = craft.imager.transformImage(asset, { width: 500, position: asset.getFocalPoint() }) %}#}
+        {% if asset | length %}
+            {#{% if asset.hasFocalPoint %}#}
+                {#{% set focalPoint = asset.getFocalPoint() %}#}
+                {#{% set position = focalPoint.x * 100 ~ '% ' ~ focalPoint.y * 100 ~ '%' %}#}
+            {#{% else %}#}
+                {#{% set position = 'center center' %}#}
+            {#{% endif %}#}
+
+            {% set transformedBannerImages = craft.imager.transformImage(asset,
+            [
+            { width: 550, height:380, position: 'center-center', jpegQuality: 75,ratio: 4/3, cropZoom:1.5 },
+            { width: 768, height:380, position: asset.getFocalPoint(), ratio: 2/1, jpegQuality: 85, zoom: 1 },
+            { width: 1024, height:380, position: asset.getFocalPoint() ,jpegQuality: 95 },
+            { width: 1200, height:380, position: asset.getFocalPoint() },
+            { width: 2400, height:380, position: asset.getFocalPoint(),ratio: 2/1 }
+            ],
+            {
+                format: 'jpg',
+                allowUpscale: true,
+                mode: 'crop',
+                jpegQuality: 90,
+                interlace: true
+            }
+            ) %}
+            <!-- hero banner -->
+            <section class="hero">
+                <div class="image-holder">
+                    <picture>
+                        <source media="(max-width: 550px)" sizes="100vw" srcset="{{ transformedBannerImages[0].url }}">
+                        <source media="(max-width: 768px)" sizes="100vw" srcset="{{ transformedBannerImages[1].url }}">
+                        <source media="(max-width: 1024px)" sizes="100vw" srcset="{{ transformedBannerImages[2].url }}">
+                        <source media="(max-width: 2400px)" sizes="100vw" srcset="{{ transformedBannerImages[3].url }}">
+                        <img class="" src="{{ transformedBannerImages[2].url }}" alt="{{ asset.title }}">
+                    </picture>
+                </div>
+            </section>
+        {% endif %}
+
+  {% endif %}
+

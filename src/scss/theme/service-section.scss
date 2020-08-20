@@ -1,0 +1,141 @@
+//14. SERVICE SECTION
+//
+//    14.1 service item
+//    14.2 service item 2
+//    14.3 clients
+//    14.4 Process
+//    14.5 service menu
+//    14.6 service brochure
+//    14.7 service schedule
+//    14.8 service consultation
+//    14.9 service single
+//
+//        14.9.1 service single image
+//        14.9.2 service single content
+//        14.9.3 service single list
+//        14.9.4 service single benefit
+//        14.9.5 widget
+        /* 14.3 clients */
+.clients {
+  background-position: center right;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 991px) {
+  .clients {
+    background-size: cover !important;
+    background-position: center center;
+    text-align: center;
+  }
+}
+
+.clients ul li {
+  height: 66px;
+}
+
+.clients ul li img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+/* 14.4 process */
+.process-item {
+  width: 330px;
+}
+
+@media (max-width: 1199px) {
+  .process-item {
+    width: unset;
+  }
+}
+
+.process-item-number {
+  position: absolute;
+  left: -35px;
+  top: -35px;
+  height: 70px;
+  width: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+  box-shadow: -5px 0px 40px 0px rgba(0, 0, 0, 0.1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #222;
+}
+
+@media (max-width: 1199px) {
+  .process-item-number {
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.process-item h5 {
+  margin-bottom: 5px;
+  color: #D00E38;
+}
+
+img.arrow-top {
+  position: absolute;
+  top: 220px;
+  right: 250px;
+}
+
+@media (max-width: 1199px) {
+  img.arrow-top {
+    display: none;
+  }
+}
+
+img.arrow-bottom {
+  position: absolute;
+  bottom: 100px;
+  left: 250px;
+}
+
+@media (max-width: 1199px) {
+  img.arrow-bottom {
+    display: none;
+  }
+}
+
+/* service single start */
+.service-menu li.active {
+  position: relative;
+}
+
+.service-menu li.active a {
+  background: #303032;
+  color: #fff !important;
+}
+
+.service-menu li.active::before {
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  background: #303032;
+  top: 50%;
+  right: -7px;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+@media (max-width: 991px) {
+  .service-menu li.active::before {
+    display: none;
+  }
+}
+
+.service-menu li:hover a {
+  color: #fff !important;
+  background: #303032;
+}
+
+/* service single end */

@@ -1,0 +1,51 @@
+<div id="suds-carousel" class="carousel fade-carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#suds-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#suds-carousel" data-slide-to="1"></li>
+        <li data-target="#suds-carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Content -->
+    <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-caption">
+                <hgroup>
+                    <h1>{{ testentry.title }}</h1>
+                    <h3>Free, confidential, multilingual helpline for seafarers and their families available 24 hours a day, 365 days per year.</h3>
+                    <a type="button" class="btn btn-primary btn-lg" role="button" href="{{ baseUrl }}projects/seafarerhelp">Seafarerhelp >></a>
+                </hgroup>
+            </div>
+
+            <div class="slide-1" style="background:url({{ testentry.projectImage.first().url }}) no-repeat"></div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <div class="carousel-caption">
+                <hgroup>
+                    <h1>Another project</h1>
+                    <h3>Click button to know more about this project</h3>
+                    <a type="button" class="btn btn-hero btn-lg" role="button" href="#">Know more</a>
+                </hgroup>
+            </div>
+            <div class="slide-2"></div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <div class="carousel-caption">
+                <hgroup>
+                    <h1>Another project</h1>
+                    <h3>Click button to know more about this project</h3>
+                    <a type="button" class="btn btn-danger btn-lg" role="button" href="#">Learn more</a>
+                </hgroup>
+            </div>
+            <div class="slide-3"></div>
+        </div>
+
+    </div>
+</div>

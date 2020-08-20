@@ -1,0 +1,97 @@
+
+{# featured #}
+{% if entry is defined %}
+    {% set featuredEntry = entry.featureContent %}
+
+    {% if featuredEntry %}
+        <!-- hero featured -->
+
+        <section class="hero featured">
+
+        {% set asset = entry.featureImage[0] ?? null %}
+ {% if asset %}
+            {#{% set transformedFeaturedImages = craft.imager.transformImage(fimage,#}
+            {#[#}
+            {#{ width: 1200, mode: 'crop', ratio: 2/1 },#}
+            {#{ width: 1024, ratio: 2/1 },#}
+            {#{ width: 768, ratio: 16/9, jpegQuality: 85 },#}
+            {#],#}
+            {#{#}
+            {#format: 'jpg',#}
+            {#allowUpscale: true,#}
+            {#mode: 'crop',#}
+            {#jpegQuality: 90,#}
+            {#position:  fimage.getFocalPoint(),#}
+            {#interlace: true#}
+            {#}#}
+            {#) %}#}
+
+            <figure class="image-holder">
+
+
+                    {#{% if asset.hasFocalPoint %}#}
+                    {#{% set focalPoint = asset.getFocalPoint() %}#}
+                    {#{% set position = focalPoint.x * 100 ~ '% ' ~ focalPoint.y * 100 ~ '%' %}#}
+                    {#{% else %}#}
+                    {#{% set position = 'center center' %}#}
+                    {#{% endif %}#}
+
+                    {% set transformedBannerImages = craft.imager.transformImage(asset,
+                    [
+                    { width: 550, height:380, position: asset.getFocalPoint(), jpegQuality: 75,ratio: 4/3, cropZoom:1.5 },
+                    { width: 768, height:380, position: asset.getFocalPoint(), ratio: 2/1, jpegQuality: 85, zoom: 1 },
+                    { width: 1024, height:380, position: asset.getFocalPoint() ,jpegQuality: 95 },
+                    { width: 1200, height:380, position: asset.getFocalPoint() },
+                    { width: 2400, height:680, position: asset.getFocalPoint(),ratio: 2/1 }
+                    ],
+                    {
+                    format: 'jpg',
+                    allowUpscale: true,
+                    mode: 'crop',
+                    jpegQuality: 95,
+                    interlace: true
+                    }
+                    ) %}
+                {% set imgCredit =  asset.imageCredit ?? null %}
+                {% set imgCaption =  asset.imageCaption ?? null %}
+
+                <picture>
+                    <source media="(max-width: 550px)" sizes="100vw" srcset="{{ transformedBannerImages[0].url }}">
+                    <source media="(max-width: 768px)" sizes="100vw" srcset="{{ transformedBannerImages[1].url }}">
+                    <source media="(max-width: 1024px)" sizes="100vw" srcset="{{ transformedBannerImages[2].url }}">
+                    <source media="(max-width: 1800px)" sizes="100vw" srcset="{{ transformedBannerImages[3].url }}">
+                    <source media="(max-width: 3000px)" sizes="100vw" srcset="{{ transformedBannerImages[4].url }}">
+                    <img class="" src="{{ transformedBannerImages[2].url }}" alt="{{ asset.title }} {{ imgCredit }} {{ imgCaption }}">
+                </picture>
+
+
+                <figcaption class="text-box ">
+                    <div class="container rel-v-middle">
+                        <div class="row">
+                            <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                                <div class="text-inner ml-auto right">
+
+                                    <span class="cat">Our work</span>
+                                    <h1><a class="" href="{{ entry.featureLink.one().url }}">{{ entry.featureTitle }}</a></h1>
+                                    <p class="slide-intro">
+                                        {{ entry.featureIntroText }}</p>
+                                    {%  if not entry.featureButtonHide  %}
+                                        <a class="btn btn-blue remslide-button" href="{{ entry.featureLink.one().url }}">{{ entry.featureLink.one().title }}</a>
+                                        {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </figcaption>
+                {%  if imgCredit %}
+                    <span class="picture-credit">&copy; {{ asset.imageCredit }}</span>
+                    {% endif %}
+            </figure>
+
+        {% endif %}
+
+                </section>
+
+    {% endif %}
+{% endif %}

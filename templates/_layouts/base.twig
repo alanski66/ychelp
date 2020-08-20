@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="iswan">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    {% set baseUrl = alias('@baseUrl') %}
+    {% set assetBaseUrl = alias('@assetBaseUrl') %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ baseUrl }}/favicos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ baseUrl }}/favicos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ baseUrl }}/favicos/favicon-16x16.png">
+    <link rel="manifest" href="{{ baseUrl }}/favicos/site.webmanifest">
+    <link rel="mask-icon" href="{{ baseUrl }}/favicos/safari-pinned-tab.svg" color="#5b9cd5">
+    <link rel="shortcut icon" href="{{ baseUrl }}/favicos/favicon.ico">
+    <meta name="msapplication-TileColor" content="#eeeeee">
+    <meta name="msapplication-config" content="{{ baseUrl }}/favicos/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<!-- 
+    {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
+    {% set menu = craft.entries.section('pages').hidePage('< 1').all()  %}
+ -->
+    <!-- Custom styles for this template -->
+    <link href="{{baseUrl}}/css/stylesheet.css" rel="stylesheet">
+
+
+</head>
+{% if bodyClass is not defined %}
+    {% set bodyClass = entry is defined ? entry.type : craft.app.request.segments|first  %}
+{% endif %}
+<body class="{{ bodyClass }}">
+<div class="wrapper">
+    <header class="header">
+  
+    </header>
+
+{% block body %}
+
+{% endblock %}
+
+{% block foot %}
+    {% include '_includes/footer.twig' %}
+    {% include '_includes/js.twig' %}
+{% endblock %}
+
+</div><!-- end wrapper -->
+{%  if siteInfo.showCookieInfo %}
+    {% include '_includes/cookies.twig' %}
+{% endif %}
+</body>
+</html>

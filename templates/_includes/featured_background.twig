@@ -1,0 +1,54 @@
+
+{# featured #}
+{% if entry is defined %}
+    {% set featuredEntry = entry.featureContent %}
+
+    {% if featuredEntry %}
+        <div class="container-fluid full-bleed">
+
+        {% set fimage = entry.featureImage[0] ?? null %}
+
+        {% if fimage %}
+            {% set transformedFeaturedImages = craft.imager.transformImage(fimage,
+            [
+            { width: 1200, mode: 'crop', ratio: 2/1 },
+            { width: 1024, ratio: 2/1 },
+            { width: 768, ratio: 16/9, jpegQuality: 85 },
+            ],
+            {
+            format: 'jpg',
+            allowUpscale: true,
+            mode: 'crop',
+            jpegQuality: 90,
+            position: fimage.focalpoint ~ '% ' ~ fimage.focalpoint ~ '%',
+            interlace: true
+            }
+            ) %}
+
+            <div id="suds-carousel" class="carousel fade-carousel slide mb-4" data-ride="carousel">
+
+
+                <!-- Content -->
+                <div class="carousel-inner" role="listbox">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="carousel-caption">
+
+                            <h1>{{ entry.featureTitle }}</h1>
+                            <h3>{{ entry.featureIntroText }}</h3>
+                            <a type="button" class="btn btn-primary btn-lg" role="button"
+                               href="{{ baseUrl }}projects/seafarerhelp">Seafarerhelp >></a></hgroup>
+                        </div>
+
+                            <div class="slide-1" style="background-image:url({{ transformedFeaturedImages[0].url }})"></div>
+                    </div>
+
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+{% endif %}

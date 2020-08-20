@@ -1,0 +1,22 @@
+
+{# featured #}
+{% if entry is defined %}
+    {% set featuredEntry = entry.featureContent %}
+
+    {% if featuredEntry %}
+        <!-- hero featured -->
+
+        <section class="hero featured video">
+
+            <div id="" class="videowrapper global center-block gvheadon">
+                {# https://www.youtube.com/watch?v=42P3lTv6VUY #}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/42P3lTv6VUY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <span class="sprite" id="play"></span>
+            </div>
+
+
+
+        </section>
+
+    {% endif %}
+{% endif %}

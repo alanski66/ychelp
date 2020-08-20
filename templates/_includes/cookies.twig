@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+<style>
+
+    @media(max-width:768px){
+        html{padding-bottom:79px;}
+    }
+    @media(min-width:768px){
+        html{padding-bottom:56px;}
+    }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+<script>
+    window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#edeff5",
+                    "text": "#838391"
+                },
+                "button": {
+                    "background": "#00BFFF",
+                    "color": "#FFFFFF"
+                }
+            },
+            "theme": "edgeless",
+            "type": "{{ siteInfo.cookieType }}",
+            "content": {
+                "dismiss": "{{ siteInfo.cookieDismiss | default('Got it')}}",
+                "link": "{{ siteInfo.cookiePolicyLinkText | default('Learn more')}}",
+                "deny": "{{ siteInfo.cookieDeny | default('Decline')}}",
+                "message": "{{ siteInfo.cookieMessage| default('This website uses cookies to ensure you get the best experience on our website.') }}"
+            }
+        })});
+</script>

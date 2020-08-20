@@ -1,0 +1,44 @@
+<!-- Call to Action Section -->
+
+{%  set bgColor = donate.ctaSectionBgColor ?? null %}
+{%  set btnColor = "btn-" ~ donate.ctaButtonColor ?? null %}
+
+{% if align is defined and align is not null %}
+    {%  set textalign = align %}
+{% else %}
+    {%  set textalign = 'text-center' %}
+{% endif %}
+
+<section class="donate {{ bodyClass }} {{ bgColor }} pt-4 pb-4 ">
+    <div class="container  ">
+        <div class="row no-gutters  " >
+
+            <div class="col-md-12 my-auto pt-2 pt-md-0 {{ textalign }} ">
+                <div class="mr-2 cta-intro d-sm-inline-block align-middle">
+                    <span class="donate-txt-short">{{ donate.ctaTextShortVersion }}</span>
+                    <span class="donate-txt">{{ donate.ctaText }}</span>
+                    <span class="ctalink">
+                        {% if donate.ctaLink | length %}
+                        <a class="ml-sm-3 btn {{ btnColor }}"
+                           data-on="click"
+                           data-event-category="Donate"
+                           data-event-action="Button"
+                           data-event-label="{{ craft.request.getUrl() }}"
+                           href="{{ donate.ctaLink.one().url }}">{{ donate.ctaButtonText }}</a>
+                        {% else %}
+                        <a class="ml-sm-3 btn {{ btnColor }}" href="{{ donate.ctaCustom }}"
+                           data-on="click"
+                           data-event-category="Donate"
+                           data-event-action="Button"
+                           data-event-label="{{ craft.app.request.absoluteUrl }}"
+                        >{{ donate.ctaButtonText }}</a>
+                        {% endif %}
+                        </span>
+                </div>
+
+
+            </div>
+        </div>
+    </div><!-- /.container -->
+</section>
+<!-- end cta section -->

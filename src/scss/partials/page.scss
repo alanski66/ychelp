@@ -1,0 +1,22 @@
+.section.landingpagerows.center ul{
+  display: inline-block;
+}
+.section.landingpagerows.center ul li{
+  text-align: left;
+}
+.overlay::before{
+  opacity: 0.3!important;
+}
+.cta p{
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.cta .btn-sm,
+.cta .btn-group-sm>.btn {
+  padding: 5px 15px !important;
+}
+.cta.blue{
+  background-image: none;
+  background-color: $gray-500;
+}

@@ -1,0 +1,123 @@
+// 25. FOOTER SECTION
+// 
+//     25.1 social link
+//     25.2 footer link
+//     25.3 subcription
+//     25.4 copyright
+//     25.5 back to top
+    /* 25.1 social link */
+.social-icon-outline {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #fff;
+  text-align: center;
+  transition: .2s ease;
+  display: inline-block;
+}
+
+.social-icon-outline i {
+  line-height: 40px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.social-icon-outline:hover {
+  border-color: #D00E38;
+}
+
+/* 25.2 footer link */
+.footer-links {
+  padding-left: 18px;
+}
+
+.footer-links li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-links li::before {
+  position: absolute;
+  font-family: "themify";
+  content: "\e649";
+  top: 0;
+  left: -20px;
+  height: 12px;
+  width: auto;
+  color: #fff;
+}
+
+.footer-links li a {
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  transition: .2s ease;
+  display: block;
+}
+
+.footer-links li a:hover {
+  text-decoration: underline;
+  color: #D00E38;
+}
+
+/* 25.3 subcription */
+.form-control.subscribe {
+  width: 100%;
+  border-radius: 35px;
+  border: 0;
+  padding: 0 20px !important;
+  height: 50px;
+}
+
+/* subscribe button */
+.btn-subscribe {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: #D00E38;
+  transition: all linear .2s;
+}
+
+.btn-subscribe:hover {
+  padding-left: 15px;
+}
+
+.btn-subscribe:focus {
+  outline: 0;
+}
+
+/* back to top button */
+.back-to-top {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  color: #fff;
+  background: #303032;
+  top: -25px;
+  right: 10px;
+  border: 1px solid #454547;
+  text-align: center;
+  display: block;
+  transition: .2s ease;
+}
+
+.back-to-top i {
+  line-height: 50px;
+}
+
+.back-to-top:hover {
+  border-color: #D00E38;
+}
+
+.back-to-top:focus {
+  outline: 0;
+}
+
+/*# sourceMappingURL=maps/style.css.map */

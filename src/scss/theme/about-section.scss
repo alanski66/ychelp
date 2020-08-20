@@ -1,0 +1,77 @@
+// 13. ABOUT SECTION
+// 
+//     13.1 about content
+//     13.2 about item
+//     13.3 about content 2
+//     13.4 about video
+//     13.5 about content 3
+//     13.6 about slider
+//     13.7 philosophy
+//     13.8 ceo
+// 
+//         13.8.1 ceo item
+//         13.8.1 ceo content
+//         13.8.1 ceo content-2
+        /* 13. about section */
+.about {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* 13.4 about video */
+  /* 13.6 about slider */
+}
+
+.about-video {
+  min-height: 300px;
+}
+
+.about-slider {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.about-slider .prevArrow,
+.about-slider .nextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  border: 0;
+  line-height: 55px;
+  text-align: center;
+  background: #fff;
+  transition: .2s ease;
+}
+
+.about-slider .prevArrow:focus,
+.about-slider .nextArrow:focus {
+  outline: 0;
+}
+
+.about-slider .prevArrow:hover,
+.about-slider .nextArrow:hover {
+  background: #D00E38;
+  color: #fff;
+}
+
+.about-slider .prevArrow {
+  left: 25px;
+}
+
+.about-slider .nextArrow {
+  right: 25px;
+}
+
+/* 13.8 ceo section start */
+.ceo-image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 400px;
+}
+
+/* ceo section end */

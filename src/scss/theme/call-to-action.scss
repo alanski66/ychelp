@@ -1,0 +1,64 @@
+// 16. CALL TO ACTION
+/* 16. call to action start */
+.cta {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* card */
+.card-img-wrapper {
+  position: relative;
+}
+
+.card-img-wrapper::before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  transition: .2s;
+}
+
+.card-body-2 {
+  position: relative;
+  transition: .2s ease;
+  border-radius: 0 0 5px 5px;
+}
+
+.card-body-2::before {
+  position: absolute;
+  content: '';
+  height: 30px;
+  width: 30px;
+  background: #fff;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  transition: .2s ease;
+}
+
+.card:hover .card-img-wrapper::before {
+  opacity: .4;
+}
+
+.card:hover .card-body-2 {
+  background: #D00E38;
+}
+
+.card:hover .card-body-2 h5,
+.card:hover .card-body-2 h6,
+.card:hover .card-body-2 a {
+  color: #fff;
+}
+
+.card:hover .card-body-2::before {
+  background: #D00E38;
+}
+
+.overlay-rounded-top::before {
+  border-radius: 5px 5px 0 0;
+}

@@ -1,0 +1,41 @@
+<!-- search drop -->
+<div class=" search-drop collapse" id="search-collapse" >
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+
+                <button type="button" class="close close-search" aria-label="Close" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="search-collapse">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center mt-5">
+            <div id="imaginary_container">
+                <h4>Search </h4>
+                <form action="{{ url('search/results') }}" id="search" name="search">
+                    <div class="input-group stylish-input-group">
+                        <input type="search" name="q" type="text" class="form-control search-input" placeholder="Search">
+
+                    <span class="input-group-addon">
+                        <button type="submit" class="btn btn-blue search-submit"
+
+                                data-on="click"
+                                data-event-category="Search"
+                                data-event-action="Search button"
+                                data-event-label=""
+                        >Search
+                            <i class="icon-search fa fa-search fa-sm"></i>
+                        </button>
+                    </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="searchoverlay"></div>
+<!-- END searchdrop -->

@@ -1,0 +1,22 @@
+dateModified: 1597926773
+email:
+  fromEmail: info@joomkit.com
+  fromName: 'Yacht Crew Help'
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  seo:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.1.1
+system:
+  edition: pro
+  live: true
+  name: 'Yacht Crew Help'
+  schemaVersion: 3.5.12
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

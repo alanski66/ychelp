@@ -1,0 +1,158 @@
+//SYOtimer
+    /* 24. coming soon */
+.comming-soon {
+  height: 100vh;
+  background-size: cover;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.comming-soon h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+@media (max-width: 575px) {
+  .comming-soon h1 {
+    font-size: 30px;
+  }
+}
+
+.comming-soon .form-control {
+  height: 45px;
+  border-radius: 45px;
+  position: relative;
+  background: transparent;
+  border: 1px solid #e5e5e5;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.comming-soon .form-control::-webkit-input-placeholder {
+  color: #666;
+}
+
+.comming-soon .form-control:-ms-input-placeholder {
+  color: #666;
+}
+
+.comming-soon .form-control::placeholder {
+  color: #666;
+}
+
+.comming-soon .btn-email {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  background: #fff;
+  border: 0;
+  color: #D00E38;
+  border-radius: 45px;
+  height: 45px;
+  padding: 0 50px;
+}
+
+@media (max-width: 575px) {
+  .comming-soon .btn-email {
+    padding: 0 10px;
+  }
+}
+
+.comming-soon i {
+  color: #5c5c5c;
+  margin: 0 15px;
+  transition: .2s ease;
+  font-size: 24px;
+}
+
+.comming-soon i:hover {
+  color: #D00E38;
+}
+
+/* 24.1 syotimer */
+.syotimer {
+  text-align: center;
+  margin: 0 auto 40px;
+}
+
+.syotimer-cell:last-child .syotimer-cell__value::before {
+  opacity: 0;
+}
+
+.syotimer-cell {
+  display: inline-block;
+  margin: 0 25px;
+}
+
+@media (max-width: 1199px) {
+  .syotimer-cell {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .syotimer-cell {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .syotimer-cell {
+    margin: 0 5px;
+  }
+}
+
+.syotimer-cell__value {
+  font-size: 60px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+}
+
+@media (max-width: 1199px) {
+  .syotimer-cell__value {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 575px) {
+  .syotimer-cell__value {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .syotimer-cell__value {
+    font-size: 24px;
+  }
+}
+
+.syotimer-cell__value::before {
+  position: absolute;
+  content: ':';
+  height: 30px;
+  color: #fff;
+  right: -30px;
+  top: 0;
+}
+
+@media (max-width: 575px) {
+  .syotimer-cell__value::before {
+    right: -20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .syotimer-cell__value::before {
+    right: -12px;
+  }
+}
+
+.syotimer-cell__unit {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}

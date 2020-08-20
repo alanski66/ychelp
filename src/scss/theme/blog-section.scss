@@ -1,0 +1,185 @@
+// 21. BLOG SECTION
+// 
+//     21.1 blog item
+//     21.2 blog content#D00E38
+//     21.3 blog content 2
+//     21.4 blog post
+// 
+//         21.4.1 post slider
+//         21.4.2 post video
+//         21.4.3 pagination
+//         21.4.4 sidebar
+// 
+//     21.5 blog single
+// 
+//         21.5.1 blog single container
+//         21.5.2 blog single content
+//         21.5.3 blog single list
+//         21.5.4 blog single testimonial
+//         21.5.5 share tags
+//         21.5.6 comments
+//         21.5.7 blog-sidebar
+        /* 21.4.3 pagination */
+.pagination .page-item .page-link {
+  background: transparent;
+  border: none;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  transition: .3s ease;
+}
+
+.pagination .page-item .page-link:hover {
+  color: #D00E38;
+}
+
+.pagination .page-item.active .page-link {
+  color: #D00E38;
+}
+
+.pagination .prev,
+.pagination .next {
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  padding: 5px 10px;
+  transition: .3s ease;
+}
+
+.pagination .prev:hover,
+.pagination .next:hover {
+  border-color: #D00E38;
+}
+
+.pagination .prev:hover .page-link,
+.pagination .next:hover .page-link {
+  color: #D00E38;
+}
+
+.pagination .prev {
+  margin-right: 30px;
+}
+
+.pagination .next {
+  margin-left: 30px;
+}
+
+/* 21.4.1 post slider */
+.post-slider {
+  position: relative;
+}
+
+.post-slider .prevArrow,
+.post-slider .nextArrow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  line-height: 50px;
+  top: 50%;
+  border: 0;
+  font-size: 20px;
+  background: transparent;
+  color: #D00E38;
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.8);
+  transition: .3s ease;
+}
+
+.post-slider .prevArrow:focus,
+.post-slider .nextArrow:focus {
+  outline: 0;
+}
+
+.post-slider .prevArrow:hover,
+.post-slider .nextArrow:hover {
+  background: rgba(232, 68, 68, 0.25);
+}
+
+.post-slider .prevArrow {
+  left: 40px;
+}
+
+.post-slider .nextArrow {
+  right: 40px;
+}
+
+.post-slider .slick-disabled {
+  color: #e5e5e5;
+}
+
+/* 21.4.4 sidebar */
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper input {
+  background: #f5f5f5;
+  border-radius: 30px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 25px;
+  font-size: 13px;
+}
+
+.search-wrapper::before {
+  content: "\e610";
+  font-family: "themify";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  color: #666;
+  transform: translateY(-50%);
+}
+
+ul.tag-list li {
+  margin-bottom: 7px;
+}
+
+ul.tag-list li a {
+  color: #666;
+  padding: 10px 15px;
+  display: block;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  font-size: 13px;
+  transition: .3s ease;
+}
+
+ul.tag-list li a:hover {
+  background: #D00E38;
+  border-color: #D00E38;
+  color: #fff;
+}
+
+.newsletter .form-control {
+  font-weight: 400;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 30px;
+  font-size: 13px;
+}
+
+/* 21.5 blog single start */
+/* share icon */
+.share-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.share-icon i {
+  color: #fff;
+}
+
+/* 21.5.7 blog sidebar */
+.sidebar-box-shadow {
+  box-shadow: -3px 0px 3px 0px rgba(0, 0, 0, 0.06);
+}
+
+/* blog single end */

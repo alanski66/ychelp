@@ -1,0 +1,119 @@
+//23. SIGNUP WRAPPER
+//
+//    23.1 signup greetngs
+//    23.2 signup form
+/* 23.1 signup greetings */
+.signup {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.1);
+  /* 23.2 signup form */
+}
+
+.signup-greeting {
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 70px 0 140px;
+  text-align: center;
+}
+
+@media (max-width: 1199px) {
+  .signup-greeting {
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .signup-greeting {
+    padding-top: 200px;
+  }
+}
+
+@media (max-width: 575px) {
+  .signup-greeting {
+    padding-top: 400px;
+  }
+}
+
+.signup-greeting img {
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 9;
+}
+
+.signup-greeting h4 {
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 9;
+}
+
+.signup-greeting p {
+  color: #fff;
+  position: relative;
+  z-index: 9;
+  margin: 0 40px;
+}
+
+.signup-form {
+  padding: 50px 50px 50px 35px;
+}
+
+@media (max-width: 1199px) {
+  .signup-form {
+    padding: 50px 15px 50px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .signup-form {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 575px) {
+  .signup-form {
+    text-align: center;
+  }
+}
+
+.signup-form h4 {
+  float: left;
+  font-size: 26px;
+  margin-bottom: 35px;
+}
+
+@media (max-width: 575px) {
+  .signup-form h4 {
+    float: unset;
+  }
+}
+
+.signup-form a {
+  color: #D00E38;
+}
+
+.signup-form .btn {
+  margin-top: 30px;
+}
+
+.signup-form p.signup-with {
+  display: inline-block;
+  margin-top: 42px;
+}
+
+.signup-form ul {
+  margin-top: 37px;
+  display: inline-block;
+}
+
+.signup-form ul li a {
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+}
