@@ -1,0 +1,1 @@
+php craft project-config/apply
