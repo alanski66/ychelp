@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: f7f618cd-8651-4d21-8055-18085e36d726
+handle: entryLink
+instructions: ''
+name: 'Entry link'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: 'Select an entry - thus will be a menu link to the entry content'
+  showSiteMenu: true
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

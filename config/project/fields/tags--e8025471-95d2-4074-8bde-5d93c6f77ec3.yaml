@@ -1,0 +1,22 @@
+contentColumnType: string
+fieldGroup: 82e59281-d6be-4eb2-adf5-853f9dc798d9
+handle: tags
+instructions: ''
+name: Tags
+searchable: false
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  limit: null
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: true
+  source: 'taggroup:topics'
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Tags

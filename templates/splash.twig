@@ -1,0 +1,29 @@
+{% extends "_layouts/site.twig" %}
+ {% set bodyClass ="splash" %}
+{% block content %}
+<!-- splash twig --->
+    <div class="mt-5 container-fluid d-flex justify-content-center flex-column align-items-center">
+
+
+            <h1 class="cover-heading d-flex align-self-center  hide">{{ entry.title }}</h1>
+            {% set asset = entry.image.one() %}
+            <img class="mx-auto align-self-center" src="{{ asset.url }}">
+        <h4 class="text-grey-light">Coming soon...</h4>
+
+        <div class="form-group col-sm-4 col-xs-12 justify-content-center text-center hide">
+
+            <label for="form-input-email" class="text-center required form-label text-white">Add your email tobe notified on launch</label>
+            <input class="form-control" name="email" type="email" id="form-input-email" placeholder="email">
+        </div>
+        <div class="form-group justify-content-center hide">
+
+            <button class="btn btn-primary" data-submit-button="1" type="submit" name="form_page_submit">Sign up to be notified</button>
+
+        </div>
+
+       
+    </div>
+<!-- Page Content -->
+<!-- / page content -->
+
+{% endblock %}

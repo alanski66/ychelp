@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: ba782d24-db73-4ae4-8593-bfa7b9166f5c
+handle: socialCategory
+instructions: ''
+name: 'Social category'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

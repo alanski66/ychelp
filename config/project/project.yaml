@@ -1,13 +1,37 @@
-dateModified: 1597926773
+dateModified: 1598012112
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
+  architect:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  imager:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  mobile-detect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  position-fieldtype:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
   seo:
     edition: standard
     enabled: true
     schemaVersion: 3.1.1
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
 system:
   edition: pro
   live: true

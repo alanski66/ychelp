@@ -1,0 +1,40 @@
+field: 01d3d205-50b0-445d-952a-1dca0c3c0061
+fieldLayouts:
+  35e4af34-b865-40cc-8f75-0d7c87257792:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: a48541ea-9dff-45e8-9626-65af230f5e34
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  a48541ea-9dff-45e8-9626-65af230f5e34:
+    contentColumnType: text
+    fieldGroup: null
+    handle: copyright
+    instructions: ''
+    name: Copyright
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: copyright
+name: Copyright
+sortOrder: 1

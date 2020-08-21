@@ -1,0 +1,20 @@
+contentColumnType: string
+fieldGroup: eb93743b-bdd9-4aaf-8608-363189bbadbf
+handle: featureLink
+instructions: ''
+name: 'Feature link'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: true
+  source: null
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

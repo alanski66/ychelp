@@ -1,0 +1,31 @@
+contentColumnType: string
+fieldGroup: 70a4ac64-abe7-4301-99e0-99b3b5709e6e
+handle: pdfDocument
+instructions: ''
+name: 'PDF document'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:resourceDocuments'
+  defaultUploadLocationSubpath: ''
+  limit: ''
+  localizeRelations: true
+  restrictFiles: ''
+  selectionLabel: ''
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources:
+    - 'volume:resourceDocuments'
+    - 'volume:0ba3b68a-f491-475e-89fd-8f3711dfcdc5'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

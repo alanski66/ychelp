@@ -1,0 +1,8 @@
+handle: sponsorLogos
+hasUrls: true
+name: 'Sponsor logos'
+settings:
+  path: '@assetBasePath/images/sponsorslogos'
+sortOrder: 3
+type: craft\volumes\Local
+url: '@assetBaseUrl/images/sponsorslogos'

@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: homepage
+name: Homepage
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  3052e924-b84d-4d3c-a968-0df7f4320698:
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: homepage
+type: single

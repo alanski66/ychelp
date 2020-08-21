@@ -1,0 +1,33 @@
+fieldLayouts:
+  ee20b123-86e3-494c-bacd-8e3d2f1dd59a:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: dc232e1c-6385-4a8a-96a1-9614070996d8
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: bafa4d43-ec69-4b00-ba83-124d91b538d2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: images
+hasUrls: true
+name: Images
+settings:
+  path: '@assetBasePath/images'
+sortOrder: 1
+type: craft\volumes\Local
+url: '@assetBaseUrl/images'

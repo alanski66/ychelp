@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: ebc82c3a-ec82-4631-a6de-1738a99a94c6
+handle: charityNumber
+instructions: ''
+name: 'Charity number'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

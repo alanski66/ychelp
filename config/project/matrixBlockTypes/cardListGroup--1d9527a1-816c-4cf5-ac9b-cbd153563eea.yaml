@@ -1,0 +1,74 @@
+field: 65aebe37-64ef-44f7-85e2-55b1788e8ebd
+fieldLayouts:
+  799a7feb-f5b9-44fd-a50e-411682ecac1e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 7bc96546-dce7-418b-894a-2c37efb7fbf7
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 670a426f-5790-4bb3-9041-04ae032d45c1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  670a426f-5790-4bb3-9041-04ae032d45c1:
+    contentColumnType: string
+    fieldGroup: null
+    handle: listItem
+    instructions: ''
+    name: 'List item'
+    searchable: true
+    settings:
+      columns:
+        234:
+          __assoc__:
+            -
+              - width
+              - ''
+      contentTable: '{{%stc_listitem}}'
+      fieldLayout: table
+      maxRows: ''
+      minRows: ''
+      placeholderKey: null
+      propagationMethod: all
+      selectionLabel: 'Add a list item'
+      staticField: ''
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+  7bc96546-dce7-418b-894a-2c37efb7fbf7:
+    contentColumnType: text
+    fieldGroup: null
+    handle: listHeader
+    instructions: ''
+    name: 'List header'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: cardListGroup
+name: 'Card list group'
+sortOrder: 2

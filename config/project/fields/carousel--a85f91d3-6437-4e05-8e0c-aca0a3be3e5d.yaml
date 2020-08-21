@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: f8588790-cde2-4131-83f1-4776b3861078
+handle: carousel
+instructions: ''
+name: Carousel
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_carousel}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

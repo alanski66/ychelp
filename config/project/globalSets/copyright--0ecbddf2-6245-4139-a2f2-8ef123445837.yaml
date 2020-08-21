@@ -1,0 +1,45 @@
+fieldLayouts:
+  a9eb0c4f-3f18-4941-8407-be519dade3d2:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 01d3d205-50b0-445d-952a-1dca0c3c0061
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f53b3734-79e2-47cc-bafa-2029dc143aac
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 1c3851ff-a768-4992-bb05-7f9be3534087
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9b800d1b-5210-454a-99b0-758cbcfe50fb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: 'Footer links & copyright'
+        sortOrder: 1
+handle: copyright
+name: Copyright

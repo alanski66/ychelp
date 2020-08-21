@@ -1,0 +1,68 @@
+field: c23acdba-daa9-4e35-b607-6abc12976545
+fieldLayouts:
+  ededfd24-7401-440c-8792-db97859e8e9a:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: c836dc54-9d5a-4594-8b77-bcb451a2416a
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: a0930684-6c6c-45ad-9356-086cfc04ad85
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  a0930684-6c6c-45ad-9356-086cfc04ad85:
+    contentColumnType: datetime
+    fieldGroup: null
+    handle: sponsorshipEndDate
+    instructions: ''
+    name: 'Sponsorship end date'
+    searchable: true
+    settings:
+      max: null
+      min: null
+      minuteIncrement: '30'
+      showDate: true
+      showTime: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  c836dc54-9d5a-4594-8b77-bcb451a2416a:
+    contentColumnType: string
+    fieldGroup: null
+    handle: sponsoredby
+    instructions: ''
+    name: Sponsoredby
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: ''
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:sponsors'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: sponsored
+name: Sponsored
+sortOrder: 1

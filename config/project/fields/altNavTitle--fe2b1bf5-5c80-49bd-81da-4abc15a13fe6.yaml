@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 21686fc5-b840-4187-b102-42cfc44b2948
+handle: altNavTitle
+instructions: ''
+name: 'Alternative navigation title'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

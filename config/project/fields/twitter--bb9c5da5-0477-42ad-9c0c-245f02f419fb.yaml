@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: bf83c817-4a55-4652-a271-03941c29834f
+handle: twitter
+instructions: ''
+name: Twitter
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

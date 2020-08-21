@@ -1,0 +1,8 @@
+handle: shipDocuments
+hasUrls: true
+name: 'Ship documents'
+settings:
+  path: '@assetBasePath/documents/ship'
+sortOrder: 5
+type: craft\volumes\Local
+url: '@assetBaseUrl/documents/ship'

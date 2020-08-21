@@ -1,0 +1,30 @@
+contentColumnType: string
+fieldGroup: fc94dd78-cd02-4e18-9997-3618eef450de
+handle: shipImage
+instructions: 'Add a large full width image if there is one'
+name: 'Ship image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  defaultUploadLocationSubpath: ''
+  limit: '1'
+  localizeRelations: false
+  restrictFiles: ''
+  selectionLabel: ''
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:projectImage'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources:
+    - 'volume:projectImage'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

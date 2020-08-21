@@ -1,0 +1,118 @@
+field: 8a2aa11b-b2db-4cc2-9c6c-25d99ddb3913
+fieldLayouts:
+  652dff67-1e17-46f6-a9bc-9057359055ab:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 73d7fc53-8df4-4ad9-86b1-00c70c43206d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4e5df93d-4ec7-455e-b4e9-93ef387b37fc
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e305cf1e-d626-4141-b218-a52d68ad17fd
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 3e237f2c-59a8-4212-888a-5f42107cf72e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  3e237f2c-59a8-4212-888a-5f42107cf72e:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: citationLink
+    instructions: 'Add a link if relevant to the source'
+    name: 'Citation link'
+    searchable: true
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  4e5df93d-4ec7-455e-b4e9-93ef387b37fc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: citationIntro
+    instructions: ''
+    name: 'Citation intro'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  73d7fc53-8df4-4ad9-86b1-00c70c43206d:
+    contentColumnType: text
+    fieldGroup: null
+    handle: quote
+    instructions: ''
+    name: Quote
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: '1'
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e305cf1e-d626-4141-b218-a52d68ad17fd:
+    contentColumnType: text
+    fieldGroup: null
+    handle: citation
+    instructions: ''
+    name: Citation
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: quote
+name: Quote
+sortOrder: 4

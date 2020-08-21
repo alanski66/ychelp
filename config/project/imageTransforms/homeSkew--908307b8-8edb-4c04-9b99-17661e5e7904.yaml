@@ -1,0 +1,9 @@
+format: null
+handle: homeSkew
+height: 475
+interlace: none
+mode: crop
+name: 'Home skew'
+position: center-center
+quality: null
+width: 414

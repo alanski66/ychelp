@@ -1,0 +1,23 @@
+enableVersioning: true
+handle: topNav
+name: 'Top nav'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  3052e924-b84d-4d3c-a968-0df7f4320698:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: null
+  uid: c6ae2b1f-6ab6-4ebc-8586-16ee53438b24
+type: structure

@@ -1,8 +1,18 @@
 {% extends "_layouts/site.twig" %}
-
+ {% set bodyClass ="splash" %}
 {% block content %}
 
+    <div class="mt-5 container-fluid d-flex justify-content-center flex-column align-items-center">
 
+
+            <h1 class="cover-heading d-flex align-self-center text-white gray-400">{{ entry.title }}</h1>
+            {% set asset = entry.image.one() %}
+            <img class="mx-auto align-self-center" src="{{ asset.url }}">
+            
+
+
+       
+    </div>
 <!-- Page Content -->
 <!-- / page content -->
 

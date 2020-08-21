@@ -1,0 +1,150 @@
+field: 8a2aa11b-b2db-4cc2-9c6c-25d99ddb3913
+fieldLayouts:
+  e1c1214c-32e4-4bfa-897c-89c4c3e48ed7:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 380c502e-e141-4d83-896c-738ca23d319a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 00b6e23a-2138-4ce7-856a-a8c6e818feff
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 37933c0b-64de-4f23-afb5-eb15d802c699
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e1ca4944-7a70-4566-a3b9-2492018ada06
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 19cfc195-3f0a-4640-b283-1faf9a827e99
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  00b6e23a-2138-4ce7-856a-a8c6e818feff:
+    contentColumnType: string
+    fieldGroup: null
+    handle: entryToPromote
+    instructions: 'Select an entry to promote - the template will handle display'
+    name: 'Entry to promote'
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: ''
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:resources'
+        - 'section:ship'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  19cfc195-3f0a-4640-b283-1faf9a827e99:
+    contentColumnType: text
+    fieldGroup: null
+    handle: customLinkTitle
+    instructions: ''
+    name: 'Custom link title'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  37933c0b-64de-4f23-afb5-eb15d802c699:
+    contentColumnType: text
+    fieldGroup: null
+    handle: customText
+    instructions: 'Supplemental text'
+    name: 'Custom text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  380c502e-e141-4d83-896c-738ca23d319a:
+    contentColumnType: text
+    fieldGroup: null
+    handle: boxHeading
+    instructions: 'Box header - leave blank to not show'
+    name: 'Box heading'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e1ca4944-7a70-4566-a3b9-2492018ada06:
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: customLink
+    instructions: 'Add a custom link to the content you are promoting. If you fill out this field this will override the entry selection and display this custom text and a custom link in the promotion box'
+    name: 'Custom link'
+    searchable: true
+    settings:
+      maxLength: '255'
+      placeholder: ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+handle: promotion
+name: Promotion
+sortOrder: 5

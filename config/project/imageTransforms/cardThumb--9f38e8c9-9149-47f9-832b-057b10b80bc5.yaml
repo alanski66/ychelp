@@ -1,0 +1,9 @@
+format: null
+handle: cardThumb
+height: 375
+interlace: none
+mode: crop
+name: 'Card Thumb'
+position: top-center
+quality: 82
+width: 253

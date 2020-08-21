@@ -1,0 +1,9 @@
+format: null
+handle: pdfPortrait
+height: null
+interlace: none
+mode: fit
+name: 'Pdf portrait'
+position: center-center
+quality: 100
+width: 720

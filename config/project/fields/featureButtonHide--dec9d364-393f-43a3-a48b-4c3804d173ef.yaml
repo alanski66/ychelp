@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: eb93743b-bdd9-4aaf-8608-363189bbadbf
+handle: featureButtonHide
+instructions: 'Use this to hide the link button n the overlay'
+name: 'Feature button hide'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

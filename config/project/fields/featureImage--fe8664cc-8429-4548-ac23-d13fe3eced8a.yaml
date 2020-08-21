@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: eb93743b-bdd9-4aaf-8608-363189bbadbf
+handle: featureImage
+instructions: 'We use big screen width so we are ideally looking for 1900 x 600 px'
+name: 'Feature image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  defaultUploadLocationSubpath: features
+  limit: ''
+  localizeRelations: false
+  restrictFiles: ''
+  selectionLabel: ''
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  singleUploadLocationSubpath: featured
+  source: null
+  sources:
+    - 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+    - 'volume:unsplashImages'
+    - 'volume:projectImage'
+    - 'volume:bannerImages'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

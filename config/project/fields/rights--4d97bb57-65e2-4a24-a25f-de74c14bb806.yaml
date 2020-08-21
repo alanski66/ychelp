@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: ebc82c3a-ec82-4631-a6de-1738a99a94c6
+handle: rights
+instructions: ''
+name: Copyright
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_rights}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

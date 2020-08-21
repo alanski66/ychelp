@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: ab8fa44c-a2cc-43be-bfd0-177ba076737f
+handle: sponsorships
+instructions: ''
+name: Sponsorships
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_sponsorships}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,24 @@
+fieldLayouts:
+  b36f5718-5e88-47f9-a713-252c8f7b363e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 90a844c8-72c3-4260-bf6a-f9cf9b465687
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: pdfThumbs
+hasUrls: true
+name: 'PDf thumbs'
+settings:
+  path: '@assetBasePath/images/pdfthumbs'
+sortOrder: 4
+type: craft\volumes\Local
+url: '@assetBaseUrl/images/pdfthumbs'

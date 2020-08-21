@@ -1,0 +1,27 @@
+fieldLayouts:
+  91c79cd7-bc29-463b-b878-ce9170cc326b:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: ef36e0ed-43d9-4805-830a-334b8c20803e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 55bb8032-1277-4c1a-bf59-58aadb7ebce1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: 'Global Footer funders'
+        sortOrder: 1
+handle: footerFunders
+name: 'Footer funders'

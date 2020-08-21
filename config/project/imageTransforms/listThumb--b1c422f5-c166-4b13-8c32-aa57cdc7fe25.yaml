@@ -1,0 +1,9 @@
+format: null
+handle: listThumb
+height: 200
+interlace: none
+mode: crop
+name: 'List thumb'
+position: center-center
+quality: 100
+width: 200

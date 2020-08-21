@@ -1,0 +1,30 @@
+contentColumnType: string
+fieldGroup: 70a4ac64-abe7-4301-99e0-99b3b5709e6e
+handle: pdfThumbnailImage
+instructions: ''
+name: 'PDF Thumbnail image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  defaultUploadLocationSubpath: pdfthumbs
+  limit: ''
+  localizeRelations: true
+  restrictFiles: ''
+  selectionLabel: 'PDF thumbnails are automatically created and saved in this field'
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources:
+    - 'volume:0d2b4759-959f-41f9-8bc5-34499d41f1a5'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

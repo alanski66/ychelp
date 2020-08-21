@@ -1,0 +1,30 @@
+contentColumnType: string
+fieldGroup: bb607a26-226b-48b5-b616-dfa0583d8755
+handle: oldNewsImage
+instructions: ''
+name: 'Old news image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowedKinds: null
+  defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  defaultUploadLocationSubpath: ''
+  limit: ''
+  localizeRelations: false
+  restrictFiles: ''
+  selectionLabel: ''
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: true
+  singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
+  singleUploadLocationSubpath: ''
+  source: null
+  sources:
+    - 'volume:oldNewsImages'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

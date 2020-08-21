@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: f23a2f33-8227-4fca-a371-66d9177e4d18
+handle: tickList
+instructions: ''
+name: TickList
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_ticklist}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
