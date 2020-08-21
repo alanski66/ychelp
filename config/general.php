@@ -11,6 +11,7 @@
 return [
     // Global settings
     '*' => [
+        'useProjectConfigFile' => false,
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
         'defaultWeekStartDay' => 0,
 
@@ -59,5 +60,7 @@ return [
     'production' => [
         // Base site URL
         'siteUrl' => null,
+        // Disable project config changes on production
+        'allowAdminChanges' => false,
     ],
 ];
