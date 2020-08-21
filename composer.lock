@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7654bce7f23ff795bd5ba98e8995df3d",
+    "content-hash": "64871fb33475d3ec04da0d91419d3711",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -5038,11 +5038,11 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "2.6.1",
+            "version": "2.6.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/6cc1edb284c08ad8fe73fa279911e1b66db707bc",
-                "reference": "6cc1edb284c08ad8fe73fa279911e1b66db707bc",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/34a3c1a79c2956fc0c83c349fa2b303b4d9cbced",
+                "reference": "34a3c1a79c2956fc0c83c349fa2b303b4d9cbced",
                 "shasum": ""
             },
             "require": {
@@ -5087,7 +5087,7 @@
                 "docs": "https://github.com/verbb/super-table",
                 "rss": "https://github.com/verbb/super-table/commits/v2.atom"
             },
-            "time": "2020-08-13T01:12:44+00:00"
+            "time": "2020-08-21T00:48:21+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

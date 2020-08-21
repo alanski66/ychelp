@@ -7,7 +7,7 @@
     "hybridinteractive/craft-position-fieldtype": "1.0.16",
     "pennebaker/craft-architect": "2.3.3",
     "superbig/craft3-mobiledetect": "1.0.2",
-    "verbb/super-table": "2.6.1",
+    "verbb/super-table": "2.6.2",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
