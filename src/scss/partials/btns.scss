@@ -32,12 +32,13 @@
 }
 
 .btn-primary:hover {
-  background: #ee7171;
+  background: lighten($yellow, 10%);
+  color: $black;
 }
 
 .btn-secondary {
   background: #303032;
-  color: #fff;
+
 }
 
 .btn-secondary:active {
