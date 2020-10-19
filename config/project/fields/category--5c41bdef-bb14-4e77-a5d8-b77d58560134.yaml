@@ -1,8 +1,8 @@
 contentColumnType: string
 fieldGroup: fc94dd78-cd02-4e18-9997-3618eef450de
-handle: shipCategory
+handle: category
 instructions: ''
-name: 'Ship category'
+name: Category
 searchable: false
 settings:
   allowLimit: false
@@ -13,7 +13,7 @@ settings:
   localizeRelations: false
   selectionLabel: ''
   showSiteMenu: true
-  source: 'group:ship'
+  source: 'group:c899c7ad-06e8-4e34-a6b3-72d0823a686a'
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false

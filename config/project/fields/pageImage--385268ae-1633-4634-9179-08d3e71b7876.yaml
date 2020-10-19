@@ -1,26 +1,27 @@
 contentColumnType: string
 fieldGroup: fc94dd78-cd02-4e18-9997-3618eef450de
-handle: shipImage
+handle: pageImage
 instructions: 'Add a large full width image if there is one'
-name: 'Ship image'
+name: 'Page Image'
 searchable: false
 settings:
   allowSelfRelations: false
+  allowUploads: true
   allowedKinds: null
   defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
   defaultUploadLocationSubpath: ''
   limit: '1'
   localizeRelations: false
+  previewMode: full
   restrictFiles: ''
   selectionLabel: ''
   showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: true
-  singleUploadLocationSource: 'volume:projectImage'
+  singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
   singleUploadLocationSubpath: ''
   source: null
-  sources:
-    - 'volume:projectImage'
+  sources: '*'
   targetSiteId: null
   useSingleFolder: true
   validateRelatedElements: false
