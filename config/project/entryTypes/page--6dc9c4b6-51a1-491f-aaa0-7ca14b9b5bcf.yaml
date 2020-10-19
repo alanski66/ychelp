@@ -7,7 +7,6 @@ fieldLayouts:
             autocapitalize: true
             autocomplete: false
             autocorrect: true
-            autofocus: false
             class: null
             disabled: false
             id: null
@@ -20,7 +19,6 @@ fieldLayouts:
             placeholder: null
             readonly: false
             requirable: false
-            required: false
             size: null
             step: null
             tip: null
@@ -66,9 +64,9 @@ fieldLayouts:
             width: 100
         name: Content
         sortOrder: 1
-handle: pages
+handle: page
 hasTitleField: true
-name: Pages
+name: Page
 section: 7135d77d-f5e7-4d12-9d35-0c6e40777ee2
 sortOrder: 1
 titleFormat: null

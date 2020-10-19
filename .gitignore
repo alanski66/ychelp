@@ -1,5 +1,5 @@
-/config/project
-/config/project/
+#/config/project
+#/config/project/
 /.env
 /.envcopy
 /.env.example
