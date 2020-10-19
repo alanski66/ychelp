@@ -1,0 +1,41 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * pdfthumbnailer plugin for Craft CMS 3.x
+ *
+ * pdfthumbnailer Settings.twig
+ *
+ * @author    Alan
+ * @copyright Copyright (c) 2018 Alan
+ * @link      https://www.joomkit.com
+ * @package   Pdfthumbnailer
+ * @since     1.0.0
+ */
+#}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("joomkit\\pdfthumbnailer\\assetbundles\\pdfthumbnailer\\PdfthumbnailerAsset") %}
+
+{{ forms.textField({
+    label: 'PDF document field',
+    instructions: 'Put the PDF document asset field handle here',
+    id: 'pdfDocument',
+    name: 'pdfDocument',
+    value: settings['pdfDocument']})
+}}
+
+{{ forms.textField({
+    label: 'pdf Thumbnail Image field',
+    instructions: 'Enter the thumbnail asset field handle where pdf thumbnails will be stored',
+    id: 'pdfThumbnailImage',
+    name: 'pdfThumbnailImage',
+    value: settings['pdfThumbnailImage']})
+}}
+
+{{ forms.textField({
+    label: 'pdf Thumbnail Image Volume handle',
+    instructions: 'Add the handle of the pdf volume image where pdf thumbnails will be stored',
+    id: 'pdfThumbnailImageVolume',
+    name: 'pdfThumbnailImageVolume',
+    value: settings['pdfThumbnailImageVolume']})
+}}

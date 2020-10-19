@@ -6,11 +6,13 @@ name: 'PDF document'
 searchable: false
 settings:
   allowSelfRelations: false
+  allowUploads: true
   allowedKinds: null
-  defaultUploadLocationSource: 'volume:resourceDocuments'
+  defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
   defaultUploadLocationSubpath: ''
   limit: ''
-  localizeRelations: true
+  localizeRelations: false
+  previewMode: full
   restrictFiles: ''
   selectionLabel: ''
   showSiteMenu: true
@@ -20,8 +22,7 @@ settings:
   singleUploadLocationSubpath: ''
   source: null
   sources:
-    - 'volume:resourceDocuments'
-    - 'volume:0ba3b68a-f491-475e-89fd-8f3711dfcdc5'
+    - 'volume:bccbe5e7-459a-476e-905c-a93ac10b478b'
   targetSiteId: null
   useSingleFolder: false
   validateRelatedElements: false

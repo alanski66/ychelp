@@ -1,0 +1,44 @@
+{
+    "name": "joomkit/pdfthumbnailer",
+    "description": "Create thumbnail images from pdf docs",
+    "type": "craft-plugin",
+    "version": "1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "pdfthumbnailer"
+    ],
+    "support": {
+        "docs": "https://github.com/joomkit/pdfthumbnailer/blob/v1/README.md",
+        "issues": "https://github.com/joomkit/pdfthumbnailer/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alan",
+            "homepage": "https://www.joomkit.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "joomkit\\pdfthumbnailer\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "pdfthumbnailer",
+        "handle": "pdfthumbnailer",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/joomkit/pdfthumbnailer/master/CHANGELOG.md",
+        "components": {
+            "saveEntry": "joomkit\\pdfthumbnailer\\services\\SaveEntry",
+            "saveAsset": "joomkit\\pdfthumbnailer\\services\\SaveAsset"
+        },
+        "class": "joomkit\\pdfthumbnailer\\Pdfthumbnailer"
+    }
+}

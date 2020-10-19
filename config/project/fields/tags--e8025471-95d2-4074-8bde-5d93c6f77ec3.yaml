@@ -12,7 +12,7 @@ settings:
   localizeRelations: false
   selectionLabel: ''
   showSiteMenu: true
-  source: 'taggroup:topics'
+  source: 'taggroup:6ee69112-e67d-4d6b-924d-6cff1c682e77'
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false

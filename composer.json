@@ -3,17 +3,35 @@
     "aelvan/imager": "v2.4.0",
     "craftcms/cms": "3.5.13.2",
     "craftcms/redactor": "2.8.3",
-    "ether/seo": "3.6.6",
     "hybridinteractive/craft-position-fieldtype": "1.0.16",
+    "joomkit/pdfthumbnailer": "^1.0",
     "nystudio107/craft-seomatic": "3.3.21",
     "pennebaker/craft-architect": "2.3.3",
     "superbig/craft3-mobiledetect": "1.0.2",
     "verbb/super-table": "2.6.3",
-    "vlucas/phpdotenv": "^3.4.0"
+    "vlucas/phpdotenv": "^3.4.0",
+    "xpertbot/craft-wheelform": "2.5.2",
+    "xpertbot/wheelformhelper": "^1.1"
   },
   "require-dev": {
     "yiisoft/yii2-shell": "^2.0.3"
   },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "plugins/joomkit/*",
+      "options": {
+        "symlink": true
+      }
+    },
+    {
+      "type": "path",
+      "url": "plugins/xpertbot/*",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
   "autoload": {
     "psr-4": {
       "modules\\": "modules/"

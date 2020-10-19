@@ -1,0 +1,18 @@
+{
+    "name": "xpertbot/wheelformhelper",
+    "description": "Helper plugin for Wheelform",
+    "version": "1.1.0",
+    "type": "craft-plugin",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "wheelformhelper\\": "src/"
+        }
+    },
+    "extra":{
+        "handle": "wheelformhelper",
+        "name": "Wheelform Helper"
+    }
+}
