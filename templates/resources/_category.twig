@@ -1,0 +1,182 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+{% import '_macros' as macros %}
+{% extends "_layouts/site" %}
+
+
+{% block content %}
+    <!-- list content -->
+
+    <section class="news blue  blue pt-lg-5 pb-lg-3 pt-sm-4 pb-sm-2" >
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10 ">
+                    <div class="page-heading">Resources: A-Z</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {#{% set catSlugUrl =  %}#}
+
+    {% set catSlug = craft.categories.group('resources').slug(craft.app.request.getSegment(2)) %}
+
+    {% set entries = craft.entries({
+    section: 'resources',
+    relatedTo: [{ targetElement: catSlug }]
+    }).limit('10').orderBy('title') %}
+
+    {% paginate entries as pageInfo, pageEntries %}
+
+    <section class="news white p-5">
+        <div class="container">
+            <div class="row ">
+                {#<div class="col-xs-12   mb-5">#}
+                <div class="col-sm-12 col-md-12 col-lg-8  ">
+
+                    <ul class="list-unstyled">
+                        {% set cat = null %}
+                        {% set intro = null %}
+                        {#{% for entry in entries %}#}
+                        {% for entry in pageEntries %}
+
+
+                            {% set pdfImage = entry.pdfThumbnailImage[0] ?? null %}
+
+                            {% set shipImage = entry.shipImage[0] ?? null %}
+                            {%  set catImage =   null %}
+
+                            {% switch entry.section.handle %}
+                            {% case 'resources' %}
+                            {#{% set cat = entry.category[0] %}#}
+                            {%  set intro = entry.introText %}
+
+                            {% case 'ship' %}
+
+                            {% set catImage =  entry.shipCategory[0].image[0] ?? null %}
+                            {%  set intro = entry.shipIntroText %}
+
+
+                            {% endswitch %}
+
+                            <li class="mb-5 pl-0 text-xs-center text-sm-left d-sm-inline-flex col-12">
+
+                                {# get pdf thumb#}
+
+                                <div class="bg-highlight-xs">
+                                    {# get image for non pdf eg audio other media #}
+                                    {%  if shipImage |length %}
+
+                                        <img class="float-xs-none float-sm-left   mr-sm-3 mr-md-3 mb-3 " src="{{ shipImage.getUrl('sponsorLogo') }}" alt="">
+                                    {%  elseif pdfImage |length %}
+                                        <img class="float-xs-none float-sm-left  mr-sm-3 mr-md-3 mb-3" src="{{ pdfImage.getUrl('sponsorLogo') }}" alt="">
+                                    {%  endif %}
+
+                                    {# when no pdf or media get category root icon #}
+                                    {%  if catImage |length and not pdfImage| length %}
+                                        <img class="float-xs-none float-sm-left   mr-sm-3 mr-md-3 mb-3" src="{{ catImage.getUrl('sponsorLogo') }}" alt="">
+                                    {%  endif %}
+
+                                    <div class="">
+                                        <a class=" " href="{{ entry.url }}">
+                                            <h5 class="mt-0">{{ entry.title }}</h5>
+                                            {%  if entry.category |length %}
+                                                <span class="small">{{ entry.category[0].title }}</span>
+                                            {% endif %}
+                                            {%  if entry.title |length < '80' %}
+                                                {%  if intro |length %}
+                                                    <p>{{ intro }}</p>
+                                                {% endif %}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Sidebar Widgets Column -->
+
+                <div class="col-sm-12 col-md-12 col-lg-3 offset-lg-1 mb-5  -5 page">
+
+                   <div class="side-box">
+                       <h4>Categories</h4>
+                    {# Create a category query with the 'group' parameter #}
+
+                    {% set categories = craft.categories({
+                    group: 'resources',
+                    slug: ['publications','annual-review*']
+                    }) %}
+
+                    {# Display the navigation #}
+                        <ul class="list-unstyled">
+                            {% nav category in categories.all() %}
+                            <li class="{{ macros.isMenuActive(category.slug) }}" >
+                                <a href="{{ category.url }}">{{ category.title }}</a>
+                                {% ifchildren %}
+                                <ul>
+                                    {% children %}
+                                </ul>
+                                {% endifchildren %}
+                            </li>
+                            {% endnav %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {% if entries | length > '10' %}
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12  mb-5  pb-5 ">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="{{ pageInfo.firstUrl }}">Start</a>
+                    </li>
+
+                    {% if pageInfo.prevUrl %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ pageInfo.prevUrl }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page, url in pageInfo.getPrevUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                    <li class="page-item "><a class="page-link">{{ pageInfo.currentPage }}</a></li>
+
+                    {% for page, url in pageInfo.getNextUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                        {% if pageInfo.nextUrl %}
+                    <li class="page-item "><a class="page-link" href="{{ pageInfo.nextUrl }}">Next</a></li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <a class="page-link" href="{{ pageInfo.lastUrl }}">End</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

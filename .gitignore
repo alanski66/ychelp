@@ -28,3 +28,5 @@
 /templatesny107/*
 config.codekit3
 public_html/.htaccess
+bootstrapOld
+/src/scss/bootstrapOld/

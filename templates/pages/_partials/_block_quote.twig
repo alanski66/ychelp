@@ -1,0 +1,21 @@
+{% if block.quote |length %}
+<blockquote class="blockquote">
+    <p class="mb-0">{{ block.quote }}</p>
+
+    {% if block.citationIntro |length %}
+    <footer class="blockquote-footer">
+        {{ block.citationIntro }}
+        {% endif %}
+
+        {% if block.citation |length %}
+            <cite title="Source Title">
+                {% if block.citationLink |length %}<a href="{{ block.citationLink }}"> {% endif %}
+                {{ block.citation }}
+                {% if block.citationLink |length %}</a>{% endif %}
+            </cite>
+        {% endif %}
+        {% if block.citationIntro |length %}
+    </footer>
+    {% endif %}
+</blockquote>
+{% endif %}

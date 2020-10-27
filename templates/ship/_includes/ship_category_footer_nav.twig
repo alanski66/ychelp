@@ -1,0 +1,36 @@
+{% set shipEntriesLevelOne = craft.entries({section: 'ship', with:
+['pdfThumbnailImage','projectImage','image']
+}).level('1').orderBy('lft asc') %}
+
+<section class="gray  pt-5 pb-5 mt-5">
+<!-- ship cat footer nav -->
+
+    <div class="category-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h5>The Seafarers' Health Information Programme</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container ship card-layout">
+            <div class="row ">
+
+                {% for entry in shipEntriesLevelOne.all() %}
+                    {# Get the eager-loaded asset, if there is one #}
+                    {% set image = entry.projectImage[0] ?? null %}
+
+                    {% set introtext = entry.projectIntroText ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.' %}
+
+                    {% include '/pages/_entrytypes/_styles/_layout_ship.twig' %}
+
+                {% endfor %}
+
+            </div>
+        </div><!-- /.container -->
+
+
+    </div>
+</section>

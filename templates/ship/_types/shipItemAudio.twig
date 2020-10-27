@@ -1,0 +1,151 @@
+{% set categorySponsors = entry.shipCategory.one().sponsorships %}
+{% set sectionParent = craft.entries.ancestorOf(entry).level(1).one() %}
+
+{% block content %}
+
+    {% import '_macros' as macros %}
+
+    {% set media = entry.media[0] ?? null %}
+    {% set icon = entry.shipImage[0] ?? null %}
+
+
+    <section class="blue  pt-0 pb-3" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10   ">
+                    <div class="page-heading">
+                        <span class="smalltext">//  The Seafarers' Health Information Programme</span>
+                        <h1 class="mb-3">
+
+
+                            {{ entry.title }}
+                        </h1>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {# include sponsor top #}
+
+
+
+    <!-- Page Content shipItem.twig -->
+    <section class="white {{ entry.section | lower }}">
+        <div class="container content">
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 pt-4 description">
+
+                    {% if entry.shipDescription %}
+                        <div class="desc text-sm-center text-md-left">
+                            <img class="mb-4 ml-md-3 float-sm-none text-md-left  float-md-right mw-100" src="{{ icon.getUrl('sponsorLogo') }}">
+                            <p class="intro">{{ entry.shipIntroText }}</p>
+
+
+                        </div>
+                    {% endif %}
+
+{#                    <div class="row">#}
+                        <div class="">
+                            {% if entry.publicationDate %}
+                                <!-- Date/Time -->
+                                <small>First published on {{ entry.publicationDate.format('F Y') }}</small>
+                            {% endif %}
+
+                            {{ entry.shipDescription }}
+
+                            <div class="media-object">{{ entry.media | raw }}</div>
+                        </div>
+{#                    </div>#}
+
+
+                    <!-- tags -->
+                    <div class="row tags">
+                        <div class="col-12 mb-5 ">
+                            <div class="border-top pt-2">
+                                {% for tag in entry.tags.all() %}
+
+                                    <span class="badge"><i class="fas fa-tags"></i> <a
+                                                href="{{ siteUrl }}topics/{{ tag.title |lower| url_encode }}">{{ tag.title }}</a></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-12 col-lg-4  pt-5">
+
+                    <!-- Search Widget -->
+                    <div class="shipnav">
+                        <div class="side-box">
+
+                            <div class="smalltext pb-3">The Seafarers' Health Information Programme</div>
+                            {% if sectionParent | length %}
+                                <h5><a class="sectionParent"
+                                       href="{{ sectionParent.url }}">{{ sectionParent.title }}</a></h5>
+                            {% else %}
+                                <h5><a class="noSectionParent"
+                                       href="{{ entry.shipCategory.one().url }}">{{ entry.shipCategory.one().title }}</a>
+                                </h5>
+                            {% endif %}
+                            {% include 'ship/_includes/sponsor-sidebar.twig' %}
+
+
+                            {#{% set shipEntriesLevelOne = craft.entries({section: 'ship', with:#}
+                            {#['pdfThumbnailImage','projectImage','image']#}
+                            {#}).level('1').orderBy('lft asc') %}#}
+
+                            {% if sectionParent | length > '0' %}
+                                <ul class="side-nav">
+                                    {% import '_macros' as macros %}
+
+                                    {% set entries = craft.entries({
+                                        section: 'ship',
+                                        limit: null,
+                                        with: [
+                                            'descendants'
+                                        ],
+                                        descendantOf: sectionParent.id
+
+                                    }) %}
+                                    {% for entry in entries.all() %}
+                                        <li class=" {{ macros.isMenuActive(entry.slug)|trim }} level{{ entry.level }}">
+                                            <a href="{{ siteUrl }}{{ entry.uri }}"
+                                               class="  level{{ entry.level }}">{{ entry.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+        </div>
+    </section>
+    <!-- /.container -->
+
+
+
+
+    <!-- shio entry Page Heading/Breadcrumbs -->
+    {# include sponsor bottom #}
+    {#{% include 'ship/_includes/sponsor-bottom.twig' %}#}
+
+
+
+    <!-- category footer nav inc -->
+
+    {% include ('ship/_includes/ship_category_footer_nav') %}
+    <!-- category footer nav inc END-->
+{% endblock %}

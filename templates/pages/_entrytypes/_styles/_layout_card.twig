@@ -1,0 +1,33 @@
+{# start card layout #}
+<div class="col-lg-4 col-sm-6 portfolio-item mb-4 ">
+    <div class="card h-100">
+        <a href="{{ entry.url }}">
+            {% if image %}
+                {% set transformedImages = craft.imager.transformImage(image,
+                [
+                { width: 350, height: 321, jpegQuality: 65 },
+                ],
+                {
+                format: 'png',
+                allowUpscale: false,
+                mode: 'crop',
+                jpegQuality: 60,
+                position: image.getFocalPoint()
+                }
+                ) %}
+                <img class="card-img-top" src="{{ transformedImages[0].url }}" alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: ''  }}">
+            {%  else %}
+                <img class="card-img-top" src="https://placehold.it/350x321" alt="">
+            {% endif %}
+        </a>
+        <div class="card-body mb-5 pl-0">
+            <h4 class="card-title">
+                <a href="{{ entry.url }}">{{  entry.title }}</a>
+            </h4>
+            <p class="card-text">
+                {{ introtext }}
+            </p>
+        </div>
+    </div>
+</div>
+{# end card layout #}

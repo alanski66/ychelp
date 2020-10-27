@@ -1,0 +1,231 @@
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+
+$font-size-xs: $font-size-base * .775 !default;
+
+
+/* SCSS Gradient */
+//$gradient-top: linear-gradient(0deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-right: linear-gradient(90deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-bottom: linear-gradient(180deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-left: linear-gradient(270deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-top-right: linear-gradient(45deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-bottom-right: linear-gradient(135deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-top-left: linear-gradient(225deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-bottom-left: linear-gradient(315deg, #0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+//$gradient-radial: radial-gradient(#0279A9ff, #6E6723ff, #131E29ff, #DEC11Eff);
+
+/* SCSS HEX */
+$celadon-blue: #0279A9ff;
+$antique-bronze: #6E6723ff;
+$rich-black-fogra-29: #131E29ff;
+$yellow-munsell: #DEC11Eff;
+$brand-gray: #CBCCCB;
+
+/* SCSS RGB */
+$celadon-blue: rgba(2, 121, 169, 1);
+$antique-bronze: rgba(110, 103, 35, 1);
+$rich-black-fogra-29: rgba(19, 30, 41, 1);
+$yellow-munsell: rgba(222, 193, 30, 1);
+
+
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Color system
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: $rich-black-fogra-29;
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+                (
+                        "100": $gray-100,
+                        "200": $gray-200,
+                        "300": $gray-300,
+                        "400": $gray-400,
+                        "500": $gray-500,
+                        "600": $gray-600,
+                        "700": $gray-700,
+                        "800": $gray-800,
+                        "900": $gray-900
+                ),
+                $grays
+);
+$blue: #142F47 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #A10000 !default;
+$orange: $antique-bronze;
+$yellow: #FFDA1A !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: $celadon-blue;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+                (
+                        "blue": $blue,
+                        "indigo": $indigo,
+                        "purple": $purple,
+                        "pink": $pink,
+                        "red": $red,
+                        "orange": $orange,
+                        "yellow": $yellow,
+                        "green": $green,
+                        "teal": $teal,
+                        "cyan": $cyan,
+                        "white": $white,
+                        "gray": $gray-600,
+                        "gray-dark": $gray-800
+                ),
+                $colors
+);
+
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+                (
+                        "primary": $primary,
+                        "secondary": $secondary,
+                        "success": $success,
+                        "info": $info,
+                        "warning": $warning,
+                        "danger": $danger,
+                        "light": $light,
+                        "dark": $dark
+                ),
+                $theme-colors
+);
+
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-900 !default;
+$yiq-text-light: $white !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+                ("<", "%3c"),
+                (">", "%3e"),
+                ("#", "%23"),
+) !default;
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-prefers-reduced-motion-media-query: true !default;
+$enable-hover-media-query: false !default; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes: true !default;
+$enable-pointer-cursor-for-buttons: true !default;
+$enable-print-styles: true !default;
+$enable-responsive-font-sizes: false !default;
+$enable-validation-icons: true !default;
+$enable-deprecation-messages: true !default;
+
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+                (
+                        0: 0,
+                        1: ($spacer * .25),
+                        2: ($spacer * .5),
+                        3: $spacer,
+                        4: ($spacer * 1.5),
+                        5: ($spacer * 3)
+                ),
+                $spacers
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+                (
+                        25: 25%,
+                        50: 50%,
+                        75: 75%,
+                        100: 100%,
+                        auto: auto
+                ),
+                $sizes
+);
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white !default;
+$body-color: $gray-900 !default;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: theme-color("primary") !default;
+$link-decoration: none !default;
+$link-hover-color: lighten($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom: 1rem !default;
+
+//additonal coloirs
+
+$blue-light: #0089BF !default; //0089BF //48adce
+
+$font-family-sans-serif:      'Cabin', sans-serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-sans-serif-second:  'Open Sans', serif;
+$font-family-base:            $font-family-sans-serif-second;
+
+$font-family-sans-serif-second: 'BlissLight', sans-serif;

@@ -1,0 +1,32 @@
+<section class="page-header {{ craft.app.request.segments|first }} blue  py-3">
+    <div class="container">
+        <div class="row ">
+            <div class="col-xs-12 col-sm-8 d-flex align-items-center justify-content-xs-center">
+                <h1 class="page-heading">
+                    {%  if entry is defined %}
+                        {#                    {{ entry.title|length ? enty.title :'News' }}#}
+                        {{ entry.title }}
+                    {% else %}
+                        {{ craft.app.request.segments|first  |capitalize }}
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="col-xs-12 col-sm-4 d-flex align-items-center justify-content-xs-center">
+                {%  set btnColor = "btn-" ~ subscribe.ctaButtonColor ?? "btn-gray" %}
+
+                <div class="text-xs-center text-sm-right text-lg-right cta-intro ml-auto">
+
+                    <a class="btn  btn-blue-dark" id="top-subscribe"
+                       data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
+                        <i class="fa fa-envelope"></i>
+                        {{ subscribe.ctaButtonText }}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+{# hidden subscribe section #}
+    {% include '_includes/subscribe-section-top.twig' %}

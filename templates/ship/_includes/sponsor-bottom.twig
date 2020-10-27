@@ -1,0 +1,44 @@
+{# setup hide sponsorship cateory #}
+{% set hideSP = '' %}
+{% set cat = entry.shipCategory.one() %}
+{% if cat.hideSponsorship < 1 %}
+
+{%  if not sponsorSettings.hideSponsorshipCtaAndSponsors  %}
+{%  if categorySponsors | length %}
+<section class="sponsor sponsor-bottom mb-5 d-none d-lg-block">
+    <div class="container ">
+        <div class="row ">
+            <div class="skewblock pt-3 pb-4">
+
+                <div class="col col-sm-12 col-lg-8 pl-4">
+                    <h3>{{ sponsorSettings.sponsoredByHeading }}</h3>
+                    {% set exitLoop = 0 %}
+                    {% for block in categorySponsors.all() if exitLoop == 0 %}
+                        {% if block.type == "sponsored" %}
+
+                            {% set asset = block.sponsoredby.one().sponsorLogo.one()  %}
+                            {% set url = block.sponsoredby.one().url  %}
+                            {% if url |length and asset | length %}
+                                <a href="{{ url }}">
+                                <img class="float-left mr-4" src="{{ asset.getUrl }}"  width="{{ asset.getWidth('sponsorLogo') }}" height="{{ asset.getHeight('sponsorLogo') }}">
+                            </a>
+                                {% endif %}
+                            {% set exitLoop = 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+
+                </div>
+                <div class="col col-sm-12 col-lg-4 text-right  align-self-center pt-2">
+
+                    <a href="#" class="btn btn-primary white">{{  sponsorSettings.ctaButtonText }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endif %}
+
+{#  end hide cat sponsorship   #}
+{% endif %}

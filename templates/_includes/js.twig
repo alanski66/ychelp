@@ -1,5 +1,63 @@
 <!-- Bootstrap core JavaScript -->
-<script src="{{ baseUrl }}/assets/js/dist-min.js"></script>
+<script src="{{ baseUrl }}/js/dist-min.js"></script>
 {% if tracking.includeTrackingScripts | length %}
    {{ tracking.includeTrackingScripts | raw }}
 {% endif %}
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js?ckcachebust=625510514"></script>
+<script>
+   var slidecount = "";
+   // $('.slider').slick({
+   //
+   // });
+
+
+   $(document).ready(function () {
+
+      $('.main-carousel').flickity({
+         // options
+         // cellAlign: 'left',
+         initialIndex: '.is-initial-select',
+         // wrapAround: true,
+         pageDots: false,
+
+         // contain: true
+      });
+
+
+      $('.owl-carousel').owlCarousel({
+         loop:true,
+         center: true,
+         margin:10,
+         responsiveClass:true,
+         responsive:{
+            0:{
+               items:3,
+               nav:true,
+               center: true,
+            },
+            600:{
+               items:5,
+               nav:false
+            },
+            1000:{
+               items:slidecount,
+               nav:true,
+               loop:false
+            }
+         }
+      })
+
+      // $(".owl-carousel").owlCarousel({
+      //    center: true,
+      //    items: slidecount,
+      //    nav:true,
+      //    loop: false,
+      //    margin: 100,
+      //    // responsive: {
+      //    //    600: {
+      //    //       items: 3
+      //    //    }
+      //    // }
+      // });
+   });
+</script>

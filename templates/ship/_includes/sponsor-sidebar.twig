@@ -1,0 +1,64 @@
+{% set hideSP = '' %}
+{% set cat = entry.shipCategory.one() %}
+
+{% if cat.hideSponsorship < 1 %}
+
+{# include ship sponsor sidebar #}
+{%  set noOfSponsors = categorySponsors | length  %}
+    {% if noOfSponsors  and noOfSponsors < 2 %}
+
+        {% set exitLoop = 0 %}
+        {% for block in categorySponsors.all() %}
+            <section class="gray sponsor sponsor-top pt-3 pb-3">
+
+                    <div class="row ">
+                        <div class="col-12  text-center ">
+                            <span class="sponsored-by">{{ sponsorSettings.sponsoredByHeading }}</span>
+                            <h4 class="">
+
+                                {% for block in categorySponsors.all() %}
+                                    {% if block.type == "sponsored" %}
+                                        {#{{ block.sponsoredby.one().title }}#}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </h4>
+                        </div>
+                        <div class="col-12 text-center pb-3 ">
+                            {% if block.type == "sponsored" %}
+                                {% set asset = block.sponsoredby.one().sponsorLogo.one()  %}
+                                {% set url = block.sponsoredby.one().url  %}
+
+                                <a class="sponsor-item" href="{{ url }}">
+                                    <img  src="{{ asset.getUrl }}"  width="{{ asset.getWidth('sponsorLogo') }}" height="{{ asset.getHeight('sponsorLogo') }}">
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+                        <div class="col-12 text-center pt-3">
+                            <a
+                                    data-on="click"
+                                    data-event-category="Sponsorship"
+                                    data-event-action="Button side"
+                                    data-event-label="{{ entry.title }}"
+
+                                    href="{{ baseUrl }}/sponsorship" class="btn  btn-primary white">{{ sponsorSettings.ctaButtonText }}</a>
+                        </div>
+
+                    </div>
+            </section><hr>
+
+        {% endfor %}
+        {% else %}
+            <div class="col-12 text-center mb-3">
+                <a href="#"
+                   data-on="click"
+                   data-event-category="Sponsorship"
+                   data-event-action="Button side"
+                   data-event-label="{{ entry.title }}"
+                   class="btn  btn-primary white">{{ sponsorSettings.ctaButtonText }}</a>
+            </div>
+
+    {% endif %}
+{% endif %}

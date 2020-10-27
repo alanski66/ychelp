@@ -26,3 +26,13 @@ div.cardrow > [class^="ti-"]{
 p.meta{
   font-size:14px;
 }
+
+//owl overides
+.owl-carousel {
+  display:none;
+  position: relative;
+  width: 100%;
+}
+.owl-carousel.owl-loading{
+  opacity:1;
+}

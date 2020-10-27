@@ -1,4 +1,4 @@
-dateModified: 1603123172
+dateModified: 1603816630
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -32,6 +32,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.9
+  splashing-images:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.2.0
   super-table:
     edition: standard
     enabled: true
@@ -44,6 +48,7 @@ system:
   edition: pro
   live: true
   name: 'Yacht Crew Help'
+  retryDuration: null
   schemaVersion: 3.5.13
   timeZone: America/Los_Angeles
 users:

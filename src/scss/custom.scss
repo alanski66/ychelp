@@ -1,6 +1,45 @@
 //google fonts
 //@import url('//fonts.googleapis.com/css?family=Cabin|Open+Sans:300,400,600,700,800');
-
+@font-face{
+  font-family: 'BlissBold';
+  src: url('../fonts/BlissBold.eot');
+  src: url('../fonts/BlissBold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissBold.woff') format('woff'),
+  url('../fonts/BlissBold.ttf') format('truetype'),
+  url('../fonts/BlissBold.svg#BlissBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'BlissLight';
+  src: url('../fonts/BlissLight.eot');
+  src: url('../fonts/BlissLight.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissLight.woff') format('woff'),
+  url('../fonts/BlissLight.ttf') format('truetype'),
+  url('../fonts/BlissLight.svg#../fonts/BlissLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'BlissMedium';
+  src: url('../fonts/BlissPro-Medium.eot');
+  src: url('../fonts/BlissPro-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissPro-Medium.woff') format('woff'),
+  url('../fonts/BlissPro-Medium.ttf') format('truetype'),
+  url('../fonts/BlissPro-Medium.svg#../fonts/BlissPro-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'BlissRegular';
+  src: url('../fonts/BlissRegular.eot');
+  src: url('../fonts/BlissRegular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/BlissRegular.woff') format('woff'),
+  url('../fonts/BlissRegular.ttf') format('truetype'),
+  url('../fonts/BlissRegular.svg#../fonts/BlissRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 //bootstrap4 overrides
 @import "bootstrap/_functions.scss";
 @import 'partials/bootstrap_overrides.scss';
@@ -12,42 +51,43 @@
 @import 'font-awesome-5/regular.scss';
 @import 'font-awesome-5/solid.scss';
 
-//
-//@import 'theme/prism.scss';
-//@import 'theme/magnific-popup.scss';
-//@import 'theme/aos.scss';
-//@import 'theme/animate.scss';
-//@import 'theme/about-section.scss';
-//@import 'theme/base.scss';
-//@import 'theme/blog-section.scss';
-//@import 'theme/call-to-action.scss';
-//@import 'theme/client-logo-slider.scss';
-//@import 'theme/coming-soon.scss';
-//@import 'theme/consultation-section.scss';
-//@import 'theme/contact-section.scss';
-//@import 'theme/footer-section.scss';
-//@import 'theme/fun-facts-section.scss';
-//@import 'theme/hero-area.scss';
-//@import 'theme/mission-section.scss';
-//@import 'theme/navigation.scss';
-//@import 'theme/progress-section.scss';
-//@import 'theme/project-section.scss';
-//@import 'theme/promo-video-section.scss';
-//@import 'theme/service-section.scss';
-//@import 'theme/signup-wrapper.scss';
-//@import 'theme/testimonial-section.scss';
-//@import 'theme/work-section.scss';
-//@import 'theme/slick.scss';
-//@import 'theme/slick-theme.scss';
+
+@import 'partials/header';
 @import 'partials/btns';
 @import 'partials/nav';
 @import 'partials/splash';
 @import 'partials/page';
 @import 'partials/footer';
 @import 'partials/forms';
-@import 'partials/utility';
+
 @import 'partials/lunar';
+//@import 'partials/slick';
+@import 'owl/owl.carousel';
+@import 'partials/utility';
+//@import 'owl/owl.theme.default';
 //really simple social share
-@import 'rrssb/rrssb.scss';
+//@import 'rrssb/rrssb.scss';
 
 //@import 'partials/cookie-consent-overrides.scss';
+.carousel-cell {
+  width: 160px; /* full width */
+  height: 150px; /* height of carousel */
+  margin: 10px;
+  display: flex;
+}
+
+.flickity-slider {
+ height:150px;
+  margin-left: 25px;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  //text-align: center;
+}
+
+div.center-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //min-height: 100vh;
+}

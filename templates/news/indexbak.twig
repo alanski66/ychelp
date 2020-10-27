@@ -1,0 +1,235 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/site" %}
+
+{% block content %}
+
+    {# header & hidden subscribe section #}
+    {% include 'news/_sectionheader' %}
+
+    <!-- list content -->
+
+    {% paginate craft.entries.section('news').limit(10) as pageInfo, pageEntries %}
+
+    {% set first = pageEntries|slice(0,1) %}
+    {% set therest = pageEntries|slice(0,9) %}
+
+    {% if pageInfo.currentPage == 1 %}
+
+        {% for entry in first %}
+
+
+            {% switch entry.type %}
+            {% case 'oldnews' %}
+            {% set asset = entry.oldNewsImage.one() %}
+            {% case 'news' %}
+            {% set asset =  entry.image.one() %}
+            {% endswitch %}
+
+
+
+                <section class="news top-story gray">
+                    <div class="container">
+
+                        <div class="row">
+                        {%  if asset %}
+                            {% set newsImage = craft.imager.transformImage(asset,
+                            [
+                            { width: 320, position: asset.getFocalPoint(), jpegQuality: 65,ratio: 4/3, cropZoom:1.5 },
+                            { width: 540, height:350,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                            { width: 720, height:375,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                            ],
+                            {
+                            format: 'jpg',
+                            allowUpscale: true,
+                            mode: 'crop',
+                            jpegQuality: 90,
+                            interlace: true
+                            }
+                            ) %}
+                            <div class="col pic mb-sm-3 pt-md-2">
+                                <a href="{{ entry.url }}">
+                                    <picture>
+                                        <source media="(max-width: 320px)" sizes="100vw" srcset="{{ newsImage[0].url }}">
+                                        <source media="(max-width: 540px)" sizes="100vw" srcset="{{ newsImage[1].url }}">
+                                        <source media="(max-width: 992px)" sizes="100vw" srcset="{{ newsImage[2].url }}">
+                                        <img class="img-fluid" src="{{ newsImage[1].url }}" alt="{{ asset.title }}">
+                                    </picture>
+                                </a>
+                            </div>
+                        {% endif %}
+                            <div class="col pt-sm-2 pt-md-0">
+                                <h1 class="pt-xs-2"><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+                                <span class="date">{{ entry.postDate.format('F d, Y') }}</span>
+
+                                {%  if entry.newsIntro |length > '0' %}
+                                    <p>
+                                        {{ entry.newsIntro }}
+                                    </p>
+                                    {%  else %}
+                                        {%  if entry.body |length > '0' %}
+                                            <p>{{ entry.body | striptags | wordLimit(40) }}</p>
+                                            {% endif %}
+                                {% endif %}
+
+                                <a href="{{ entry.url }}" class="btn btn-default">Read More &rarr;</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {#{% include '_includes/subscribe-section.twig' %}#}
+
+
+    <section class="newslist white pt-5">
+        <div class="container">
+            <div class="row ">
+
+                {% set layout = "n" %}
+
+                    <div class="col-md-12  ">
+                        <ul class="list-unstyled">
+                            {% cache %}
+                            {% for entry in therest %}
+
+                                {% switch entry.type %}
+                                {% case 'oldnews' %}
+                                    {% set date = '<span class="date  d-inline-block mb-1">' ~ entry.postDate.format('F d, Y') ~ '</span>'  %}
+                                    {% set asset = entry.oldNewsImage.one() %}
+                                    {% set introText = entry.body | striptags | wordLimit(40)   %}
+
+                                {% case 'news' %}
+                                    {% set asset =  entry.image.one() %}
+                                    {% set date = '<span class="date d-inline-block mb-1">' ~ entry.postDate.format('F d, Y') ~ '</span>'  %}
+                                    {% set introText = entry.newsIntro  %}
+                                    {# get promo block pdf image if exists EXPENSIVE!!! #}
+                                        {% for block in entry.contentBlock.type('promotion').all() %}
+                                            {% if block.entryToPromote |length  %}
+                                                {#{% if loop.index == 1 %}#}
+
+                                                {%  set asset = block.entryToPromote.one().pdfThumbnailImage[0] ?? null  %}
+
+
+                                                {#{% endif %}#}
+                                                {% else %}
+                                                    {% set asset =  entry.image.one() %}
+                                                {% endif %}
+                                            {% endfor %}
+                                {% endswitch %}
+
+                                {#{% switch entry.type %}#}
+                                {#{% case 'oldnews' %}#}
+                                {#{% set asset = entry.oldNewsImage.one() %}#}
+                                {#{% case 'news' %}#}
+                                {#{% set asset =  entry.image.one() %}#}
+                                {#{% endswitch %}#}
+
+                                {% if asset %}
+                                {% set newsImage = craft.imager.transformImage(asset,
+                                [
+                                { width: 576, position: asset.getFocalPoint(), jpegQuality: 85,ratio: 4/3 },
+                                { width: 150, height:150,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                                { width: 720, height:375,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                                ],
+                                {
+                                format: 'jpg',
+                                allowUpscale: true,
+                                mode: 'crop',
+                                jpegQuality: 90,
+                                interlace: true
+                                }
+                                ) %}
+                                {% endif %}
+
+
+                                <li class="mb-5 text-xs-center text-sm-left d-flex flex-sm-column  flex-md-row ">
+
+                                    <a href="{{ entry.url }}">
+                                        {%  if asset | length and newsImage | length %}
+                                        <picture class="">
+                                            <source media="(max-width: 768px)" sizes="100vw" srcset="{{ newsImage[0].url }}">
+                                            <source media="(max-width: 3992px)" sizes="100vw" srcset="{{ newsImage[1].url }}">
+                                            <img class=" img-fluid float-xs-none float-sm-left  mr-sm-3 mr-md-3 mb-3 mt-2" src="{{ newsImage[1].url }}" alt="{% if asset.title |length %} {{ asset.title}} {% else %}{{ entry.title}}{% endif %} }}">
+                                        </picture>
+                                        {% endif %}
+
+                                        <div class="text-left">
+                                            <h2 class="mt-0 mb-0">{{ entry.title }}</h2>
+
+                                            {{ date | raw }}
+                                            <div class="intro mb-4">
+                                            {%  if introText | length %}{{ introText | truncateOnWord(140) }}{% endif %}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            {% endfor %}
+                            {% endcache %}
+                        </ul>
+                    </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <div class=" container">
+        <div class="row ">
+            <div class="col-md-12  text-sm-center">
+                <ul class="pagination mb-5 justify-content-center">
+                    <li class="page-item d-none d-sm-block">
+                        <a class="page-link" href="{{ pageInfo.firstUrl }}">Start</a>
+                    </li>
+
+                    {% if pageInfo.prevUrl %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ pageInfo.prevUrl }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+
+
+                    {% for page, url in pageInfo.getPrevUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                    <li class="page-item "><a class="page-link">{{ pageInfo.currentPage }}</a></li>
+
+                    {% for page, url in pageInfo.getNextUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                        {% if pageInfo.nextUrl %}
+                    <li class="page-item "><a class="page-link" href="{{ pageInfo.nextUrl }}">Next</a></li>
+                    {% endif %}
+
+                    <li class="page-item d-none d-sm-block">
+                        <a class="page-link" href="{{ pageInfo.lastUrl }}">End</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

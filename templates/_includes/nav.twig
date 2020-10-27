@@ -1,16 +1,20 @@
 <!-- nav twig -->
 {% import '_macros' as macros %}
-{% set topNavPages = craft.entries.section('topNav').hidePage('< 1').all()  %}
+{% set topNavPages = craft.entries.section('mainMenu').hidePage('< 1').all() %}
+ {% set pages = craft.entries.section('pages').hidePage('not 1').all() %}
 <div class="navigation">
     <div class="container">
 
 
-
-        <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-start">
-
+        <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
+            <button class="navbar-toggler d-flex align-self-center " type="button" data-toggle="offcanvas"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="navbar-brand">
                 <a class="logo-wrap" href="/">
-                    <img src="{{ baseUrl }}/images/logo-lg.png">
+                    <img class="logo" src="{{ baseUrl }}/images/web-logo-strap-free.svg">
                 </a>
             </div>
             <div class="hide m-0 p-0">
@@ -18,108 +22,70 @@
                     <div class="input-group stylish-input-group">
                         <input type="search" name="q" class="form-control search-input" placeholder="Search">
 
-                    <span class="input-group-addon">
-                        <button type="submit" class="btn btn-blue search-submit" data-on="click" data-event-category="Search" data-event-action="Search button" data-event-label="">Search
+                        <span class="input-group-addon">
+                        <button type="submit" class="btn btn-blue search-submit" data-on="click"
+                                data-event-category="Search" data-event-action="Search button" data-event-label="">Search
                             <i class="icon-search fa fa-search fa-sm"></i>
                         </button>
                     </span>
                     </div>
                 </form>
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
+            <div class="chat d-flex align-self-center ">
+                <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
+            </div>
 
 
             {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
-            {%  set navTitle = "" %}
+            {% set navTitle = "" %}
             {% set navlink = "" %}
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <div class="top-header ml-auto">
-                    <!-- top nav -->
-                    <ul class="top-nav list-inline ">
-
-
-                        {% cache globally %}
-                        {% for entry in topNavPages %}
-
-                            {% if entry.entryLink.one()|length %}
-                                {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
-                            {% else %}
-                                {% set navlink = siteUrl ~ entry.customLink %}
-                            {% endif %}
-
-                            {% if entry.level == 1  %}
-                                <li class="nav-item ">
-                                    <a id="{{ entry.title }}" class="nav-link { macros.activeLinkClass(navlink, entry.level)|trim }}" href="{{ navlink }}">{{ entry.title }}</a>
-                                </li>
-                            {% endif %}
-                        {%  endfor %}
-                        {% endcache %}
-                        <li class="nav-item "><a class="nav-link open-search" href="#search-collapse"  aria-expanded="false" aria-controls="search-open"><i class="icon-search fa fa-search fa-lg"></i></a></li>
-
-                    </ul>
-                </div>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent">
 
                 <!-- main nav -->
                 <div class="menuwrap">
                     <ul class="navbar-nav ml-auto justify-content-end">
-
-                        {% cache globally using key craft.app.request.pathInfo %}
-                        {% set pages = craft.entries.section('mainMenu').hidePage('< 1').all()  %}
                         {% for entry in pages %}
-
-
                             {#{%  if entry.altNavTitle|length %}#}
                             {#{%  set navTitle = entry.altNavTitle %}#}
                             {#{% else %}#}
                             {#{%  set navTitle = entry.title %}#}
                             {#{% endif %}#}
-
-                            {% if entry.entryLink.one()|length %}
-                                {% set navlink = entry.entryLink.one().uri %}
+                            {% set title = "" %}
+                            {% if entry.menuTitle|length %}
+                                {% set navlink = entry.uri %}
+                                {% set title = entry.menuTitle %}
                             {% else %}
-                                {% set navlink = entry.customLink %}
+                                {% set navlink = entry.uri %}
+                                {% set title = entry.title %}
                             {% endif %}
 
                             {% if entry.level == 1 and entry.children|length %}
                                 <li class="nav-item dropdown {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">
 
-                                    {% if isMobile == 1 %}
-                                        <a id="{{ entry.title }}" href="#" class="nav-link mob" data-toggle="dropdown" role="button"
-                                           data-length="{{ entry.title|length }}" aria-haspopup="true"
-                                           aria-expanded="false">{{ entry.title }}<span class="caret"></span></a>
-                                    {% else %}
-                                        <a id="{{ entry.title }}" href="{{ siteUrl }}{{ navlink }}" class="nav-link  notmob"
-                                           data-length="{{ entry.title|length }}" aria-haspopup="true"
-                                           aria-expanded="false">{{ entry.title }} <span class="caret"></span></a>
-                                    {% endif %}
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                                       data-length="{{ entry.title|length }}" aria-haspopup="true"
+                                       aria-expanded="true" id="{{ entry.title | kebab }}">{{ entry.title }}<span
+                                                class="caret"></span></a>
 
-                                    <div class="dropdown-menu dropdown-menu-right">
+                                         <div class="dropdown-menu " aria-labelledby="{{ entry.title | kebab }}">
 
-                                        <!-- add mobile parent link to drop down -->
-                                        {% if isMobile == 1 %}
+                                            <a href="{{ siteUrl }}{{ navlink }}"
+                                           class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ title }}</a>
 
-                                            <a id="{{ entry.title }}" href="{{ siteUrl }}{{ navlink }}"
-                                               class="dropwdown-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ entry.title }}</a>
-
-                                        {% endif %}
 
                                         <!-- get children -->
-                                        {% for child in entry.getDescendants().hidePage('< 1') %}
+                                        {% for child in entry.getDescendants().hidePage('not 1') %}
                                             {% if child is defined %}
                                                 {# get child custom link or entry uri #}
                                                 {#{% if child.entryLink.one()|length %}#}
                                                 {#{% set childlink = child.entryLink.one().uri %}#}
                                                 {#{% else %}#}
                                                 {% set childlink = child.uri %}
+                                                {% set title = child.title %}
                                                 {#{% endif %}#}
                                                 <a id="{{ entry.title }}" href="{{ siteUrl }}{{ childlink }}"
-                                                   class="dropdown-item level {{ child.level }}">{{ child.title }}</a>
+                                                   class="dropdown-item level {{ child.level }}">{{ title }}</a>
 
                                             {% endif %}
                                         {% endfor %}
@@ -130,46 +96,48 @@
                             {% elseif entry.level == 1 and not entry.hasDescendants() %}
 
                                 {# set join tracker#}
-                                {%  set joinTracker = null %}
-                                {%  set target = null %}
-                                {%  if entry.title |lower  == "join" %}
-                                    {%  set dataEventCategory = "Membership" %}
-                                    {%  set dataEventAction = "Button" %}
-                                    {%  set dataEventLabel = "Join" %}
-                                    {%  set joinTracker = "data-event-category="~dataEventCategory %}
-                                    {%  set joinTracker = joinTracker ~ " data-event-action="~dataEventAction %}
-                                    {%  set joinTracker = joinTracker ~ " data-event-label="~dataEventLabel %}
-                                    {%  set target = '' %}
+                                {% set joinTracker = null %}
+                                {% set target = null %}
+                                {% if entry.title |lower  == "join" %}
+                                    {% set dataEventCategory = "Membership" %}
+                                    {% set dataEventAction = "Button" %}
+                                    {% set dataEventLabel = "Join" %}
+                                    {% set joinTracker = "data-event-category="~dataEventCategory %}
+                                    {% set joinTracker = joinTracker ~ " data-event-action="~dataEventAction %}
+                                    {% set joinTracker = joinTracker ~ " data-event-label="~dataEventLabel %}
+                                    {% set target = '' %}
                                 {% endif %}
-                                <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower  }}">
-                                    <a  {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title }}" href="{{ siteUrl }}{{ navlink }}"
-                                                     class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
+                                    <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title }}"
+                                                    href="{{ siteUrl }}{{ navlink }}"
+                                                    class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                                 </li>
                             {% endif %}
-                        {%  endfor %}
-                        {% endcache %}
+                        {% endfor %}
+
                         {# add top nav for mobile #}
 
                         {% cache globally %}
-                        {% for entry in topNavPages %}
+                            {% for entry in topNavPages %}
 
-                            {% if entry.entryLink.one()|length %}
-                                {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
-                            {% else %}
-                                {% set navlink = siteUrl ~ entry.customLink %}
-                            {% endif %}
+                                {% if entry.entryLink.one()|length %}
+                                    {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
+                                {% else %}
+                                    {% set navlink = siteUrl ~ entry.customLink %}
+                                {% endif %}
 
-                            {% if entry.level == 1  %}
-                                <li class="nav-item d-lg-none">
-                                    <a id="{{ entry.title }}" class="nav-link { macros.activeLinkClass(navlink, entry.level)|trim }}" href="{{ navlink }}">{{ entry.title }}</a>
-                                </li>
-                            {% endif %}
-                        {%  endfor %}
+                                {% if entry.level == 1 %}
+                                    <li class="nav-item d-lg-none">
+                                        <a id="{{ entry.title }}"
+                                           class="nav-link { macros.activeLinkClass(navlink, entry.level)|trim }}"
+                                           href="{{ navlink }}">{{ entry.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         {% endcache %}
 
                     </ul>
                 </div>
-
 
 
             </div>

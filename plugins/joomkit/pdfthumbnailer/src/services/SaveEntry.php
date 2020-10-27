@@ -287,7 +287,7 @@ class SaveEntry extends Component
     public function savePDFThumbImageAsAsset($tmpImagePath, $entry,$outputFilename,$docFileName,$docTitle)
     {
         $assets = Craft::$app->getAssets();
-        $folderId = 9; //<- insert your folder id
+        $folderId = 4; //<- insert your folder id
 
         /** @var \craft\models\VolumeFolder $folder */
         $folder = $assets->findFolder(['id' => $folderId]);

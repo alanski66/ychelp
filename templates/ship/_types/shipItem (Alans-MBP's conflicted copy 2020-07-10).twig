@@ -1,0 +1,268 @@
+{% set categorySponsors = entry.shipCategory.one().sponsorships %}
+{% set sectionParent = craft.entries.ancestorOf(entry).level(1).one() %}
+
+{% block content %}
+
+    {% import '_macros' as macros %}
+
+    {% set pdfImage = entry.pdfThumbnailImage[0] ?? null %}
+    {% set pdfThumbs = entry.pdfThumbnailImage.offset(1) %}
+    {% set pdfDocument = entry.pdfDocument.one() %}
+    {% set pdfDocuments = entry.pdfDocument.offset(1) %}
+    {% set thumbOrientation = macros.setOrientaton(pdfImage) %}
+
+    {#{% set mergepdfThumbs = entry.pdfThumbnailImage.offset(1) %}#}
+    {#{% set  mergepdfThumbs = mergepdfThumbs|merge(pdfDocuments)%}#}
+    {#<pre>#}
+        {#{{  dump(mergepdfThumbs)  }}#}
+    {#</pre>#}
+    {#{%  for meThumbs in mergepdfThumbs %}#}
+
+    {#{% endfor %}#}
+
+    <section class="blue heading  pt-0 pb-3" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10   ">
+                    <div class="page-heading">
+                        <span class="smalltext">//  The Seafarers' Health Information Programme</span>
+                        <h1 class="mb-3">
+                            {{ entry.title }}
+                        </h1>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {# include sponsor top #}
+
+
+
+    <!-- Page Content shipItem.twig -->
+    <section class="white {{ entry.section | lower }}">
+        <div class="container content">
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 pt-5 description">
+
+                    {% if pdfImage %}
+
+                        {% set pdfThumbImages = craft.imager.transformImage(pdfImage,
+                        [
+                        { width: 320,  ratio: 1/1 },
+                        { width: 320,  ratio: 1/1 },
+                        { width: 450,  ratio: 1/1 }
+                        ],
+                        {
+                        format: 'jpg',
+                        allowUpscale: true,
+                        mode: 'fit',
+                        jpegQuality: 90,
+                        interlace: true
+                        }
+                        ) %}
+
+
+                        {% if pdfImage.getWidth() < pdfImage.getHeight() %}
+                            {# portrait #}
+                            <div class="text-center float-xs-none float-sm-right ml-4">
+                                <picture>
+                                    <source media="(max-width: 550px)" sizes="100vw" srcset="{{ pdfThumbImages[0].url }}">
+                                    <source media="(max-width: 768px)" sizes="100vw" srcset="{{ pdfThumbImages[1].url }}">
+                                    <source media="(max-width: 1200px)" sizes="100vw" srcset="{{ pdfThumbImages[2].url }}">
+                                    <img class=" mb-4" src="{{ pdfThumbImages[0].url }}" alt="{{ pdfImage.title }}">
+                                </picture>
+                                {% if pdfDocument |length %}
+                                    <p class="text-center">
+                                        <a
+                                                target="_blank" data-on="click"
+                                                data-event-category="Downloads"
+                                                data-event-action="Ship item button"
+                                                data-event-label="{{ pdfDocument.filename }}"
+
+                                                href="{{ pdfDocument.url }}" class="btn btn-blue"><i
+                                                    class="fa fa-arrow-circle-down"></i> Download</a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        {% elseif pdfImage.getWidth() > pdfImage.getHeight() %}
+                            {# landscape #}
+                            <img class="img-fluid mb-4" src="{{ pdfImage.getUrl('pdfPortrait') }}">
+
+                            <h4>{{ pdfDocument.title | replace ('Ship', "") }}</h4>
+                            {% if pdfDocument |length %}
+                                <p class="text-center">
+                                    <a target="_blank"
+                                       data-on="click"
+                                       data-event-category="Downloads"
+                                       data-event-action="Ship item button"
+                                       data-event-label="{{ pdfDocument.filename }}"
+
+                                       href="{{ pdfDocument.url }}" class="btn btn-blue"><i
+                                                class="fa fa-arrow-circle-down"></i> Download</a>
+                                </p>
+                            {% endif %}
+                        {% else %}
+                            {# square #}
+                        {% endif %}
+                        <!-- Post Content -->
+                    {% endif %}
+
+
+                    {% if entry.shipDescription %}
+                    <div class="desc mb-5">
+                        <p class="intro">{{ entry.shipIntroText }}</p>
+
+                        {% if entry.publicationDate %}
+                            <!-- Date/Time -->
+                            <small>First published on {{ entry.publicationDate.format('F Y') }}</small>
+                        {% endif %}
+
+                        {{ entry.shipDescription }}
+
+                    </div>
+                    {% endif %}
+
+                    <!-- additional docs cards // shouldbe driven from landscape orientation of multiple pdf thumb assets -->
+                    <div class="row mt-5 ">
+                        {% if pdfThumbs | length > 1 %}
+
+                            {% if entry.headingForOtherDocuments | length %}
+                                <div class="col-12 mt-2 mb-2">
+                                    <h5>{{ entry.headingForOtherDocuments }}</h5>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+
+                        {% for pdfThumb in pdfThumbs.all() %}
+
+                            {# instead of mapping thumbs to urls gettin gthe offset documents and setting direct access to the array object with thumb loop index as thumb loop index matche doc index but cant be bothered to merge them #}
+                            {%  set docindex = loop.index - 1 %}
+{#                            {{ pdfDocuments[docindex].getUrl() }}#}
+
+                            <div class="col-sm-6 portfolio-item mb-4 ">
+
+                                    <div class="card text-center" data-mh="my-group">
+                                        {% if pdfThumb %}
+                                            <div class="card-icon ">
+                                                <img class="svg card-img-top img-fluid my-auto" id=""
+                                                     src="{{ pdfThumb.getUrl('pdfTransform') }}"
+                                                     width="{{ pdfThumb.getWidth('pdfTransform') }}"
+                                                     height="{{ pdfThumb.getHeight('pdfTransform') }}"
+                                                     alt="{{ pdfThumb.title ? pdfThumb.title : pdfThumb.title }} {{ pdfThumb.imageCredit ? pdfThumb.imageCredit: '' }}">
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="card-body  ">
+                                            <h5 class="card-title  mb-3">{{ pdfThumb.title | replace ('Ship', "") }}</h5>
+
+                                            <p class="text-center">
+                                                {# documentlink is set from pdf thumbnail plugin automaticall at time of entry save #}
+                                                <a
+                                                        target="_blank" data-on="click"
+                                                        data-event-category="Downloads"
+                                                        data-event-action="link"
+                                                        data-event-label="{{ pdfThumb.documentLink }}"
+
+                                                        href="{{ pdfDocuments[docindex].getUrl() }}"
+                                                        class="btn btn-blue"><i
+                                                            class="fa fa-arrow-circle-down"></i> Download</a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                    <!-- END card display -->
+
+                    <!-- tags -->
+                    <div class="row tags">
+                        <div class="col-12 mb-5 ">
+                            <div class="border-top pt-2">
+                            {% for tag in entry.tags.all() %}
+
+                                <span class="badge"><i class="fa fa-tags"></i> <a
+                                            href="{{ siteUrl }}topics/{{ tag.title |lower| url_encode }}">{{ tag.title }}</a></span>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-4  pt-5">
+
+                    <!-- Search Widget -->
+                    <div class="shipnav">
+                        <div class="side-box">
+
+                            <div class="smalltext pb-3">The Seafarers' Health Information Programme</div>
+                            {% if sectionParent | length %}
+                                <h5><a class="sectionParent" href="{{ sectionParent.url }}">{{ sectionParent.title }}</a></h5>
+                                {% else %}
+                                    <h5><a class="noSectionParent" href="{{ entry.shipCategory.one().url }}">{{ entry.shipCategory.one().title }}</a></h5>
+                            {% endif %}
+                            {% include 'ship/_includes/sponsor-sidebar.twig' %}
+
+
+                            {#{% set shipEntriesLevelOne = craft.entries({section: 'ship', with:#}
+                            {#['pdfThumbnailImage','projectImage','image']#}
+                            {#}).level('1').orderBy('lft asc') %}#}
+
+                            {% if sectionParent | length > '0' %}
+                            <ul class="side-nav">
+                                {% import '_macros' as macros %}
+
+                                {% set entries = craft.entries({
+                                section: 'ship',
+                                limit: null,
+                                with: [
+                                'descendants'
+                                ],
+                                descendantOf: sectionParent.id
+
+                                }) %}
+                                {% for entry in entries.all() %}
+                                    <li class=" {{ macros.isMenuActive(entry.slug)|trim }} level{{ entry.level }}">
+                                        <a href="{{ siteUrl }}{{ entry.uri }}"
+                                           class="  level{{ entry.level }}">{{ entry.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+        </div>
+    </section>
+    <!-- /.container -->
+
+
+
+
+    <!-- shio entry Page Heading/Breadcrumbs -->
+    {# include sponsor bottom #}
+    {#{% include 'ship/_includes/sponsor-bottom.twig' %}#}
+
+
+
+    <!-- category footer nav inc -->
+
+    {% include ('ship/_includes/ship_category_footer_nav') %}
+    <!-- category footer nav inc END-->
+{% endblock %}

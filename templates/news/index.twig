@@ -1,0 +1,253 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/site" %}
+
+{% block content %}
+
+    {# header & hidden subscribe section #}
+    {% include 'news/_sectionheader' %}
+
+    {% set params = { section: 'news' } %}
+
+    {# Get the featured entry #}
+    {% set featuredEntry = craft.entries(params).one() %}
+
+
+    {# Get all the other entries #}
+    {% set entries = craft.entries(params).offset(1).limit(10) %}
+    {% paginate entries as pageInfo, pageEntries %}
+
+    {# ---------------   FEATURED  ----------------- #}
+
+    {# Show featured entry on page one #}
+    {% if pageInfo.currentPage == 1  %}
+        {% switch featuredEntry.type %}
+        {% case 'oldnews' %}
+            {% set asset = featuredEntry.oldstoriesImage.one() %}
+        {% case 'news' %}
+            {% set asset =  featuredEntry.image.one() %}
+        {% endswitch %}
+
+        {% set storiesImage = craft.imager.transformImage(asset,
+            [
+                { width: 320, position: asset.getFocalPoint(), jpegQuality: 65,ratio: 4/3, cropZoom:1.5 },
+                { width: 540, height:350,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                { width: 460 , height:320, position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+            ],
+            {
+                format: 'jpg',
+                allowUpscale: true,
+                mode: 'crop',
+                jpegQuality: 90,
+                interlace: true
+            }
+            ) %}
+
+        <section class="stories top-story gray">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="{{ featuredEntry.url }}>
+                                <picture>
+                                    <source media="(max-width: 320px)" sizes="100vw" srcset="{{ storiesImage[0].url }}">
+                        <source media="(max-width: 540px)" sizes="100vw" srcset="{{ storiesImage[2].url }}">
+                        <source media="(max-width: 2990px)" sizes="100vw" srcset="{{ storiesImage[1].url }}">
+                        <img class="img-fluid" src="{{ storiesImage[2].url }}" alt="{{ asset.title }}">
+                        </picture>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <h1><a href="{{ featuredEntry.url }}">{{ featuredEntry.title }}</a></h1>
+                        <span class="date">{{ featuredEntry.postDate.format('F d, Y') }}</span>
+
+{#                        {%  if featuredEntry.introText |length %}#}
+{#                            <p>#}
+{#                                {{ featuredEntry.introText}}#}
+{#                            </p>#}
+{#                        {% endif %}#}
+                        {%  if featuredEntry.newsIntro |length > '0' %}
+                            <p>
+                                {{ featuredEntry.newsIntro }}
+                            </p>
+                        {%  else %}
+                            {%  if featuredEntry.body |length > '0' %}
+                                <p>{{ featuredEntry.body | striptags | wordLimit(40) }}</p>
+                            {% endif %}
+                        {% endif %}
+
+                        <a href="{{ featuredEntry.url }}" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    {% endif %}
+    {# ---------------  END FEATURED   ----------------- #}
+
+
+
+
+
+    <section class=" newslist white p-5">
+        <div class="container">
+            <div class="row ">
+
+                {% set layout = "n" %}
+
+                {#                {% if layout == "grid" %}#}
+                {#                    {% for entry in therest %}#}
+                {#                        {%  if loop.index > '1' %}#}
+                {#                        {% switch entry.type %}#}
+                {#                        {% case 'oldstories' %}#}
+                {#                        {% set asset = entry.oldstoriesImage.one() %}#}
+                {#                        {% case 'stories' %}#}
+                {#                        {% set asset =  entry.image.one() %}#}
+                {#                        {% endswitch %}#}
+
+                {#                        <div class="col-xs-12 col-sm-6 col-md-12  mb-5">#}
+                {#                            <a href="{{ entry.url }}">#}
+
+                {#                                <div class="media-body">#}
+                {#                                    <img class="align-self-start mr-3 " src="{{ asset.getUrl('listThumb') }}" alt="">#}
+                {#                                    <h2 class="mt-0">{{ entry.title }}</h2>#}
+                {#                                    {%  if entry.body |length %}#}
+                {#                                        <p>#}
+                {#                                            {{ entry.body.getPage(1)|striptags|slice(0,100)|default('...') }}.#}
+                {#                                        </p>#}
+                {#                                    {% endif %}#}
+                {#                                </div>#}
+                {#                            </a>#}
+                {#                        </div>#}
+                {#                    {% endif %}#}
+                {#                    {% endfor %}#}
+                {#                {% else %}#}
+
+                <div class="col-md-12 ">
+                    <ul class="list-unstyled ">
+                        {% for entry in pageEntries %}
+                            {% switch entry.type %}
+
+                            {% case 'oldnews' %}
+                                {% set date = '<span class="date  d-inline-block mb-1">' ~ entry.postDate.format('F d, Y') ~ '</span>'  %}
+                                {% set asset = entry.oldNewsImage.one() %}
+                                {% set introText = entry.body | striptags | wordLimit(40)   %}
+
+                            {% case 'news' %}
+                                {% set asset =  entry.image.one() %}
+                                {% set date = '<span class="date d-inline-block mb-1">' ~ entry.postDate.format('F d, Y') ~ '</span>'  %}
+                                {% set introText = entry.newsIntro  %}
+                                {# get promo block pdf image if exists EXPENSIVE!!! #}
+                                {% for block in entry.contentBlock.type('promotion').all() %}
+                                    {% if block.entryToPromote |length  %}
+                                        {#{% if loop.index == 1 %}#}
+
+                                        {%  set asset = block.entryToPromote.one().pdfThumbnailImage[0] ?? null  %}
+
+
+                                        {#{% endif %}#}
+                                    {% else %}
+                                        {% set asset =  entry.image.one() %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endswitch %}
+
+                            {% set newsImage = craft.imager.transformImage(asset,
+                                [
+                                    { width: 576, position: asset.getFocalPoint(), jpegQuality: 85,ratio: 4/3 },
+                                    { width: 150, height:150,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                                    { width: 720, height:375,position: asset.getFocalPoint(), ratio: 2/1 ,jpegQuality: 90 },
+                                ],
+                                {
+                                    format: 'jpg',
+                                    allowUpscale: true,
+                                    mode: 'crop',
+                                    jpegQuality: 90,
+                                    interlace: true
+                                }
+                                ) %}
+
+                            <li class="{{ loop.index }} mb-1 text-xs-center text-sm-left d-flex flex-sm-column  flex-md-row ">
+
+                                <a href="{{ entry.url }}">
+                                    {%  if newsImage | length %}
+                                        <picture class="">
+                                            <source media="(max-width: 768px)" sizes="100vw" srcset="{{ newsImage[0].url }}">
+                                            <source media="(max-width: 3992px)" sizes="100vw" srcset="{{ newsImage[1].url }}">
+                                            <img class=" img-fluid float-xs-none float-sm-left  mr-sm-3 mr-md-3 mb-3 mt-2" src="{{ newsImage[1].url }}" alt="{{ asset.title }}">
+                                        </picture>
+                                    {% endif %}
+
+                                    <div class="text-left">
+                                        <h2 class="mt-0 mb-0">{{ entry.title }}</h2>
+
+                                        {{ date | raw }}
+                                        <div class="intro mb-4">
+                                            {%  if introText | length %}{{ introText | truncateOnWord(140) }}{% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12  mt-0 mb-2 pt-0 pb-1 ">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="{{ pageInfo.firstUrl }}">Start</a>
+                    </li>
+
+                    {% if pageInfo.prevUrl %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ pageInfo.prevUrl }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+
+
+                    {% for page, url in pageInfo.getPrevUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                    <li class="page-item "><a class="page-link">{{ pageInfo.currentPage }}</a></li>
+
+                    {% for page, url in pageInfo.getNextUrls(3) %}
+                    <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                        {% endfor %}
+
+                        {% if pageInfo.nextUrl %}
+                    <li class="page-item "><a class="page-link" href="{{ pageInfo.nextUrl }}">Next</a></li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <a class="page-link" href="{{ pageInfo.lastUrl }}">End</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

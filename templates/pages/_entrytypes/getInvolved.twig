@@ -1,0 +1,84 @@
+    {% extends "_layouts/site.twig" %}
+
+{% block content %}
+    {% include '/_includes/hero-featured.twig' %}
+
+
+
+    {% if not entry.featureContent  %}
+        {# header & hidden subscribe section #}
+        {% include '_includes/_sectionheader' %}
+
+
+    {% endif %}
+    <!-- card layout -->
+<section class="">
+    <div class="container   page">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-4">
+                <div class="row">
+                    {% for block in entry.cards.all() %}
+
+                        {% set image = block.cardImage.one() %}
+
+                        {%  if loop.index < 3  %}
+                                {% set col = "col-md-6 " %}
+                                {% set thumb = "cardthumb" %}
+                            {% set height = "data-mh=\"first-group\"" %}
+                            {% else %}
+                                {% set col = "col-md-4 " %}
+                                {% set height = "data-mh=\"second-group\"" %}
+                        {% endif %}
+                        {# start card layout #}
+                        <div class="col-xs-12 col-sm-6 {{ col }}  mb-5">
+                            <div class="card" >
+                                <img class="card-img-top" src="{{ image.getUrl('cardLandscape') }}" alt="Card image cap">
+                                <div class="card-body" {{ height }}>
+                                    {% if block.cardTitle %}
+                                        <h5 class="card-title">{{ block.cardTitle}}</h5>
+                                    {% endif %}
+                                    <div >
+                                    {% if block.cardText %}
+                                        <p class="card-text"  >{{ block.cardText }}</p>
+                                    {% endif %}
+
+                                        {%  if block.exampleLinks | length or block.customLinks | length %}
+                                            <p>
+                                            {%  if block.linksHeading | length %}<span class="badge">{{ block.linksHeading }}:</span><br>{% endif %}
+                                            {#<ul class="list-unstyled m-0 p-0">#}
+                                            {%  for link in block.exampleLinks.all()  %}
+                                                <a class="badge badge-light" href="{{ link.url }}">{{ link.title }}</a><br>
+                                            {% endfor %}
+
+                                            {% for link in block.customLinks.all()  %}
+                                                <a class="badge badge-light" href="{{ link.customLink }}">{{ link.customLinkTitle }}</a><br>
+                                            {% endfor %}
+                                            </p>
+                                            {#</ul>#}
+
+                                        {% endif %}
+
+                                    {%  if block.cardButtonCustomLink | length %}
+                                        <a href="{{ block.cardButtonCustomLink }}" class="d-inline-block btn btn-default">{{ block.cardButton ?? 'Tell me more' }}</a>
+                                    {% endif %}
+
+                                        {%  if block.cardButtonLink | length %}
+                                        <a href="{{ block.cardButtonLink.one().url }}" class="d-inline-block btn btn-default">{{ block.cardButton ?? 'Tell me more' }}</a>
+                                    {% endif %}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# end card layout #}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- /.container -->
+</section>
+
+
+{% endblock %}

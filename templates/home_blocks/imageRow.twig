@@ -1,0 +1,36 @@
+<section class="content-block mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="women-story clearfix">
+                    <div class="skewbox">
+                    <div class="text-box">
+                        <span>{{ block.contentType | upper }}</span>
+                        <h1>{{ block.rowTitle | raw }}</h1>
+                        <p>{{ block.intro }} </p>
+                        {%  if block.buttonText |length and  block.buttonLink.one() |length %}
+                            <a href="{{ block.buttonLink.one().url }}">{{ block.buttonText }}</a>
+                        {% endif %}
+
+                    </div>
+                {%  if block.image |length %}
+                    <div class="image-holder">
+                        <div class="scene">
+                            <div class="panel">
+                                <img class="img-fluid" src="{{ block.image.one().getUrl('homeSkew') }}" alt="" />
+                            </div>
+                        </div>
+                        {#<div class="myskew">#}
+                            {#images/girl-img.png#}
+                            {#<img class="img-fluid" src="{{ block.image.one().getUrl('homeSkew') }}" alt="" />#}
+                        {#</div>#}
+
+                    </div>
+                        {%  endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

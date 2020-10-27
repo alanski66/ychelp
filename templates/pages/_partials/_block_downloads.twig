@@ -1,0 +1,52 @@
+{% set style = null %}
+{%  set icon = null %}
+{% if block.displayStyle | length %}
+    {% set style = block.displayStyle %}
+{% endif %}
+<section class="mb-4 mt-4  {{ style }}">
+
+                {% if block.heading |length %}
+                    <h5 class="{{ style }}">
+                        <span class="blog-headline-link">
+                            <a id="{{ block.heading |kebab }}" href="#{{ block.heading |kebab }}"> <i class="icon-link"></i></a>
+                        </span>
+                        {{ block.heading |smartypants }}
+                    </h5>
+                {% endif %}
+
+                {% if block.subline |length %}
+
+                {% endif %}
+
+                  {% if block.download |length %}
+                      <ul class="list-unstyled {{ style }}">
+                        {% for doc in block.download.all() %}
+                            {%  set fileExt = doc.filename|split('.')|last  %}
+
+                            {%  if style == 'iconList' %}
+                                {%  if fileExt == 'docx' %}
+                                    {%  set icon = "file-word" %}
+                                {%  elseif fileExt == 'pdf' %}
+                                    {%  set icon = "file-pdf" %}
+                                {%  endif %}
+                            {%  else %}
+                                {%  set icon = "arrow-circle-down" %}
+                            {%  endif %}
+                           <li class="mb-3">
+                               <a class="btn {{ style }}"
+                                  target="_blank" data-on="click"
+                                  data-event-category="Downloads"
+                                  data-event-action="link"
+                                  data-event-label="Relief download - {{ doc.title }}"
+                                       href="{{ doc.url }}">
+                                   <i class="fa fa-{{ icon }}"></i> {{ doc.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                  {% endif %}
+
+
+
+
+</section>
+
+

@@ -1,0 +1,38 @@
+{# start list layout #}
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="{{ entry.url }}">
+                    {% if image %}
+                        {% set transformedImages = craft.imager.transformImage(image,
+                        [
+                        { width: 768, ratio: 16/9, jpegQuality: 75 },
+                        ],
+                        {
+                        format: 'jpg',
+                        allowUpscale: false,
+                        mode: 'crop',
+                        jpegQuality: 80,
+                        position: image.focalpoint ~ '% ' ~ image.focalpoint ~ '%',
+                        interlace: true
+                        }
+                        ) %}
+                        <img class="card-img-top" src="{{ transformedImages[0].url }}" alt="{{ image.title }} {{  image.imageCredit }}">
+                    {%  else %}
+                        <img class="card-img-top" src="https://placehold.it/700x400" alt="">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="card-title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+                <p class="card-text">
+                    {{ entry.body.getPage(1)|striptags|slice(0,100)|default('...') }}.
+                </p>
+                <a href="{{ entry.url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# end card layout #}

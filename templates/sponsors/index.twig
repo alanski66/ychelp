@@ -1,0 +1,102 @@
+{% extends "_layouts/site.twig" %}
+
+
+
+
+{% block content %}
+    {% set entries = craft.entries({
+    section: 'staff',
+    with: ['staffImage']
+    }) %}
+
+    {% include '/_includes/featured_background.twig' %}
+
+    <section class="news blue  p-0" >
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10  pb-2 ">
+                    <div class="page-heading mb-4">Iswan Staff</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Staff list Content -->
+
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-12">
+                    <h1 class="my-4">{{ entry.title }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-8">
+                    <div class="row">
+                        {% for entry in entries.all() %}
+
+                            {% set assets = entry.staffImage[0] %}
+
+
+                            {# start card layout #}
+                            <div class="col-lg-4 col-sm-6 portfolio-item">
+                                <div class="card h-100">
+                                    <a href="{{ entry.url }}">
+                                        {% if assets |length %}
+
+                                            <img class="card-img-top" src="" alt="{{ entry.title }}">
+                                        {% else %}
+                                            <img class="card-img-top" src="https://placehold.it/200x200" alt="">
+                                        {% endif %}
+                                    </a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{{ entry.url }}">{{ entry.title }}</a>
+                                        </h4>
+                                        <p class="card-text">
+                                            {{ entry.staffJobTitle }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {# end card layout #}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- sidebar -->
+                <div class="col-sm-12 col-lg-3 offset-1">
+                    {# Get the (one!) related entry from the "menu" structure #}
+                    {#{% set menuItem = craft.entries.section('menu').relatedTo(entry).first() %}#}
+
+                    {#<span class="{{ menuItem.id }}"></span>#}
+                    {#{% set rootOfSection = menuItem.getAncestors().level(1).first() %}#}
+
+                    {# Check if there are descendant entries #}
+                    {#{% if rootOfSection.hasDescendants() %}#}
+                    {#<h3>in this section</h3>#}
+
+                    {#<ul class="list-unstyled">#}
+                        {# Get entries to build the sub-menu #}
+                        {#{% set subMenu = craft.entries.descendantOf(rootOfSection) %}#}
+
+
+
+                        {#</ul>#}
+                        {#{% endif %}#}
+
+
+
+                        {#{% set subMenu = craft.entries.descendantOf(rootOfSection) %}#}
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+        </div><!-- /.container -->
+
+
+{% endblock %}

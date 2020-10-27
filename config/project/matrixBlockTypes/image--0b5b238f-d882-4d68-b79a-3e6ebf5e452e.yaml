@@ -81,11 +81,13 @@ fields:
     searchable: true
     settings:
       allowSelfRelations: false
+      allowUploads: true
       allowedKinds: null
       defaultUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
       defaultUploadLocationSubpath: ''
       limit: '1'
       localizeRelations: false
+      previewMode: full
       restrictFiles: ''
       selectionLabel: ''
       showSiteMenu: true
@@ -96,7 +98,6 @@ fields:
       source: null
       sources:
         - 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
-        - 'volume:unsplashImages'
       targetSiteId: null
       useSingleFolder: false
       validateRelatedElements: false

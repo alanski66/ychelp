@@ -1,0 +1,27 @@
+<section class="content-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="campaign-inner">
+                    <div class="campaign-project">
+                        <div class="text-box">
+                            <span>{{ block.contentType | upper }}</span>
+                            <h1>{{ block.rowTitle | raw }}</h1>
+                            <p>{{ block.intro }} </p>
+                            {%  if block.buttonText |length %}
+                                <a href="{{ block.buttonLink.one().url }}">{{ block.buttonText }}</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="help-would">
+                        <h4>{{ block.quote }}</h4>
+                        <p>{{ block.author }}
+                            {% if block.authorRole | length %}<span>{{ block.authorRole }}</span>{% endif %}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

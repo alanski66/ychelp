@@ -10,6 +10,9 @@ previewTargets:
       -
         - urlFormat
         - '{url}'
+      -
+        - refresh
+        - '1'
 propagationMethod: all
 siteSettings:
   3052e924-b84d-4d3c-a968-0df7f4320698:

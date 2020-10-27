@@ -1,91 +1,138 @@
 <!-- Footer -->
+<section class="supporters mb-5">
+
+    {% set supporters = craft.entries()
+        .section('supporters')
+        .with(['image'])
+        .all() %}
+
+    {%  set initialSupporterIndex  =  "" %}
+    {% set slidecount = supporters|length %}
+
+    {% js %}
+        
+        slidecount = {{ slidecount }};
+        console.log("tmpl slidecount = " + slidecount);
+        
+    {% endjs %}
+
+    <!-- Slider main container -->
+<div class="center-wrap">
+{#    <div class="row">#}
+{#        <div class="col-12 py-5">#}
+    <div class="main-carousel w-100 container">
+        {% for entry in supporters %}
+
+            {%  if entry.initialSupporter %}
+                {% set initialSupporterIndex = "is-initial-select" %}
+                {% else %}
+                    {%  set initialSupporterIndex  =  "" %}
+            {% endif %}
+            {% set asset = entry.image[0] %}
+            <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
+                <img class="my-auto" src="{{ asset.getUrl('memberLogo') }}">
+            </div>
+        {% endfor %}
+
+    </div>
+{#    </div>#}
+{#    </div>#}
+    </div>
+
+</section>
+
 <footer class="footer">
-    <div class="container">
+
+    <div class="d-flex  align-items-center">
+        <div class="col-12 text-center p-3">
+            <img class="align-self-center" src="{{ baseUrl }}/images/iswan-logo.svg">
+        </div>
+    </div>
+    <div class="d-flex align-items-center p-0">
+        <div class="col-8 offset-2 col-lg-6 offset-lg-3 text-center ">
+            {{ organisationDetails.organisationAddress | striptags(copyright.charityOrganisationStatement) }}
+        </div>
+    </div>
+    <div class="d-flex  align-items-center">
+        <div class="col-12 text-center p-3">
+            {{ copyright.charityOrganisationStatement | striptags(copyright.charityOrganisationStatement) }}
+            <br>
+            Charity no.{{ copyright.charityNumber }} | Company no. {{ copyright.companyNumber }}
+        </div>
+    </div>
+    <div class="d-flex  align-items-center">
+        <div class="col-12 text-center p-3">
+
+        </div>
+    </div>
+
+    <div class="container hide ">
+
+
         <div class="row">
             <div class="col-md-3">
                 <div class="footer-inner">
                     <h3>Contact</h3>
                     <ul class="list-unstyled">
-                        <li><a href="tel:{{ organisationDetails.organisationTelephone }}">{{ organisationDetails.organisationTelephone }}</a></li>
+                        <li>
+                            <a href="tel:{{ organisationDetails.organisationTelephone }}">{{ organisationDetails.organisationTelephone }}</a>
+                        </li>
                         <li><a
                                     data-event-category="Contact"
                                     data-event-action="Text link"
                                     data-event-label="LinkedIn"
-                                    href="mailto:{{ organisationDetails.organisationEmail }}">{{ organisationDetails.organisationEmail }}</a></li>
+                                    href="mailto:{{ organisationDetails.organisationEmail }}">{{ organisationDetails.organisationEmail }}</a>
+                        </li>
                     </ul>
                     <p>
-                       {{ organisationDetails.organisationAddress }}
+                        {{ organisationDetails.organisationAddress }}
                     </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="footer-inner hide">
-                    <h3>News</h3>
-                    <div class="footer-contant">
 
-                        {% set entries = craft.entries()
-                        .section('news')
-                        .limit('2')
-                        .all() %}
-                        {% for entry in entries %}
-                            <p>{{  entry.title }}<br><span>{{ entry.postDate.format('F d, Y') }}</span></p>
-                        {%  endfor %}
-                    </div>
+        </div>
+    </div>
+    <div class="container hide ">
+        <div class="row no-gutters  copyright pb-0">
+            <div class="col-sm-12 col-md-9 footer-inner">
+                <div class="copyright-left">
+                    <p>{{ copyright.charityOrganisationStatement }} <br>Charity no.{{ copyright.charityNumber }} |
+                        Company no. {{ copyright.companyNumber }}</p>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="footer-social">
+            <div class="col-sm-12 col-md-3">
+                <div class="copyright-right">
                     <ul>
-                        <li><a target="_blank" data-on="click" data-event-category="Social" data-event-action="Channel link" data-event-label="Facebook" href="{{ social.facebook }}"><img id="facebook" class="facebook svg" src="{{ baseUrl }}/images/facebook-iocn.svg" alt="" /></a></li>
-                        <li><a target="_blank" data-on="click" data-event-category="Social" data-event-action="Channel link" data-event-label="Twitter" href="{{ social.twitter }}"><img class="twitter svg" src="{{ baseUrl }}/images/twitter-icon.svg" alt="" /></a></li>
-                        <li><a target="_blank" data-on="click" data-event-category="Social" data-event-action="Channel link" data-event-label="Flickr" href="{{ social.flickr }}"><img  class="flickr svg" src="{{ baseUrl }}/images/flickr-icon.svg" alt="" /></a></li>
-                        <li><a target="_blank" data-on="click" data-event-category="Social" data-event-action="Channel link" data-event-label="LinkedIn" href="{{ social.linkedin }}"><img  class="linkedin svg" src="{{ baseUrl }}/images/linkedin-icon.svg" alt="" /></a></li>
-                        <li><a target="_blank" data-on="click" data-event-category="Social" data-event-action="Channel link" data-event-label="Instagram" href="{{ social.instagram }}"><img  class="instagram svg" src="{{ baseUrl }}/images/instagram-icon.svg" alt="" /></a></li>
+                        {% for block in copyright.rights.type('copyright').all() %}
+                            <li>{{ block.copyright | raw }}</li>
+                        {% endfor %}
+
+                        {% for block in copyright.rights.type('footerLeftLinks').all() %}
+
+                            {% if block.footerLeftLink | length %}
+                                {% for flink in block.footerLeftLink.all() %}
+                                    <li class="list-inline-item"><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% for block in copyright.rights.type('footerRightLinks').all() %}
+
+                            {% for flink in block.footerRightLink.all() %}
+                                <li><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
+                            {% endfor %}
+
+                        {% endfor %}
+                        {#<li><a href="#">Quick links:</a></li>#}
+                        {#<li><a href="#">Resources</a></li>#}
+                        {#<li><a href="#">Real-life stories</a></li>#}
+                        {#<li><a href="#">Contact us</a></li>#}
+                        {#<li><a href="#">Subscribe</a></li>#}
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container ">
-            <div class="row no-gutters  copyright pb-0">
-                <div class="col-sm-12 col-md-9 footer-inner">
-                    <div class="copyright-left">
-                        <p>{{ copyright.charityOrganisationStatement}} <br>Charity no.{{ copyright.charityNumber }} | Company no. {{ copyright.companyNumber }}</p>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <div class="copyright-right">
-                        <ul>
-                            {% for block in copyright.rights.type('copyright').all() %}
-                                <li>{{ block.copyright | raw}}</li>
-                            {%  endfor %}
-
-                            {% for block in copyright.rights.type('footerLeftLinks').all() %}
-
-                                {%  if block.footerLeftLink | length %}
-                                    {%  for flink in block.footerLeftLink.all() %}
-                                        <li class="list-inline-item"><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
-                                    {%  endfor %}
-                                {% endif %}
-                            {%  endfor %}
-
-
-                            {% for block in copyright.rights.type('footerRightLinks').all() %}
-
-                                {%  for flink in block.footerRightLink.all() %}
-                                    <li><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
-                                {%  endfor %}
-
-                            {%  endfor %}
-                            {#<li><a href="#">Quick links:</a></li>#}
-                            {#<li><a href="#">Resources</a></li>#}
-                            {#<li><a href="#">Real-life stories</a></li>#}
-                            {#<li><a href="#">Contact us</a></li>#}
-                            {#<li><a href="#">Subscribe</a></li>#}
-                        </ul>
-                    </div>
-                </div>
-            </div>
         <div class="row">
             <div class="col-12 footer-inner">
 

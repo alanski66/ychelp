@@ -1,0 +1,197 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+ {#{% set asset = "fart" %}#}
+    {% switch entry.type %}
+        {% case 'oldnews' %}
+
+            {% set asset = entry.oldNewsImage.one() %}
+            {% set desc = entry.body | wordLimit(40)  %}
+                {% do seomatic.meta.ogDescription(desc) %}
+            {% if asset | length %}
+                {% do seomatic.meta.ogImage(asset.url) %}
+                {% do seomatic.meta.twitterImage(asset.url) %}
+            {% endif %}
+            {% set date = "" %}
+
+        {% case 'news' %}
+
+            {% set asset =  entry.image.one() %}
+            {% set date = '<span class="date">' ~ entry.postDate.format('F d, Y') ~ '</span>' %}
+            {% do seomatic.meta.ogDescription(entry.newsIntro) %}
+
+            {% if asset | length %}
+                {% do seomatic.meta.ogImage(asset.url) %}
+                {% do seomatic.meta.twitterImage(asset.url) %}
+            {% endif %}
+            {% do seomatic.meta.twitterDescription(entry.newsIntro) %}
+
+
+    {% endswitch %}
+
+
+
+{% extends "_layouts/site" %}
+
+{% block content %}
+    {% set date = '<span class="date">' ~ entry.postDate.format('F d, Y') ~ '</span>' %}
+    {# header & hidden subscribe section #}
+    <section class="page-header {{ craft.app.request.segments|first }} blue  py-3">
+        <div class="container">
+            <div class="row ">
+                <div class="col-xs-12 col-sm-8 d-flex align-items-center justify-content-xs-center">
+                    <h1 class="page-heading">
+                        News
+                    </h1>
+                </div>
+                <div class="col-xs-12 col-sm-4 d-flex align-items-center justify-content-xs-center">
+                    {%  set btnColor = "btn-" ~ subscribe.ctaButtonColor ?? "btn-gray" %}
+
+                    <div class="text-xs-center text-sm-right text-lg-right cta-intro ml-auto">
+
+                        <a class="btn  btn-blue-dark" id="top-subscribe"
+                           data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
+                            <i class="fa fa-envelope"></i>
+                            {{ subscribe.ctaButtonText }}</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    {# hidden subscribe section #}
+    {% include '_includes/subscribe-section-top.twig' %}
+
+
+
+
+    <section class="news entry-{{ entry.type }} white pt-4">
+        <div class="container">
+            <div class="row ">
+                <div class="col-xs-12 col-md-8 ">
+                    <h1 class="mb-3">{{ entry.title }}</h1>
+
+                   {%  if date | length %} {{ date |raw }} {% endif %}
+
+
+
+                    {% if asset | length %}
+                        {% set imgCredit =   asset.imageCredit ?? null %}
+                        {% set imgCaption =  asset.imageCaption ?? null %}
+                        {% set newsImage = craft.imager.transformImage(asset,
+                        [
+                        { width: 320, position: asset.getFocalPoint(), jpegQuality: 65,ratio: 4/3, cropZoom:1.5 },
+                        { width: 840, position: asset.getFocalPoint(),jpegQuality: 90 },
+                        ],
+                        {
+                        format: 'jpg',
+                        allowUpscale: true,
+                        mode: 'crop',
+                        jpegQuality: 90,
+                        interlace: true
+                        }
+                        ) %}
+                            <figure>
+                            <picture>
+                                <source media="(max-width: 320px)" sizes="100vw" srcset="{{ newsImage[0].url }}">
+                                <source media="(max-width: 840px)" sizes="100vw" srcset="{{ newsImage[1].url }}">
+                                <img class="img-fluid" src="{{ newsImage[1].url }}" alt="{{ asset.title }}">
+                            </picture>
+                                {%  if imgCaption or imgCredit %}
+                                <figcaption>
+                                    <i class="fa fa-chevron-up" aria-hidden="true"></i>  {{ imgCaption }}
+
+                                    {% if imgCredit %}<span class="credit">© {{ imgCredit }}</span>{%  endif %}
+
+                                </figcaption>
+                                {% endif %}
+                            </figure>
+                    {% endif %}
+                    <div class="mt-4 mb-5">
+
+                        {% switch entry.type %}
+                            {% case 'oldnews' %}
+                                {% if entry.body |length %}
+                                    {{ entry.body }}
+                                {% endif %}
+
+                            {% case 'news' %}
+
+                                {% set blockPrefix = "" %}
+                                {# get new style block layout #}
+                                {% if entry.type == 'news' %}
+                                    {% for block in entry.contentBlock.all() %}
+                                        {% include ('pages/_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %}
+                                        {% if block.type.handle == "image" %}
+                                            {% set lazyImage = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                        {% endswitch %}
+                    </div>
+
+                    <!-- tags -->
+                    <div class="row tags">
+                        <div class="col-12 mb-5">
+                            {% for tag in entry.tags.all() %}
+
+                                <span class="badge"><i class="fa fa-tags"></i> <a
+                                            href="{{ siteUrl }}topics/{{ tag.title |lower| url_encode }}">{{ tag.title }}</a></span>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    {% include '_includes/social-share.twig' %}
+
+                </div>
+                <div class="col-xs-12 col-md-3 offset-md-1">
+                    {% set entries = craft.entries()
+                    .section('news')
+                    .limit('15') %}
+
+                    <ul class="list-unstyled">
+                        {% for entry in entries.all() %}
+
+                            {%  set date = '<span class="side-date">' ~ entry.postDate.format('F d, Y') ~ '</span>'  %}
+
+
+                            <li class="media mb-4 ">
+                                <a href="{{ entry.url }}">
+
+                                    <div class="media-body">
+                                        <h6 class="mt-0 mb-0">{{ entry.title }}</h6>
+                                        {{ date | raw }}
+
+                                    </div>
+                                </a></li>
+
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+
+    <!-- Page Content -->
+
+    <!-- /.container -->
+{% endblock %}

@@ -1,0 +1,120 @@
+{% if block.customLink |length %}
+
+    <div class=" promo">
+        <div class="row p-3">
+            {% if block.boxHeading |length %}
+                <div class="col-12 promo-header mb-4">
+                    {{ block.boxHeading }}
+                </div>
+            {% endif %}
+
+            <div class="col-md-12 text-md-left text-center">
+
+                {% if block.customText | length %}
+                    <p class="lead text-center">{{ block.customText }}</p>
+                {% endif %}
+
+                {% if block.customLink |length %}
+                    <p class="text-center">
+                        <a href="{{ block.customLink  }}" class="btn btn-primary">
+                            {{ block.customLinkTitle }}
+                        </a>
+                    </p>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+    </div>
+{% elseif block.entryToPromote |length %}
+
+    {%  set entry = block.entryToPromote.one() %}
+
+    {% set pdfImage = entry.pdfThumbnailImage[0] ?? null %}
+
+    {%  set pdfDocument = entry.pdfDocument.one() ?? null %}
+    {% set intro = null %}
+
+    {% switch entry.section |lower %}
+
+        {% case 'resources' %}
+        {% set cat = entry.category[0] %}
+        {% set intro = entry.introText %}
+
+        {% case 'ship' %}
+
+        {% set cat =  entry.shipCategory[0] %}
+        {% set intro = entry.shipIntroText %}
+
+
+    {% endswitch %}
+
+    <div class=" promo mb-4 mt-1">
+        <div class="row p-3">
+            {% if block.boxHeading |length %}
+                <div class="col-12 promo-header mb-4">
+                    {{ block.boxHeading }}
+                </div>
+            {% endif %}
+            <div class=" text-md-left col-lg-5 text-center">
+
+                {% if entry.type == 'shipItemAudio' %}
+                    {% set thumb = {
+                    mode: 'crop',
+                    width: 130,
+                    height: 130,
+                    quality: 75,
+                    position: 'top-center'
+                    } %}
+                    <a data-on="click"
+                       data-event-category="Link"
+                       data-event-action="Promo block"
+                       data-event-label="{{ entry.title }}"
+                            href="{{ entry.url }}"><img class="align-self-start" src="{{ entry.shipImage.one().getUrl(thumb) }}" alt="image icon for {{ entry.title }}"></a>
+                {% endif %}
+
+                {%  if pdfImage |length %}
+                    <img class="align-self-start mb-4" src="{{ pdfImage.getUrl('sponsorLogo') }}" alt="">
+                {% endif %}
+            </div>
+            <div class="text-md-left col-lg-7 text-center">
+
+
+
+
+                {% if entry.title | length %}
+                    <h5 class="mt-0">{{ entry.title }}</h5>
+                {% endif %}
+                {% if intro | length %}
+                    <p class="lead">{{ intro }}</p>
+                {% endif %}
+                {% if entry.type == 'shipItemAudio' %}
+                    <p class="text-right pr-4">
+                        <a
+                           data-on="click"
+                           data-event-category="Link"
+                           data-event-action="Promo block"
+                           data-event-label="{{ entry.title }}"
+
+                           href="{{ entry.url }}" class="btn btn-sm btn-primary">more <i class="fa fa-arrow-right"></i></a>
+                    </p>
+                {% endif %}
+                {% if pdfDocument |length %}
+                    <p>
+                        <a target="_blank"
+                           data-on="click"
+                                data-event-category="Downloads"
+                                data-event-action="Promo block"
+                                data-event-label="{{ pdfDocument.filename }}"
+
+                                href="{{ pdfDocument.url }}" class="btn btn-primary"><i class="fa fa-arrow-circle-down"></i> Download</a>
+                    </p>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+    </div>
+{% endif %}

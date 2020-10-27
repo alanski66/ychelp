@@ -1,0 +1,88 @@
+{% extends "_layouts/site.twig" %}
+
+{% block content %}
+    {%  set layout = null %}
+    <!-- Page Content -->
+    {%  if entry is defined %}
+
+        {% include '/_includes/hero-featured.twig' %}
+
+
+        {% for block in entry.landingContent.all() %}
+
+
+            {% switch block.type %}
+            {%  case "contentBlock" %}
+            {%  if block.heading | length or block.text | length %}
+            <section class="{{ block.rowBackgroundColor }} heading pt-3 pb-3">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-10  lllll ">
+
+                            {%  if block.heading | length %}
+                                <h2>{{ block.heading }}</h2>
+                            {%  endif %}
+                            {%  if block.text | length %}
+                                <p>{{ block.text }}</p>
+                            {%  endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            {%  endif %}
+
+
+            {%  case "cta" %}
+            <!-- Call to Action Section -->
+            <section class="{{ block.rowBackgroundColor }} pt-3 pb-3 mb-5">
+                <div class="container cta ">
+                    <div class="row no-gutters  " >
+                        <div class="col-md-8 ml-auto pt-3 pb-3">
+                            <p>{{ block.ctaIntrotext }}</p>
+                        </div>
+                        <div class="col-md-4 my-auto pt-3 pb-3 text-center">
+
+                            <a class="btn btn-lg btn-{{ block.ctaButtonColor }} " href="{{ block.ctaLink.one().url }}">{{ block.ctaButtonText }}</a>
+
+
+                        </div>
+                    </div>
+                </div><!-- /.container -->
+            </section>
+
+            {%  case "sectionList" %}
+
+            {%  set section = block.sectionList %}
+
+            {%  set excludeFeatured = null %}
+
+            {%  if  block.excludeFeatured %}
+                {%  set excludeFeatured = '1' %}
+            {%  endif %}
+
+            {% set entries = craft.entries({sectionId: block.sectionList, with:
+            ['pdfThumbnailImage','projectImage','image']
+            }).level('1').orderBy('lft asc') %}
+
+            <div class="container ship card-layout">
+                <div class="row ">
+
+                    {% for entry in entries.all() %}
+                        {# Get the eager-loaded asset, if there is one #}
+                        {% set image = entry.projectImage[0] ?? null %}
+
+                        {% set introtext = entry.projectIntroText ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.' %}
+
+                        {% include '/pages/_entrytypes/_styles/_layout_ship.twig' %}
+
+                    {% endfor %}
+
+                </div>
+            </div><!-- /.container -->
+            {% endswitch %}
+
+        {% endfor %}
+    {%  endif %}
+
+{% endblock %}

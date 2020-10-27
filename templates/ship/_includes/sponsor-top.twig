@@ -1,0 +1,96 @@
+
+{% set hideSP = '' %}
+{% set cat = entry.shipCategory.one() %}
+
+{% if cat.hideSponsorship < 1 %}
+
+
+{%  if not sponsorSettings.hideSponsorshipCtaAndSponsors  %}
+{%  set noOfSponsors = categorySponsors | length  %}
+    {%  set btnColor = "btn-" ~ sponsorSettings.ctaButtonColor ?? null %}
+
+    {%  set sponsorLink = sponsorSettings.ctaLink[0].url ?? null %}
+    {% if noOfSponsors  and noOfSponsors < 2 %}
+
+        {% set exitLoop = 0 %}
+        {% for block in categorySponsors.all() %}
+            <section class="hide gray sponsor sponsor-top pt-3 pb-3">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12   ">
+                            {{ sponsorSettings.sponsoredByHeading }}
+                            <h3 class="">
+
+                                {% for block in categorySponsors.all() %}
+                                    {% if block.type == "sponsored" %}
+                                        {#{{ block.sponsoredby.one().title }}#}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </h3>
+                        </div>
+                        <div class="col-6  ">
+                            {% if block.type == "sponsored" %}
+                                {% set asset = block.sponsoredby.one().sponsorLogo.one()  %}
+                                {% set url = block.sponsoredby.one().url  %}
+                                {% if url |length and asset | length %}
+                                <a href="{{ url  }}">
+                                    <img class="float-left" src="{{ asset.url }}"  width="{{ asset.getWidth('sponsorLogoSmall') }}" height="{{ asset.getHeight('sponsorLogoSmall') }}">
+                                </a>
+                                    {% endif %}
+
+                            {% endif %}
+
+                        </div>
+                        <div class="col-6 text-center">
+                            <a
+                                    data-on="click"
+                                    data-event-category="Sponsorship"
+                                    data-event-action="Button top"
+                                    data-event-label="{{ entry.title }}"
+
+                                    href="{{ sponsorLink }}" class="btn btn-primary white">{{  sponsorSettings.ctaButtonText }}</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        {% endfor %}
+    {% else %}
+        <!-- Call to Action Section -->
+
+
+
+        <section class="gray sponsor pt-4 pb-4 ">
+            <div class="container  h-100">
+                <div class="row no-gutters  " >
+
+                    <div class="col-sm-12 col-md-12 col-lg-8  text-xs-center text-sm-left ctaText p-2">
+
+                            {{ sponsorSettings.ctaText }}
+
+
+
+
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-4  text-center">
+
+                            <a class="ml-3 btn {{ btnColor }}"
+                               data-on="click"
+                               data-event-category="Sponsorship"
+                               data-event-action="Button top"
+                               data-event-label="{{ craft.app.request.absoluteUrl }}"
+                               href="{{ sponsorLink }}" class="btn btn-primary white">{{  sponsorSettings.ctaButtonText }}</a>
+
+
+                    </div>
+
+                </div>
+            </div><!-- /.container -->
+        </section>
+        <!-- end cta section -->
+
+    {% endif %}
+{% endif %}
+{% endif %}

@@ -1,0 +1,12 @@
+
+
+
+                {% if block.heading |length %}
+                    <h3 class="blog">
+                        <span class="blog-headline-link">
+                            <a id="{{ block.heading |kebab }}" href="#{{ block.heading |kebab }}"> <i class="icon-link"></i></a>
+                        </span>
+                        {{ block.heading |smartypants }}
+                    </h3>
+                {% endif %}
+                <div class="{{ block.type.handle }}">{{ block.text }}</div>

@@ -1,10 +1,10 @@
-<!-- carousel hero -->
-<section class="hero ">
-    <div class="banner-owl owl-carousel owl-theme">
+     {% if entry.carousel |length %}
+     <!-- carousel hero -->
+     <section class="hero ">
+         <div class="banner-owl owl-carousel owl-theme">
 
-        {% if entry.carousel |length %}
 
-            {% for slide in entry.carousel.all() %}
+         {% for slide in entry.carousel.all() %}
                 <div class="item">
                     <figure class="image-holder">
 
@@ -73,8 +73,6 @@
                 </div>
 
             {% endfor %}
-        {% endif %}
-
-
     </div>
 </section>
+     {% endif %}

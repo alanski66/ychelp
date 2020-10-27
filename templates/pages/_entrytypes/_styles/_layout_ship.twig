@@ -1,0 +1,45 @@
+{# start ship *** card layout #}
+<!-- ship card -->
+<div class="col-lg-4 col-sm-6 portfolio-item mb-4 ">
+    <a class="ship-card" href="{{ entry.url }}">
+        <div class="card text-center" data-mh="my-group">
+
+
+            {%  set category = entry.shipCategory.one() %}
+
+            {% if category.image is defined %}
+            {%  set image = category.image.one() %}
+            {% endif %}
+            {% if image %}
+                {#{% set transformedImages = craft.imager.transformImage(image,#}
+                {#[#}
+                {#{ width: 350, height: 321, jpegQuality: 75 },#}
+                {#],#}
+                {#{#}
+                {#format: 'jpg',#}
+                {#allowUpscale: false,#}
+                {#mode: 'crop',#}
+                {#jpegQuality: 80,#}
+                {#position: image.getFocalPoint(),#}
+                {#interlace: true#}
+                {#}#}
+                {#) %}#}
+                <div class="card-icon ">
+
+                    <img class="card-img-top default pt-5 pb-0" src="{{ image.url }}" alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: ''  }}">
+                    <img class="card-img-top roll pt-5 pb-0" src="{{ image.url | replace (".svg", "-white.svg") }}" alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: ''  }}">
+                </div>
+           {% endif %}
+
+        <div class="card-body mb-5 ">
+            <h3 class="card-title">
+                {{  category.title }}
+            </h3>
+            <p class="card-text">
+                {{ entry.shipIntroText | striptags }}
+            </p>
+        </div>
+    </div>
+    </a>
+</div>
+{# end card layout #}

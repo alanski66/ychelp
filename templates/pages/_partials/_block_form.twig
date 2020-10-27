@@ -1,0 +1,19 @@
+
+{% if block.formIntro |length %}
+    {{ block.formIntro }}
+{% endif %}
+{% if block.form |length %}
+
+    {{ craft.freeform.form(block.form.handle, {
+        labelClass: "form-label",
+        inputClass: "form-control",
+        id: block.form.handle~block.id,
+        class: block.form.handle,
+        instructionsBelowField: true,
+        overrideValues: {
+            hiddenFieldHandle: entry.id
+        }
+    }).render() }}
+
+
+{% endif %}

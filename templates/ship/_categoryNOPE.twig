@@ -1,0 +1,214 @@
+{#
+ # Resource single category view template
+ # -------------------
+ #
+ #}
+
+{% extends "_layouts/site" %}
+
+{% block content %}
+    <!-- list content -->
+
+    <div class="container">
+        <div class="row">
+            <!-- Page Heading/title breadcrumbs -->
+            <div class="col-12">
+                <h1 class="mt-4 mb-3">cattwig<a
+                        href="{{ baseUrl }}{{ craft.request.getFirstSegment() }}">{{ craft.request.getFirstSegment() | capitalize }}</a>
+            </h1>
+                <div class="desc">
+                    {{  category.shipDescription }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        {% set categories = craft.categories.group('resources') %}
+        <!-- section -->
+        <div class="row res-category">
+            <div class="col-sm-12 col-md-3">
+                <div class="card h-100 border-0">
+
+                    <div class="card-body first">
+                        <h4 class="card-title">
+                            <a href="#">Mental Health</a>
+                        </h4>
+                        <p class="card-text">
+                            This section is supported by Shipowners club
+                            <img src="{{ baseUrl }}assets/images/sponsorslogos/shipowners-logo.png">
+                            <a class="btn btn-default">Sponsor this section</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-9">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <a href="{{ baseUrl }}resources/mental-health/good-mental-health-guides-for-seafarers">
+                            <img class="mr-3 img-fluid" src="https://placehold.it/240x320" alt=""></a>
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">
+                                <a href="{{ baseUrl }}resources/mental-health/good-mental-health-guides-for-seafarers">Good Mental Health Guide</a>
+                            </h5>
+                            This self-help guide details some skills, exercises and coping strategies
+                            to help you deal with life when your mood is low
+                        </div>
+                    </li>
+                    <li class="media my-4">
+                        <a href="#"><img class="mr-3 img-fluid" src="https://placehold.it/240x320" alt=""></a>
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">List-based media object</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
+                            ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </li>
+                    <li class="media">
+                        <a href="#"><img class="mr-3 img-fluid" src="https://placehold.it/240x320" alt=""></a>
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">List-based media object</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc
+                            ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- category footer nav -->
+    <div class="py-5 bg-secondary category-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Resources</h3>
+                </div>
+
+            </div>
+            </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 mb-5">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="https://placehold.it/115x155" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">Resource Category</a>
+                            </h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+                                euismod odio, gravida pellentesque urna varius vitae.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- end category footer nav -->
+{% endblock %}

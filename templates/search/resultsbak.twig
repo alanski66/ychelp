@@ -1,0 +1,178 @@
+{% extends "_layouts/site.twig" %}
+
+{% block content %}
+    <div class=" search-drop">
+
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center mt-5">
+                <div id="imaginary_container">
+                    <h4>Search </h4>
+
+                    <form action="{{ url('search/results') }}" id="search" name="search">
+                        <div class="input-group stylish-input-group">
+                            <input type="search" name="q" type="text" class="form-control search-input" placeholder="Search">
+
+                            <span class="input-group-addon">
+                        <button type="submit" class="btn btn-blue search-submit"
+
+                                data-on="click"
+                                data-event-category="Search"
+                                data-event-action="Search button"
+                                data-event-label=""
+                        ><span class="searchBtnText">Search</span>
+                            <i class="icon-search fa fa-search fa-sm"></i>
+                        </button>
+                    </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container search ">
+        <div class="row ">
+
+            <div class="col-sm-12 col-lg-8">
+                <h1 class="my-4">Search results</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-8">
+
+
+
+                {% set query = craft.app.request.getParam('q') %}
+                {% set sentries = craft.entries.search(query).section('and, not storiesRussian, not formThankYouPages, not emailNewsletters').orderBy('score').limit(null) %}
+
+                {% paginate  sentries.limit(10) as pageInfo, pageEntries %}
+
+                {% if pageEntries|length %}
+                    <p>{{ sentries|length }} results for "{{ query }}":</p>
+
+                    <ul class="list-unstyled">
+
+                        {% for entry in pageEntries %}
+
+                            {%  set searchIntro = entry.introText %}
+                            {# need to get entry introtext / description
+
+                            projectIntroText
+                            newsIntro
+                            introText
+                            featureIntroText
+                            fullText / body
+                            shipIntroText
+                            staffRoleDescription
+                            memberProfileIntro
+                            #}
+
+                            {% if entry.contentBlock | length %}
+                                {% for block in entry.contentBlock.type('text').limit(null).all() %}
+                                    {%  set searchIntro = block.text  %}
+                                {% endfor %}
+
+                            {% elseif entry.projectIntroText | length %}
+
+                                {%  set searchIntro = entry.projectIntroText  %}
+
+                            {% elseif entry.newsIntro | length %}
+
+                                {%  set searchIntro = entry.newsIntro  %}
+
+                            {% elseif entry.featureIntroText | length %}
+
+                                {%  set searchIntro = entry.featureIntroText  %}
+
+                            {% elseif entry.shipIntroText | length %}
+
+                                {%  set searchIntro = entry.shipIntroText  %}
+
+                            {% elseif entry.staffRoleDescription | length %}
+
+                                {%  set searchIntro = entry.staffRoleDescription  %}
+
+                            {% elseif entry.memberProfileIntro | length %}
+
+                                {%  set searchIntro = entry.memberProfileIntro  %}
+
+                            {% elseif entry.fullText | length %}
+
+                                {%  set searchIntro = entry.fullText  %}
+
+                            {% elseif entry.body | length %}
+
+                                {%  set searchIntro = entry.body %}
+
+                            {% endif %}
+
+                            {%  if searchIntro |length %}
+                                {%  set searchIntro = searchIntro | wordLimit(30)   %}
+                            {%  endif %}
+                            <li class="media mb-3">
+                                <div class="media-body">
+                                    <h5><a href="{{ entry.url }}">{{ entry.title }}</a></h5>
+                                    <span class="small url">{{ entry.url }}</span>
+                                    <p>{{  searchIntro }}</p>
+                                </div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Your search for “{{ query }}” didn’t return any results.</p>
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+    </div>
+    </div><!-- /.container -->
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12  mt-5 mb-5 pt-5 pb-5 ">
+
+                {% if pageEntries|length %}
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="{{ pageInfo.firstUrl }}">Start</a>
+                        </li>
+
+                        {% if pageInfo.prevUrl %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ pageInfo.prevUrl }}">Previous</a>
+                            </li>
+                        {% endif %}
+
+
+
+                        {% for page, url in pageInfo.getPrevUrls(3) %}
+                        <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                            {% endfor %}
+
+                        <li class="page-item "><a class="page-link current">{{ pageInfo.currentPage }}</a></li>
+
+                        {% for page, url in pageInfo.getNextUrls(3) %}
+                        <li class="page-item "><a class="page-link" href="{{ url }}">{{ page }}</a>
+                            {% endfor %}
+
+                            {% if pageInfo.nextUrl %}
+                        <li class="page-item "><a class="page-link" href="{{ pageInfo.nextUrl }}">Next</a></li>
+                        {% endif %}
+
+                        <li class="page-item">
+                            <a class="page-link" href="{{ pageInfo.lastUrl }}">End</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

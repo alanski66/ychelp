@@ -1,0 +1,58 @@
+{% extends "_layouts/site.twig" %}
+
+
+
+
+{% block content %}
+    <div class=" search-drop">
+
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-sm-offset-3 text-center mt-5">
+                <div id="imaginary_container">
+                    <h4>Search </h4>
+                    {% include "/search/_form.twig" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="search white  pt-5 pb-3" >
+
+    <div class="container">
+            <div class="row ">
+
+                <div class="col-12">
+                    <h1 class="my-4">Search</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-8">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6 col-sm-offset-3 text-center mt-5">
+                            <div id="imaginary_container">
+                                <h4>Search </h4>
+                                <form action="{{ url('search/results') }}">
+                                    <div class="input-group stylish-input-group">
+                                        <input type="search" name="q" type="text" class="form-control mr-2" placeholder="Search">
+
+                    <span class="input-group-addon">
+                        <button type="submit" class="btn btn-blue" >Search
+                            <i class="icon-search fa fa-search fa-sm"></i>
+                        </button>
+                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        </div><!-- /.container -->
+    </section>
+
+
+{% endblock %}

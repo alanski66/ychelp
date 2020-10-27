@@ -1,0 +1,54 @@
+{# start card layout #}
+<div class="col-sm-6 portfolio-item mb-4 ">
+    <a class="ship-card" href="{{ entry.url }}">
+        <div class="card text-center hhh" >
+
+
+            {% set category = entry.shipCategory.one() %}
+
+            {% set pdfImage = entry.pdfThumbnailImage[0] ?? null %}
+            {% set shipImage = entry.shipImage[0] ?? null %}
+
+            {% if pdfImage or shipImage %}
+                {#{% set transformedImages = craft.imager.transformImage(image,#}
+                {#[#}
+                {#{ width: 350, height: 321, jpegQuality: 75 },#}
+                {#],#}
+                {#{#}
+                {#format: 'jpg',#}
+                {#allowUpscale: false,#}
+                {#mode: 'crop',#}
+                {#jpegQuality: 80,#}
+                {#position: image.getFocalPoint(),#}
+                {#interlace: true#}
+                {#}#}
+                {#) %}#}
+                <div class="card-icon " data-mh="my-group">
+
+                    {%  if shipImage |length %}
+
+                        <img class="card-img-top p-5 img-fluid my-auto " src="{{ shipImage.getUrl('sponsorLogo') }}" alt="">
+                    {%  elseif pdfImage |length %}
+                        <img class="card-img-top p-5 img-fluid my-auto" src="{{ pdfImage.getUrl('pdfTransform') }}" width="{{ pdfImage.getWidth('pdfTransform') }}" height="{{ pdfImage.getHeight('pdfTransform') }}"
+                             alt="{{ pdfImage.title ? pdfImage.title : entry.title }} {{ pdfImage.imageCredit ? pdfImage.imageCredit: ''  }}">
+                    {%  endif %}
+
+                </div>
+            {% endif %}
+
+            <div class="card-body mb-5 ">
+                <h5 class="card-title pt-2 mb-0">
+                    <a href="{{ entry.url }}">{{  entry.title }}</a>
+                </h5>
+                {% set tag = entry.tags.one() %}
+                {% if tag |length %}
+                <p class="card-text">
+                    <span class="tag">{{  tag.title }}</span>
+
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+</div>
+{# end card layout #}

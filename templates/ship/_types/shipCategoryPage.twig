@@ -1,0 +1,98 @@
+{#
+ # ----------------------
+ # CATEGORY view template
+ # ---------------------
+ #
+ #}
+{# let get matrix number of sponsors for this category and only show if there is ONLY 1#}
+    {% set categorySponsors = entry.shipCategory.one().sponsorships %}
+{% block content %}
+    <!-- ship/types/shipCategoryPage.twig -->
+    <section class="blue heading  pt-0 pb-3">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10   ">
+                    <div class="page-heading">
+                        <span class="smalltext">//  The Seafarers' Health Information Programme</span>
+                        <h1 class="mb-3">
+
+                            {{ entry.title }}
+                        </h1>
+                        <p>{{ entry.shipIntroText }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {# include sponsor top #}
+    {% include 'ship/_includes/sponsor-top.twig' %}
+
+    {% if entry.shipDescription %}
+        <section class="white">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-8 pt-5 description">
+                        {{ entry.shipDescription }}
+
+                        <!-- section get child items-->
+
+
+
+                                    {% set entries = craft.entries({
+                                    section: 'ship',
+                                    limit: null,
+                                    with: [
+                                    'descendants'
+                                    ],
+                                    descendantOf: entry.id
+                                    }) %}
+                                    <div class="mt-5 ship card-layout category">
+
+                                        <div class="row">
+                                            {% for entry in entries.all() %}
+
+                                                {% include '/ship/_includes/ship_category_card_layout.twig' %}
+
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+
+
+                    </div>
+
+                    <div class="col-lg-4 shipnav pt-5">
+                        <div class="side-box">
+                            <div class="smalltext pb-3">The Seafarers' Health Information Programme</div>
+
+                            {% set shipEntriesLevelOne = craft.entries({section: 'ship', with:
+                            ['pdfThumbnailImage','projectImage','image']
+                            }).level('1').orderBy('lft asc') %}
+                            <ul>
+                                {% import '_macros' as macros %}
+                                {% for entry in shipEntriesLevelOne.all() %}
+                                    <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
+                                        <a href="{{ siteUrl }}{{ entry.uri }}"
+                                           class="  level{{ entry.level }}">{{ entry.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    {# include sponsor bottom #}
+    {% include 'ship/_includes/sponsor-bottom.twig' %}
+
+    <!-- category footer nav inc -->
+    {% include ('ship/_includes/ship_category_footer_nav') %}
+    <!-- category footer nav inc END-->
+
+{% endblock %}

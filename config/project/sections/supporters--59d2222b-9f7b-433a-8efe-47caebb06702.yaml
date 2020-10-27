@@ -1,0 +1,26 @@
+enableVersioning: true
+handle: supporters
+name: Supporters
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  3052e924-b84d-4d3c-a968-0df7f4320698:
+    enabledByDefault: true
+    hasUrls: true
+    template: supporters/_entry
+    uriFormat: 'supporters/{slug}'
+structure:
+  maxLevels: null
+  uid: 146ca8fc-ddf7-4cf1-bd41-24d1fc13d47a
+type: structure

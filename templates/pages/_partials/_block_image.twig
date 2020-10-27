@@ -1,0 +1,23 @@
+{% set image = block.image.one() %}
+
+{% if image %}
+   <section class="image mb-3">
+       {% set imgCredit = image.imageCredit ?? null %}
+       {% set imgCaption =  image.imageCaption ?? null %}
+       {% set imgBlockCaption =  block.caption ?? null %}
+       {% set imgLink =  block.imageLink ?? null %}
+       <figure>
+          {% if imgLink %}<a href="{{ block.imageLink | raw}}">{% endif %}
+            <img class="img-fluid" src="{{ image.getUrl() }}">
+          {% if imgLink %}</a>{% endif %}
+           {%  if imgCaption or imgCredit or imgBlockCaption %}
+               <figcaption>
+                   <i class="fa fa-chevron-up" aria-hidden="true"></i>
+               {% if imgBlockCaption %} {{ imgBlockCaption }}{% endif %}
+               {% if imgCaption %}{{ imgCaption }}{% endif %}
+                   {% if imgCredit %}<span class="credit">© {{ imgCredit }}</span>{%  endif %}
+               </figcaption>
+           {% endif %}
+       </figure>
+   </section>
+{% endif %}

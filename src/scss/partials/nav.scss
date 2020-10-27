@@ -1,0 +1,155 @@
+//navbar font
+//active menu item  color 0089BF
+
+
+.navbar .level1 a.nav-link{
+  font-family:$navbar-font-family;
+  font-size:1.5rem;
+}
+.navbar .level2 a.nav-link{
+  font-family:$navbar-font-family-child;
+  font-size:1.1rem;
+}
+
+// navbar settings
+.navbar-dark .navbar-toggler {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  //position: absolute;
+  //top: 7.5px;
+  //right: 15px;
+  padding: 5px 10px 10px 0;
+  outline-color: transparent;
+  outline: none;
+  border-width: 0;
+  z-index:11;
+  width:2em; //NB this is set to ensure child width menu icon and close icon widths dont throw display
+}
+.navbar-toggler-icon{
+  color: $white;
+  outline-color: transparent;
+  outline: none;
+  border-width: 0;
+}
+
+//.dropdown:hover>.dropdown-menu {
+//  display: block;
+//}
+
+.dropdown-item,
+li.nav-item .nav-link{
+ color: $white;
+
+}
+
+.dropdown-menu{
+  background-color: transparent;
+}
+//offcanvas
+
+.offcanvas-collapse {
+  position: fixed;
+  top: 0px; /* Height of navbar */
+  z-index:1;
+  bottom: 0;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  overflow-y: auto;
+  background-color: $blue;
+  opacity:0.93;
+  transition: transform .3s ease-in-out;
+  transform: translateX(100%);
+}
+.offcanvas-collapse.open {
+  transform: translateX(-1rem); /* Account for horizontal padding on navbar */
+}
+
+//.dropdown-menu{
+//  display:none;
+//}
+//
+//.dropdown-menu.show{
+//  display: block;
+//  transition: transform .3s ease-in-out;
+//}
+.navbar-dark .navbar-toggler-icon{
+  background-image: url('../images/icons/icn-menu.png');
+  width:2em;
+  height:1.3em;
+}
+.navbar-dark .navbar-toggler-icon.open{
+  background-image: url('../images/icons/icn-close.png');
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background-size: 100% 100%;
+}
+
+.navbar .ico-chat{
+  width:38px;
+  height:auto;
+}
+div.menuwrap{
+  height:100%;
+  width:100%;
+  padding-top:100px;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color:$white;
+  display: inline-block;
+  width:auto;
+  border-bottom: 1px solid $blue;
+}
+
+li.nav-item {
+  padding: 0.1rem 0.2rem 0.1rem 0;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus{
+  //color:$blue-light;
+  border-bottom: 1px solid $yellow;
+}
+
+
+.header .top-header ul li:last-child .nav-link.donate,
+.top-nav .btn-donate{
+  padding: 3px 10px;
+  font-size: 15px;
+  margin-right: 0;
+  background-color: darken($red, 10%);
+  color: $white;
+  width:auto;
+  border-radius: 8px;
+}
+.header .top-header ul li:last-child .nav-link.donate:hover{
+  background-color: $red;// #d22017;
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img.logo{
+    width:165px;
+    height:auto;
+  }
+
+}
+
+@media (max-width: 990px) {
+  li.nav-item{
+    //text-align: right;
+    //padding-right: 15px;
+  }
+  li.nav-item:hover{
+    //background: $blue-light;
+    }
+}
+@media (min-width: 990px) {
+  .header .navigation .navbar .navbar-brand {
+    //position: absolute;
+  }
+}

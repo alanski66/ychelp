@@ -1,0 +1,149 @@
+{% extends "_layouts/site.twig" %}
+
+
+
+
+{% block content %}
+
+
+    {% include '/_includes/featured_background.twig' %}
+
+
+
+
+    <!-- Staff list Content -->
+    {% if entry is defined %}
+
+        {% set entries = craft.entries({
+        section: 'staff',
+        with: ['staffImage'],
+        id:  'not ' ~ entry.id
+        }) %}
+        {% set staffimage = entry.staffImage[0] ?? null %}
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 mb-5">
+                    <h3>ISWAN Staff</h3>
+                </div>
+                <div class="col-lg-12">
+                    <div class="media mb-5">
+                        {% if staffimage %}
+                            <img class="mr-3" src="{{ staffImage[0].url }}" alt="Generic placeholder image">
+                        {% else %}
+                            <img class="mr-3" src="https://placehold.it/200x200" alt="Generic placeholder image">
+                        {% endif %}
+                        <div class="media-body">
+                            <h4 class="mt-0">{{ entry.title }}</h4>
+
+                            {% set jobtitle = entry.staffJobTitle ?? 'Staff job title goes here.' %}
+                            <h5>Staff job title goes here</h5>
+
+                            <div class="description">
+                                {% set text = entry.staffRoleDescription ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.' %}
+
+                                {{ text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid  bg-light">
+            <div class="container">
+                <div class="row ">
+
+
+                    <div class="col-lg-12 mt-5">
+                        <h3>Other Staff</h3>
+                    </div>
+
+
+                        <div class="col-sm-12 col-lg-8">
+                            <div class="row">
+                                {% for entry in entries %}
+                                    {# Get the eager-loaded asset, if there is one #}
+                                    {% set image = entry.staffImage[0] ?? null %}
+
+                                    {% set introtext = entry.projectIntroText ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.' %}
+
+                                    {# start card layout #}
+                                    <div class="col-lg-4 col-sm-6 portfolio-item">
+                                        <div class="card h-100">
+                                            <a href="{{ entry.url }}">
+                                                {% if image %}
+                                                    {% set transformedImages = craft.imager.transformImage(image,
+                                                    [
+                                                    { width: 768, ratio: 16/9, jpegQuality: 75 },
+                                                    ],
+                                                    {
+                                                    format: 'jpg',
+                                                    allowUpscale: false,
+                                                    mode: 'crop',
+                                                    jpegQuality: 80,
+                                                    position: image.focalpoint ~ '% ' ~ image.focalpoint ~ '%',
+                                                    interlace: true
+                                                    }
+                                                    ) %}
+                                                    <img class="card-img-top" src="{{ transformedImages[0].url }}"
+                                                         alt="{{ entry.title }}">
+                                                {% else %}
+                                                    <img class="card-img-top" src="https://placehold.it/200x200" alt="">
+                                                {% endif %}
+                                            </a>
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <a href="{{ entry.url }}">{{ entry.title }}</a>
+                                                </h4>
+                                                <p class="card-text">
+                                                    {{ entry.staffJobTitle }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {# end card layout #}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-3 offset-1">
+                            {# Get the (one!) related entry from the "menu" structure #}
+
+                            {% set rootOfSection = craft.entries.section('pages').first() %}
+                            {# Check if there are descendant entries #}
+                            {% if rootOfSection.hasDescendants() %}
+                                <h3>in this section</h3>
+
+                                <ul class="list-unstyled">
+                                    {# Get entries to build the sub-menu #}
+                                    {% set subMenu = craft.entries.descendantOf(rootOfSection) %}
+
+                                    {# Output the sub menu #}
+                                    {% for entry in subMenu %}
+                                        {% if entry.entryLink.first|length %}
+                                            {% set navlink = entry.entryLink.first.uri %}
+                                        {% else %}
+                                            {% set navlink = entry.customLink %}
+                                        {% endif %}
+
+                                        <li class="nav-item {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
+                                            <a href="{{ siteUrl }}{{ entry.uri }}"
+                                               class="nav-link  level{{ entry.level }}">{{ entry.title }}</a>
+                                        </li>
+
+                                    {% endfor %}
+
+                                </ul>
+                            {% endif %}
+
+                        </div>
+
+
+
+                </div>
+            </div>
+        </div><!-- /.container -->
+
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,220 @@
+{% set categorySponsors = entry.shipCategory.one().sponsorships %}
+{% set sectionParent = craft.entries.ancestorOf(entry).level(1).one() %}
+
+{% block content %}
+
+    {% import '_macros' as macros %}
+
+    {% set pdfImage = entry.pdfThumbnailImage[0] ?? null %}
+    {% set pdfThumbs = entry.pdfThumbnailImage.offset(1) %}
+    {% set pdfDocument = entry.pdfDocument.one() %}
+    {% set pdfDocuments = entry.pdfDocument.offset(1) %}
+    {% set thumbOrientation = macros.setOrientaton(pdfImage) %}
+
+
+    <section class="blue heading  pt-0 pb-3" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10   ">
+                    <div class="page-heading">
+                        <span class="smalltext">//  The Seafarers' Health Information Programme</span>
+                        <h1 class="mb-3">
+
+
+                            {{ entry.title }}
+                        </h1>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Content ship entry shipItem multiple documents -->
+    <section class="white {{ entry.section | lower }}">
+        <div class="container content">
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 pt-5 description">
+
+                    {% if pdfImage %}
+
+
+                        {% set pdfThumbImages = craft.imager.transformImage(pdfImage,
+                        [
+                        { width: 320,  ratio: 1/1 },
+                        { width: 320,  ratio: 1/1 },
+                        { width: 450,  ratio: 1/1 }
+                        ],
+                        {
+                        format: 'jpg',
+                        allowUpscale: true,
+                        mode: 'fit',
+                        jpegQuality: 90,
+                        interlace: true
+                        }
+                        ) %}
+
+                        {% if pdfImage.getWidth() < pdfImage.getHeight() %}
+                            {# portrait #}
+                            <div class="text-center float-xs-none float-sm-right ml-4">
+                                <picture>
+                                    <source media="(max-width: 550px)" sizes="100vw" srcset="{{ pdfThumbImages[0].url }}">
+                                    <source media="(max-width: 768px)" sizes="100vw" srcset="{{ pdfThumbImages[1].url }}">
+                                    <source media="(max-width: 1200px)" sizes="100vw" srcset="{{ pdfThumbImages[2].url }}">
+                                    <img class=" mb-4" src="{{ pdfThumbImages[0].url }}" alt="{{ pdfImage.title }}">
+                                </picture>
+                                {% if pdfDocument |length %}
+                                    <p class="text-center">
+                                        <a
+                                                target="_blank" data-on="click"
+                                                data-event-category="Downloads"
+                                                data-event-action="Ship item button"
+                                                data-event-label="{{ pdfDocument.filename }}"
+
+                                                href="{{ pdfDocument.url }}" class="btn btn-blue"><i
+                                                    class="fa fa-arrow-circle-down"></i> Download</a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        {% elseif pdfImage.getWidth() > pdfImage.getHeight() %}
+                            {# landscape #}
+                            <img class="img-fluid mb-4" src="{{ pdfImage.getUrl('pdfPortrait') }}">
+
+                            <h4>{{ pdfDocument.title | replace ('Ship', "") }}</h4>
+                            {% if pdfDocument |length %}
+                                <p class="text-center">
+                                    <a target="_blank"
+                                       data-on="click"
+                                       data-event-category="Downloads"
+                                       data-event-action="Ship item button"
+                                       data-event-label="{{ pdfDocument.filename }}"
+
+                                       href="{{ pdfDocument.url }}" class="btn btn-blue"><i
+                                                class="fa fa-arrow-circle-down"></i> Download</a>
+                                </p>
+                            {% endif %}
+                        {% else %}
+                            {# square #}
+                        {% endif %}
+                        <!-- Post Content -->
+                    {% endif %}
+
+
+                    {% if entry.shipDescription %}
+
+                        <p class="intro">{{ entry.shipIntroText }}</p>
+
+                        {% if entry.publicationDate %}
+                            <!-- Date/Time -->
+                            <small>First published on {{ entry.publicationDate.format('F Y') }}</small>
+                        {% endif %}
+
+                        {{ entry.shipDescription }}
+
+
+                    {% endif %}
+
+                    <!-- additional docs list (offset above to exclude first doc) -->
+                    <div class="row">
+                        <div class="col-12">
+
+                            {% if pdfDocuments | length > 1 %}
+
+                                <h5>{{ entry.headingForOtherDocuments ?? "Additional documents"}}</h5>
+
+                                <ul class="list-unstyled">
+                                    {% for doc in pdfDocuments.all() %}
+                                        {#<li class=""><a class="none" href="{{ doc.url }}">{{ doc.title }}</a></li>#}
+                                        <li class="">
+
+                                            <a class="btn btn-light mb-1" href="{{ doc.url }}"
+                                               data-on="click"
+                                               data-event-category="Downloads"
+                                               data-event-action="Ship item multi button"
+                                               data-event-label="{{ doc.filename }}"
+                                            ><i class="fa fa-arrow-circle-down"></i> {{ doc.title | replace ('Ship', "")}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                <hr>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- tags -->
+                    <div class="row tags">
+                        <div class="col-12 mb-5">
+                            {% for tag in entry.tags.all() %}
+
+                                <span class="badge"><i class="fa fa-tags"></i> <a
+                                            href="{{ siteUrl }}topics/{{ tag.title |lower| url_encode }}">{{ tag.title }}</a></span>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widgets Column -->
+                <div class="col-xs-12 col-lg-4  pt-5 mb-5">
+
+                    <!-- Search Widget -->
+                    <div class="shipnav">
+                        <div class="side-box">
+                            <div class="smalltext pb-3">The Seafarers' Health Information Programme</div>
+                            {% if sectionParent | length %}
+                                <h5><a class="sectionMultParent" href="{{ sectionParent.url }}">{{ sectionParent.title }}</a></h5>
+                            {% else %}
+                                <h5><a class="noSectionMultParent" href="{{ entry.shipCategory.one().url }}">{{ entry.shipCategory.one().title }}</a></h5>
+                            {% endif %}
+
+                            {% include 'ship/_includes/sponsor-sidebar.twig' %}
+
+                            <ul class="side-nav">
+                                {% import '_macros' as macros %}
+
+                                {% set entries = craft.entries({
+                                section: 'ship',
+                                limit: null,
+                                with: [
+                                'descendants'
+                                ],
+                                descendantOf: sectionParent.id
+
+                                }) %}
+                                {% for entry in entries.all() %}
+                                    <li class=" {{ macros.isMenuActive(entry.slug)|trim }} level{{ entry.level }}">
+                                        <a href="{{ siteUrl }}{{ entry.uri }}"
+                                           class="  level{{ entry.level }}">{{ entry.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+        </div>
+    </section>
+    <!-- /.container -->
+
+
+
+
+    <!-- shio entry Page Heading/Breadcrumbs -->
+    {# include sponsor bottom #}
+    {% include 'ship/_includes/sponsor-bottom.twig' %}
+
+
+
+    <!-- category footer nav inc -->
+
+    {% include ('ship/_includes/ship_category_footer_nav') %}
+    <!-- category footer nav inc END-->
+{% endblock %}

@@ -66,9 +66,7 @@ fields:
       selectionLabel: ''
       showSiteMenu: true
       source: null
-      sources:
-        - 'section:resources'
-        - 'section:ship'
+      sources: '*'
       targetSiteId: null
       validateRelatedElements: false
       viewMode: null
