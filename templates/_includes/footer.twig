@@ -1,42 +1,79 @@
 <!-- Footer -->
-<section class="supporters mb-5">
-
-    {% set supporters = craft.entries()
+<section class="supporters">
+    {#{% set category = entry.supporterCategory.one() %}#}
+    {% set partners = craft.categories.group('supporters').slug('partner').one() %}
+    {% set supporters = craft.categories.group('supporters').slug('supporter').one() %}
+    {% set allpartners = craft.entries()
         .section('supporters')
         .with(['image'])
-        .all() %}
+        .relatedTo(partners)
+        .all()
+    %}
 
-    {%  set initialSupporterIndex  =  "" %}
-    {% set slidecount = supporters|length %}
+    {% set initialSupporterIndex  =  "" %}
+    {% set slidecount = allpartners|length %}
 
     {% js %}
-        
+
         slidecount = {{ slidecount }};
         console.log("tmpl slidecount = " + slidecount);
-        
+
     {% endjs %}
-
-    <!-- Slider main container -->
-<div class="center-wrap">
-{#    <div class="row">#}
-{#        <div class="col-12 py-5">#}
-    <div class="main-carousel w-100 container">
-        {% for entry in supporters %}
-
-            {%  if entry.initialSupporter %}
-                {% set initialSupporterIndex = "is-initial-select" %}
-                {% else %}
-                    {%  set initialSupporterIndex  =  "" %}
-            {% endif %}
-            {% set asset = entry.image[0] %}
-            <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
-                <img class="my-auto" src="{{ asset.getUrl('memberLogo') }}">
+    <!-- Partner Carousel container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12  text-center">
+                <div class="thx blue-border pt-3">
+                    <p>We are grateful to our primary sponsors  and partners for their continued support:</p>
+                </div>
             </div>
-        {% endfor %}
-
+        </div>
     </div>
-{#    </div>#}
-{#    </div>#}
+    <div class="center-wrap partners ">
+
+        <div class="main-carousel w-100 container">
+            {% for entry in allpartners %}
+
+                {% if entry.initialSupporter %}
+                    {% set initialSupporterIndex = "is-initial-select" %}
+                {% else %}
+                    {% set initialSupporterIndex  =  initialSupporterIndex %}
+                {% endif %}
+                {% set asset = entry.image[0] %}
+                <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
+                    <img class="my-auto" src="{{ asset.getUrl('carouselPartnerLogo') }}">
+                </div>
+            {% endfor %}
+
+        </div>
+        {#    </div>#}
+        {#    </div>#}
+    </div>
+
+    <!-- Supporter Carousel container -->
+    {% set allsupporters = craft.entries()
+        .section('supporters')
+        .with(['image'])
+        .relatedTo(supporters)
+        .all()
+    %}
+    <div class="center-wrap supporters">
+        <div class="supporter-carousel w-100 container">
+            {% for entry in allsupporters %}
+                {% if entry.initialSupporter %}
+                    {% set initialSupporterIndex = "is-initial-select" %}
+                {% else %}
+                    {% set initialSupporterIndex  =  "" %}
+                {% endif %}
+                {% set asset = entry.image[0] %}
+                <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
+                    <img class="my-auto" src="{{ asset.getUrl('carouselSupporterLogo') }}">
+                </div>
+            {% endfor %}
+
+        </div>
+        {#    </div>#}
+        {#    </div>#}
     </div>
 
 </section>
@@ -49,7 +86,7 @@
         </div>
     </div>
     <div class="d-flex align-items-center p-0">
-        <div class="col-8 offset-2 col-lg-6 offset-lg-3 text-center ">
+        <div class="col-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 text-center ">
             {{ organisationDetails.organisationAddress | striptags(copyright.charityOrganisationStatement) }}
         </div>
     </div>

@@ -1,4 +1,4 @@
-dateModified: 1603816630
+dateModified: 1603898009
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -40,6 +40,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.2.1
+  typogrify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   wheelform:
     edition: standard
     enabled: true

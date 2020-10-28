@@ -61,33 +61,12 @@
 @import 'partials/forms';
 
 @import 'partials/lunar';
-//@import 'partials/slick';
-@import 'owl/owl.carousel';
+@import 'partials/flickity';
+@import 'partials/flickity-custom';
 @import 'partials/utility';
 //@import 'owl/owl.theme.default';
 //really simple social share
 //@import 'rrssb/rrssb.scss';
 
 //@import 'partials/cookie-consent-overrides.scss';
-.carousel-cell {
-  width: 160px; /* full width */
-  height: 150px; /* height of carousel */
-  margin: 10px;
-  display: flex;
-}
 
-.flickity-slider {
- height:150px;
-  margin-left: 25px;
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  //text-align: center;
-}
-
-div.center-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  //min-height: 100vh;
-}

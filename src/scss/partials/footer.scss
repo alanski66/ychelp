@@ -1,6 +1,7 @@
 footer{
   background-color: #F5F6F5;
   font-size:$font-size-xs;
+  font-family: $font-family-light;
   //background-color: $gray-300;
 }
 
@@ -9,4 +10,32 @@ footer{
 }
 .footer ul{
   font-size:$font-size-xs;
+}
+
+.blue-border{
+  //border:none;
+  //border-width: 1px;
+  //border-top-color: $blue-light;
+  //border-top-style: dashed;
+  background-image: url('../images/line-dash-blue.png');
+  background-repeat: repeat-x;
+  background-position: top;
+
+}
+
+.supporters .thx p{
+  color:$gray-500;
+  margin-bottom:0;
+  font-family: "BlissLight", sans-serif;
+  line-height: 1.2;
+}
+
+section.supporters:before {
+  //content: "";
+  ////position: absolute;
+  //border: 5px dashed $blue-light;
+  //top: -3px;
+  //bottom: -3px;
+  //left: -3px;
+  //right: -3px;
 }

@@ -8,7 +8,7 @@ settings:
   allowLimit: false
   allowMultipleSources: false
   allowSelfRelations: false
-  branchLimit: ''
+  branchLimit: '2'
   limit: null
   localizeRelations: false
   selectionLabel: ''

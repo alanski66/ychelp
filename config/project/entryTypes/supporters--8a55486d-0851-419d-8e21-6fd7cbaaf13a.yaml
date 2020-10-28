@@ -27,6 +27,15 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            fieldUid: daeb1928-8918-4f06-ac17-5bc3c9a45d3b
+            instructions: 'Website has a two tier category for display - Partners and supporters choose one'
+            label: 'Type of sponsor'
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
             fieldUid: a442c253-2edc-4ab1-ba05-f9e407e4771d
             instructions: null
             label: null
@@ -37,18 +46,18 @@ fieldLayouts:
             width: 100
           -
             fieldUid: 4c78bef1-0358-4ca8-a5d8-9112a3311aee
-            instructions: null
-            label: null
-            required: false
+            instructions: ''
+            label: ''
+            required: '1'
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
           -
             fieldUid: 7a2dfa74-227b-4b52-ad17-ea240052d284
-            instructions: null
-            label: null
-            required: false
+            instructions: ''
+            label: ''
+            required: '1'
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
@@ -66,7 +75,7 @@ fieldLayouts:
             fieldUid: 30efa9b1-5323-434c-b1fe-fef34e8ee339
             instructions: ''
             label: 'Website link'
-            required: ''
+            required: '1'
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60e3fc17f31ac0d456f0e51aef5d42aa",
+    "content-hash": "bce84087f65aefcd69401c63cf2de650",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -2632,6 +2632,106 @@
             "time": "2020-01-19T19:18:49+00:00"
         },
         {
+            "name": "masterminds/html5",
+            "version": "2.7.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/9227822783c75406cfe400984b2f095cdf03d417",
+                "reference": "9227822783c75406cfe400984b2f095cdf03d417",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Masterminds\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Butcher",
+                    "email": "technosophos@gmail.com"
+                },
+                {
+                    "name": "Matt Farina",
+                    "email": "matt@mattfarina.com"
+                },
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@gmail.com"
+                }
+            ],
+            "description": "An HTML5 parser and serializer.",
+            "homepage": "http://masterminds.github.io/html5-php",
+            "keywords": [
+                "HTML5",
+                "dom",
+                "html",
+                "parser",
+                "querypath",
+                "serializer",
+                "xml"
+            ],
+            "time": "2020-10-01T13:52:52+00:00"
+        },
+        {
+            "name": "michelf/php-smartypants",
+            "version": "1.8.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michelf/php-smartypants/zipball/47d17c90a4dfd0ccf1f87e25c65e6c8012415aad",
+                "reference": "47d17c90a4dfd0ccf1f87e25c65e6c8012415aad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Michelf": ""
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "https://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "https://daringfireball.net/"
+                }
+            ],
+            "description": "PHP SmartyPants",
+            "homepage": "https://michelf.ca/projects/php-smartypants/",
+            "keywords": [
+                "dashes",
+                "quotes",
+                "spaces",
+                "typographer",
+                "typography"
+            ],
+            "time": "2016-12-13T01:01:17+00:00"
+        },
+        {
             "name": "mikehaertl/php-shellcommand",
             "version": "1.6.2",
             "dist": {
@@ -2986,6 +3086,51 @@
             "time": "2020-07-31T21:01:56+00:00"
         },
         {
+            "name": "mundschenk-at/php-typography",
+            "version": "v6.6.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mundschenk-at/php-typography/zipball/67af39c936751f96a959b9bf211044512675283c",
+                "reference": "67af39c936751f96a959b9bf211044512675283c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-pcre": "*",
+                "masterminds/html5": "^2.5.0",
+                "php": ">=5.6.0"
+            },
+            "bin": [
+                "src/bin/update-patterns.php",
+                "src/bin/update-iana.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Putzer",
+                    "email": "github@mundschenk.at",
+                    "homepage": "https://code.mundschenk.at",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jeffrey D. King",
+                    "email": "jeff.king@weathersource.com",
+                    "homepage": "http://kingdesk.com",
+                    "role": "Original author"
+                }
+            ],
+            "description": "A PHP library for improving your web typography",
+            "time": "2020-04-05T12:14:12+00:00"
+        },
+        {
             "name": "nystudio107/craft-seomatic",
             "version": "3.3.22",
             "dist": {
@@ -3056,6 +3201,61 @@
                 "issues": "https://nystudio107.com/plugins/seomatic/support"
             },
             "time": "2020-10-20T16:34:40+00:00"
+        },
+        {
+            "name": "nystudio107/craft-typogrify",
+            "version": "1.1.18",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft-typogrify/zipball/28896d37f184cef87d2bbd84833565d0d732e331",
+                "reference": "28896d37f184cef87d2bbd84833565d0d732e331",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0",
+                "michelf/php-smartypants": "^1.8",
+                "mundschenk-at/php-typography": "^6.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Typogrify",
+                "handle": "typogrify",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-typogrify/v1/CHANGELOG.md",
+                "components": {
+                    "typogrify": "nystudio107\\typogrify\\services\\TypogrifyService"
+                },
+                "class": "nystudio107\\typogrify\\Typogrify"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\typogrify\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com/"
+                }
+            ],
+            "description": "Typogrify prettifies your web typography by preventing ugly quotes and 'widows' and more",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craftcms",
+                "typogrify"
+            ],
+            "support": {
+                "docs": "https://github.com/nystudio107/craft-typogrify/blob/v1/README.md",
+                "issues": "https://github.com/nystudio107/craft-typogrify/issues"
+            },
+            "time": "2019-04-30T21:24:04+00:00"
         },
         {
             "name": "opis/closure",
