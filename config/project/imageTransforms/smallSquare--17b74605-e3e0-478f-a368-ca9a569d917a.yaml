@@ -1,9 +1,0 @@
-format: null
-handle: smallSquare
-height: 125
-interlace: none
-mode: crop
-name: 'Small square'
-position: center-center
-quality: 82
-width: 125

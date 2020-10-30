@@ -1,9 +1,0 @@
-baseUrl: $PRIMARY_SITE_URL
-enabled: true
-handle: default
-hasUrls: true
-language: en-GB
-name: 'Yacht Crew Help'
-primary: true
-siteGroup: 81ddc3c9-69fd-4767-a0ec-a8937e3e737e
-sortOrder: 1
