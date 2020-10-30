@@ -1,3 +1,5 @@
+
+
 .section.landingpagerows.center ul{
   display: inline-block;
 }
@@ -19,4 +21,40 @@
 .cta.blue{
   background-image: none;
   background-color: $gray-500;
+}
+
+
+.side-box h3{
+  color:$gray-500;
+}
+.hero + .page-header{
+  //position: absolute;
+  //margin-top: -200px;
+  //background-color: $white;
+  //z-index: 11;
+  ////opacity: 0.7;
+  //left:0;
+  //z-index: 11;
+  //color:$white;
+  //background: linear-gradient(90deg, #FFFFFF 50%, transparent 70%);
+  //background: linear-gradient(90deg, #ffffff 50%, transparent 0%);
+}
+.hero .image-holder {
+  position: relative;
+  margin-bottom: 0;
+}
+.hero .image-holder img{
+  width:100%;
+  height:auto;
+}
+@media(max-width: 990px){
+
+
+  .page-header .page-heading{
+
+  }
+  .side-box{
+    padding:15px;
+    background: aliceblue;
+  }
 }

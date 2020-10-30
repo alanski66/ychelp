@@ -1,0 +1,18 @@
+fieldLayouts:
+  4c96f224-639a-4431-ad15-34f89fb7e5d5:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: fb82ef36-0c40-4f24-a454-7140f2da98ca
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: 'Calls to action config'
+        sortOrder: 1
+handle: cta
+name: CTA

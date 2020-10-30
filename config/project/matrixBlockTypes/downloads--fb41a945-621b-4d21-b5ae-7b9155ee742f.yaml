@@ -136,29 +136,19 @@ fields:
     searchable: true
     settings:
       allowSelfRelations: false
-      allowUploads: true
-      allowedKinds: null
-      defaultUploadLocationSource: 'volume:bccbe5e7-459a-476e-905c-a93ac10b478b'
-      defaultUploadLocationSubpath: ''
       limit: ''
       localizeRelations: false
-      previewMode: full
-      restrictFiles: ''
-      selectionLabel: 'Choose a file to add'
+      selectionLabel: ''
       showSiteMenu: true
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: true
-      singleUploadLocationSource: 'volume:528b0d00-159a-4866-aca8-d9394e99bb05'
-      singleUploadLocationSubpath: ''
       source: null
-      sources: '*'
+      sources:
+        - 'section:ee1a1187-0557-4a96-a0a7-2fcebed07734'
       targetSiteId: null
-      useSingleFolder: false
       validateRelatedElements: false
-      viewMode: list
+      viewMode: null
     translationKeyFormat: null
     translationMethod: site
-    type: craft\fields\Assets
+    type: craft\fields\Entries
 handle: downloads
-name: Downloads
+name: Resources
 sortOrder: 6

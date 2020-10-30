@@ -1,0 +1,135 @@
+fieldLayouts:
+  575c23d8-5419-4505-bb07-21d0a5dff3df:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 5c41bdef-bb14-4e77-a5d8-b77d58560134
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: ab1038d7-9433-4401-b13d-001163c38d42
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 64b04bb9-48e7-4874-a0c8-80f0b83b02d0
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 620de6f4-fd75-4c1f-a24d-3770d7ce8b8b
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: cf05dcf7-253f-4b03-97dc-4377cc175f93
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e8025471-95d2-4074-8bde-5d93c6f77ec3
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 385268ae-1633-4634-9179-08d3e71b7876
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d1c3675d-e44a-4ce5-a39c-776293471c1c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c0c580ed-04be-44f7-bb24-3c9c255f5335
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Media
+        sortOrder: 2
+      -
+        elements:
+          -
+            fieldUid: 43321487-c0cf-4014-9c35-7d648822348c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: SEO
+        sortOrder: 3
+      -
+        elements:
+          -
+            fieldUid: e650f7b8-2ff8-4084-acc6-cb0d6178e82e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b5ed2835-508b-4d72-aa69-f9754f9cd275
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: 'Menu settings'
+        sortOrder: 4
+handle: healthPageMedia
+hasTitleField: true
+name: 'Health page media'
+section: ee1a1187-0557-4a96-a0a7-2fcebed07734
+sortOrder: 4
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

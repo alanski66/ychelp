@@ -1,9 +1,10 @@
-<section class="page-header {{ craft.app.request.segments|first }} blue  py-3">
-    <div class="container">
-        <div class="row ">
+<!-- section/page header -->
+<section class="page-header {{ craft.app.request.segments|first }} blue ">
 
-            <div class="col-xs-12 col-sm-8 d-flex align-items-center justify-content-xs-center">
-                <h1 class="page-heading">
+        <div class="container ">
+
+            <div class="col-xs-12  d-flex align-items-center justify-content-xs-center">
+                <h1 class="pt-5">
                     {%  if entry is defined %}
                         {#                    {{ entry.title|length ? enty.title :'News' }}#}
                         {{ entry.title }}
@@ -12,21 +13,8 @@
                     {% endif %}
                 </h1>
             </div>
-{#            <div class="col-xs-12 col-sm-4 d-flex align-items-center justify-content-xs-center">#}
-{#                {%  set btnColor = "btn-" ~ subscribe.ctaButtonColor ?? "btn-gray" %}#}
-
-{#                <div class="text-xs-center text-sm-right text-lg-right cta-intro ml-auto">#}
-
-{#                    <a class="btn  btn-blue-dark" id="top-subscribe"#}
-{#                       data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">#}
-{#                        <i class="fa fa-envelope"></i>#}
-{#                        {{ subscribe.ctaButtonText }}#}
-{#                    </a>#}
-{#                </div>#}
-{#            </div>#}
-
         </div>
-    </div>
+
 
 </section>
 

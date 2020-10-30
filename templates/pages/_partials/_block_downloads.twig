@@ -3,7 +3,7 @@
 {% if block.displayStyle | length %}
     {% set style = block.displayStyle %}
 {% endif %}
-<section class="mb-4 mt-4  {{ style }}">
+<section class="mb-4 mt-4  {{ style }}" id="resources">
 
                 {% if block.heading |length %}
                     <h5 class="{{ style }}">
@@ -19,29 +19,32 @@
                 {% endif %}
 
                   {% if block.download |length %}
-                      <ul class="list-unstyled {{ style }}">
+                    <div class="row">
                         {% for doc in block.download.all() %}
-                            {%  set fileExt = doc.filename|split('.')|last  %}
+                            {%  set asset = doc.pdfThumbnailImage.one() ?? null %}
+                            <div class="col-6  mb-3">
+                                <div class="card">
+                                    {%  if asset | length %}
+                                        <a href="">
+                                            <img class="card-img-top img-fluid" data-mh="imgh" src="{{ asset.getUrl('pdfportraitsmall') }}" alt="{{ asset.title }}">
+                                        </a>
 
-                            {%  if style == 'iconList' %}
-                                {%  if fileExt == 'docx' %}
-                                    {%  set icon = "file-word" %}
-                                {%  elseif fileExt == 'pdf' %}
-                                    {%  set icon = "file-pdf" %}
-                                {%  endif %}
-                            {%  else %}
-                                {%  set icon = "arrow-circle-down" %}
-                            {%  endif %}
-                           <li class="mb-3">
-                               <a class="btn {{ style }}"
-                                  target="_blank" data-on="click"
-                                  data-event-category="Downloads"
-                                  data-event-action="link"
-                                  data-event-label="Relief download - {{ doc.title }}"
-                                       href="{{ doc.url }}">
-                                   <i class="fa fa-{{ icon }}"></i> {{ doc.title }}</a></li>
+                                    <div class="card-body" data-mh="textbody">
+                                        <div class="card-title ">
+                                            {%  if doc.url | length %}
+                                            <a href="{{ doc.url }}">{% endif %}
+                                                {{ doc.title }}
+                                                {%  if doc.url | length %}</a>{% endif %}
+
+                                        </div>
+
+
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
                         {% endfor %}
-                      </ul>
+                    </div>
                   {% endif %}
 
 

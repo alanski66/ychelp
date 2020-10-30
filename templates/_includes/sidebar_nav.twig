@@ -18,7 +18,7 @@
 {% if rootOfSection.hasDescendants() %}
 
 <div class="side-box">
-    <h3>{{ rootOfSection.title }}</h3>
+    <h3><a href="{{ rootOfSection.url }}">{{ rootOfSection.title }}</a></h3>
     <ul class="list-unstyled">
         {#Get entries to build the sub-menu#}
         {% set subMenu = craft.entries.descendantOf(rootOfSection) %}

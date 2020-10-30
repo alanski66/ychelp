@@ -1,0 +1,19 @@
+{% if block.usefulLink |length %}
+
+    <section class="block useful mb-3" id="useful">
+        <div class="blue-border py-3">
+    <h6>Useful links</h6>
+            <ul class="list-unstyled m-0">
+                {% for link in block.usefulLink %}
+                    <li class="list-inline-item">
+                        <a href="#"><i class="fa fa-link "></i> {{ link.title }}
+                            {% if block.text|length %}: {{ block.text }}{% endif %}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+{#        <div class="blue-border bottom"></div>#}
+    </section>
+
+{% endif %}

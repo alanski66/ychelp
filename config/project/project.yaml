@@ -1,4 +1,4 @@
-dateModified: 1603898009
+dateModified: 1604067764
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -8,6 +8,14 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
+  cloner:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  feed-me:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.2
   imager:
     edition: standard
     enabled: true
@@ -36,6 +44,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.2.0
+    settings:
+      destination: '11'
+      folder: ''
+      pluginLabel: 'Free Image search '
   super-table:
     edition: standard
     enabled: true

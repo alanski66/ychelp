@@ -1,0 +1,23 @@
+a.icon-circle{
+  border-radius: 100%;
+  background: $blue-light;
+  display: inline-block;
+  line-height: 60px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+a.icon-circle img{
+  max-width:37px;
+  height:auto;
+}
+svg #icon-email{
+  //fill:$white;
+  width:32px;
+  height:23px;
+}
+
+svg #icon-chat{
+  //fill:yellow;
+}
+

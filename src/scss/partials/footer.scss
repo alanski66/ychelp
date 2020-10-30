@@ -19,10 +19,21 @@ footer{
   //border-top-style: dashed;
   background-image: url('../images/line-dash-blue.png');
   background-repeat: repeat-x;
+}
+.blue-border.bottom{
+  background-position: bottom!important;
+}
+.blue-border.top{
   background-position: top;
-
 }
 
+.useful .blue-border{
+  background-image: none;
+  border:none;
+  border-width: 1px;
+  border-top-color: $blue-light;
+  border-top-style: dashed;
+}
 .supporters .thx p{
   color:$gray-500;
   margin-bottom:0;

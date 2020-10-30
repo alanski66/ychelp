@@ -45,21 +45,22 @@
 @import 'partials/bootstrap_overrides.scss';
 
 @import "bootstrap/bootstrap.scss";
-//@import 'font-awesome-v4/fontawesome.scss';
+@import 'font-awesome-v4/fontawesome.scss';
 
-@import 'font-awesome-5/fontawesome.scss';
-@import 'font-awesome-5/regular.scss';
-@import 'font-awesome-5/solid.scss';
+//@import 'font-awesome-5/fontawesome.scss';
+//@import 'font-awesome-5/regular.scss';
+//@import 'font-awesome-5/solid.scss';
 
 
 @import 'partials/header';
+@import 'partials/typography';
 @import 'partials/btns';
 @import 'partials/nav';
 @import 'partials/splash';
 @import 'partials/page';
 @import 'partials/footer';
 @import 'partials/forms';
-
+@import 'partials/cta';
 @import 'partials/lunar';
 @import 'partials/flickity';
 @import 'partials/flickity-custom';

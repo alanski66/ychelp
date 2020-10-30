@@ -1,13 +1,36 @@
 {% extends "_layouts/site" %}
 
 {% block content %}
-    {# header & hidden subscribe section #}
+    {% include '_includes/hero-banner.twig' %}
     {% include '_includes/_sectionheader' %}
 
     <!-- Page Content -->
     <section class="page generic mt-lg-4 mb-5">
     <div class="container">
 
+
+        {% set downloadBlockCount = 0 %}
+        <div class="onpage-nav">
+        {% for block in entry.contentBlock.all() %}
+
+            {% if block.type == "downloads" %}
+                {% set label = 'Guides' %}
+                {% set downloadBlockCount = downloadBlockCount + 1 %}
+            {% endif %}
+
+            {% if downloadBlockCount > 1 %}
+                {# insert optional content here #}
+                <a href="#resources" class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+                {% set downloadBlockCount = 0 %}
+            {% endif %}
+            {% if block.type == "usefullinks" %}
+                {% set label = 'Useful organisations' %}
+                <a href="#useful"  class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+            {% endif %}
+
+
+        {% endfor %}
+        </div>
         {#<div class="row ">#}
 
 
@@ -21,15 +44,50 @@
         <div class="row ">
             <div class="col-xs-12 col-md-12 col-lg-7 col-xl-7">
 
+{#                {% set image = entry.image[0] ?? null %}#}
+{#                {% if image | length %}#}
+{#                    <section class="image mb-5">#}
+{#                        {% set imgCredit = image.imageCredit ?? null %}#}
+{#                        {% set imgCaption =  image.imageCaption ?? null %}#}
+{#                        <figure>#}
+
+{#                                <img class="img-fluid" src="{{ image.getUrl() }}">#}
+
+{#                            {%  if imgCaption or imgCredit  %}#}
+{#                                <figcaption>#}
+{#                                    <i class="fa fa-chevron-up" aria-hidden="true"></i>#}
+{#                            #}
+{#                                    {% if imgCaption %}{{ imgCaption }}{% endif %}#}
+{#                                    {% if imgCredit %}<span class="credit">© {{ imgCredit }}</span>{%  endif %}#}
+{#                                </figcaption>#}
+{#                            {% endif %}#}
+{#                        </figure>#}
+{#                    </section>#}
+{#                {% endif %}#}
+
+
                 {% for block in entry.contentBlock.all() %}
-                    {% include ('pages/_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %}
-                    {% if block.type.handle == "image" %}
-                        {% set lazyImage = true %}
-                    {% endif %}
+
+
+                    {%  switch block.type %}
+
+{#                        {%  case 'downloads' or 'usefullinks' %}#}
+
+
+                        {% default %}
+                        {% include ('pages/_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %}
+
+                    {% endswitch %}
+
+                    
+
                 {% endfor %}
 
 
+                {% include ('_includes/block_cta.twig') %}
+
             </div>
+
             <div class="col-xs-12 col-md-12 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
                 {% include ('_includes/sidebar_nav.twig') %}
             </div>
