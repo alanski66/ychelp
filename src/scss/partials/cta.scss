@@ -7,6 +7,10 @@ a.icon-circle{
   height: 60px;
   text-align: center;
 }
+
+a.icon-circle:hover{
+  background: lighten($blue-light,10%);
+}
 a.icon-circle img{
   max-width:37px;
   height:auto;

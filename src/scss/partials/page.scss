@@ -1,4 +1,47 @@
 
+//homepage
+
+.homepage .text-overlay{
+    z-index: 99;
+    width: 70%;
+    /* height: 100%; */
+    /* margin-left: 15%; */
+    /* vertical-align: middle; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.homepage .img-overlay {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.homepage .hero h1{
+  color:$white;
+  font-size:$font-size-lg;
+  font-family: $font-family-sans-serif;
+  font-weight: 200;
+}
+.homepage .block-cta .justify-content-lg-start{
+  justify-content: center!important;
+}
+.homepage .block-cta .justify-content-lg-start li{
+  margin:0 15px
+}
+@media(min-width:1200px) {
+  .homepage .text-overlay {
+    width:50%;
+  }
+  .homepage .hero h1 {
+    font-size: $font-size-xl;
+  }
+}
+//end homepage
 
 .section.landingpagerows.center ul{
   display: inline-block;
@@ -13,6 +56,7 @@
   line-height: 1.6;
   margin-bottom: 0;
 }
+
 
 .cta .btn-sm,
 .cta .btn-group-sm>.btn {
@@ -47,12 +91,14 @@
   width:100%;
   height:auto;
 }
+
 @media(max-width: 990px){
 
 
   .page-header .page-heading{
 
   }
+  // blue box on mboile single column
   .side-box{
     padding:15px;
     background: aliceblue;

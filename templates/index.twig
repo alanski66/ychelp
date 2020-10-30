@@ -3,7 +3,12 @@
 {% block content %}
 
 
-    <!-- Page Content -->
+    {% for block in entry.sectionRow.all() %}
+{#        {% switch block.type %}#}
+
+         {% include ('home_blocks/'~block.type.handle) %}
+{#        {% endswitch %}#}
+    {% endfor %}
 
     {% include '_includes/donate-section.twig' %}
 {#    {% for show in  subscribe.showOnSection %}#}

@@ -1,0 +1,83 @@
+<!-- Home Page Hero Content -->
+<section class=" mb-5">
+    <div class=" hero-slider position-relative">
+        
+                {% set asset = block.image.one() ?? null %}
+
+                {% if asset | length %}
+                    {% set transformedBannerImages = craft.imager.transformImage(asset,
+                        [
+                            { width: 550, height:380, position: 'center-center', jpegQuality: 75,ratio: 4/3, cropZoom:1.5 },
+                            { width: 768, height:380, position: asset.getFocalPoint(), ratio: 2/1, jpegQuality: 85, zoom: 1 },
+                            { width: 1024, height:380, position: asset.getFocalPoint() ,jpegQuality: 95 },
+                            { width: 1200, height:380, position: asset.getFocalPoint() },
+                            { width: 2400, height:530, position: asset.getFocalPoint(),ratio: 2/1 }
+                        ],
+                        {
+                            format: 'jpg',
+                            allowUpscale: true,
+                            mode: 'crop',
+                            jpegQuality: 90,
+                            interlace: true
+                        }
+                        ) %}
+                    {% css %}
+                        @media(min-width: 320px){
+                        .slide-{{ block.id }}{
+                        background-image: url('{{ baseUrl ~ transformedBannerImages[0].url }}');
+                        height:380px;
+                        }
+                        }
+                        @media(min-width: 550px){
+                        .slide-{{ block.id }}{
+                        background-image: url('{{ baseUrl ~ transformedBannerImages[1].url }}');
+                        height:380px;
+                        }
+                        }
+                        @media(min-width: 768px){
+                        .slide-{{ block.id }}{
+                        background-image: url('{{ baseUrl ~ transformedBannerImages[2].url }}');
+                        height:480px;
+                        }
+                        }
+                        @media(min-width: 990px){
+                        .slide-{{ block.id }}{
+                        background-image: url('{{ baseUrl ~ transformedBannerImages[3].url }}');
+                        {#                                                    height:593px;#}
+                        }
+                        }
+
+                        @media(min-width: 1200px){
+                        .slide-{{ block.id }}{
+                        background-image: url('{{ baseUrl ~ transformedBannerImages[4].url }}');
+                        {#                            height:593px;#}
+                        }
+                        .bg-hero{
+
+                        }
+                        }
+
+
+                    {% endcss %}
+                {% endif %}
+
+                <div class="bg-hero overlay slide-{{ block.id }}">
+
+                    <div class="container d-flex">
+                        <div class="row">
+                            <div class="col-lg-12 align-items-center">
+                                <div class="hero-content col-12 col-sm-6 offset-3">
+                                    {% if block.headline |length %}
+                                        <h1 class=" mb-3 text-center">{{ block.headline }}</h1>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+    </div>
+</section>
