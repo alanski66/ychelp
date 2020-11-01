@@ -1,7 +1,13 @@
 //navbar font
 //active menu item  color 0089BF
 
-
+.navbar .hznav  .level1 a.nav-link{
+  font-size:1.1rem;
+  text-align: right;
+}
+.navbar .hznav li.nav-item{
+  padding: 0.1rem 0.1rem 0.1rem 0;
+}
 .navbar .level1 a.nav-link{
   font-family:$navbar-font-family;
   font-size:1.5rem;

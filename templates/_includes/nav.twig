@@ -2,6 +2,9 @@
 {% import '_macros' as macros %}
 {% set topNavPages = craft.entries.section('mainMenu').hidePage('< 1').all() %}
  {% set pages = craft.entries.section('pages').hidePage('not 1').all() %}
+   {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
+            {% set navTitle = "" %}
+            {% set navlink = "" %}
 <div class="navigation">
     <div class="container">
 
@@ -17,15 +20,52 @@
                     <img class="logo" src="{{ baseUrl }}/images/web-logo-strap-free.svg">
                 </a>
             </div>
-            
+                        <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end">
+                            {% for entry in pages %}
+                                {#{%  if entry.altNavTitle|length %}#}
+                                {#{%  set navTitle = entry.altNavTitle %}#}
+                                {#{% else %}#}
+                                {#{%  set navTitle = entry.title %}#}
+                                {#{% endif %}#}
+                                {% set title = "" %}
+                                {% if entry.menuTitle|length %}
+                                    {% set navlink = entry.uri %}
+                                    {% set title = entry.menuTitle %}
+                                {% else %}
+                                    {% set navlink = entry.uri %}
+                                    {% set title = entry.title %}
+                                {% endif %}
+
+                                {% if entry.level == 1 %}
+
+                                    {# set join tracker#}
+                                    {% set joinTracker = null %}
+                                    {% set target = null %}
+                                    {% if entry.title |lower  == "join" %}
+                                        {% set dataEventCategory = "Membership" %}
+                                        {% set dataEventAction = "Button" %}
+                                        {% set dataEventLabel = "Join" %}
+                                        {% set joinTracker = "data-event-category="~dataEventCategory %}
+                                        {% set joinTracker = joinTracker ~ " data-event-action="~dataEventAction %}
+                                        {% set joinTracker = joinTracker ~ " data-event-label="~dataEventLabel %}
+                                        {% set target = '' %}
+                                    {% endif %}
+                                    <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
+                                        <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title }}"
+                                                        href="{{ siteUrl }}{{ navlink }}"
+                                                        class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+
             <div class="chat d-flex align-self-center ">
                 <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
             </div>
 
 
-            {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
-            {% set navTitle = "" %}
-            {% set navlink = "" %}
+
 
 
 
@@ -107,27 +147,6 @@
                     </li>
                 {% endif %}
             {% endfor %}
-
-            {# add top nav for mobile #}
-
-            {% cache globally %}
-                {% for entry in topNavPages %}
-
-                    {% if entry.entryLink.one()|length %}
-                        {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
-                    {% else %}
-                        {% set navlink = siteUrl ~ entry.customLink %}
-                    {% endif %}
-
-                    {% if entry.level == 1 %}
-                        <li class="nav-item d-lg-none">
-                            <a id="{{ entry.title }}"
-                               class="nav-link { macros.activeLinkClass(navlink, entry.level)|trim }}"
-                               href="{{ navlink }}">{{ entry.title }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            {% endcache %}
 
         </ul>
     </div>
