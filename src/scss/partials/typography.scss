@@ -2,7 +2,9 @@ h1,h2,h3,h4,h5,h6{
   color:$blue;
   font-family: $font-family-sans-serif-second;
 }
-
+.text-grey-light{
+  color:$gray-500;
+}
 .page p {
   //margin-bottom:1.9rem;
   margin-bottom:1.2rem;

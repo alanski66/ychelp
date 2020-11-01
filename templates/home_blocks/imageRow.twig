@@ -1,4 +1,4 @@
-<section class="help mb-5">
+<section class="{{ block.type | kebab }} help mb-5">
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2 text-center mb-3">
@@ -12,14 +12,14 @@
                 {%  if asset | length %}
                 {% set thumb = {
                     mode: 'crop',
-                    width: 350,
-                    height: 207,
+                    width: 370,
+                    height: 217,
                     quality: 85
                 } %}
                 {% endif %}
-            <div class="col-12 col-sm-4 mb-4">
+            <div class="col-12 col-md-4 mb-4">
                 <div class="position-relative d-flex justify-content-center">
-                    <img class="img-fluid" src="{{ asset.getUrl(thumb) }}"
+                    <img class="d-none d-sm-block img-fluid" src="{{ asset.getUrl(thumb) }}"
                          width="{{ asset.getWidth(thumb) }}"
                          height="{{ asset.getHeight(thumb) }}">
                     <div class="text-overlay button px-auto"><a href="{{ block.buttonLink.one().url }}" class="btn btn-primary">{{ block.buttonText }}</a></div>

@@ -52,12 +52,13 @@ li.nav-item .nav-link{
 .offcanvas-collapse {
   position: fixed;
   top: 0px; /* Height of navbar */
-  z-index:1;
+  z-index:10;
   bottom: 0;
   width: 100%;
   padding-right: 1rem;
   padding-left: 1rem;
   overflow-y: auto;
+  margin-left: 1rem;
   background-color: $blue;
   opacity:0.93;
   transition: transform .3s ease-in-out;
@@ -131,10 +132,13 @@ li.nav-item {
   background-color: $red;// #d22017;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   .navbar-brand img.logo{
     width:165px;
     height:auto;
+  }
+  div.menuwrap{
+    margin-left:-1rem;
   }
 
 }

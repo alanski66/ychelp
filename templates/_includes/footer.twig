@@ -1,5 +1,5 @@
 <!-- Footer -->
-<section class="supporters">
+<section class="supporters py-4">
     {#{% set category = entry.supporterCategory.one() %}#}
     {% set partners = craft.categories.group('supporters').slug('partner').one() %}
     {% set supporters = craft.categories.group('supporters').slug('supporter').one() %}
@@ -21,15 +21,15 @@
     {% endjs %}
     <!-- Partner Carousel container -->
     <div class="container">
-        <div class="row">
-            <div class="col-12  text-center">
-                <div class="thx blue-border pt-3">
+        <div class="row ">
+            <div class="col-12  col-lg-8 offset-lg-2 text-center">
+                <div class="thx blue-border pt-4">
                     <p>We are grateful to our primary sponsors  and partners for their continued support:</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="center-wrap partners ">
+    <div class="center-wrap partners my-3">
 
         <div class="main-carousel w-100 container">
             {% for entry in allpartners %}
@@ -76,6 +76,7 @@
         {#    </div>#}
     </div>
 
+    <div class="text-center text-grey-light">See all our <a href="#">partners & supporters</a></div>
 </section>
 
 <footer class="footer">
@@ -129,58 +130,6 @@
 
         </div>
     </div>
-    <div class="container hide ">
-        <div class="row no-gutters  copyright pb-0">
-            <div class="col-sm-12 col-md-9 footer-inner">
-                <div class="copyright-left">
-                    <p>{{ copyright.charityOrganisationStatement }} <br>Charity no.{{ copyright.charityNumber }} |
-                        Company no. {{ copyright.companyNumber }}</p>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-3">
-                <div class="copyright-right">
-                    <ul>
-                        {% for block in copyright.rights.type('copyright').all() %}
-                            <li>{{ block.copyright | raw }}</li>
-                        {% endfor %}
 
-                        {% for block in copyright.rights.type('footerLeftLinks').all() %}
-
-                            {% if block.footerLeftLink | length %}
-                                {% for flink in block.footerLeftLink.all() %}
-                                    <li class="list-inline-item"><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-
-
-                        {% for block in copyright.rights.type('footerRightLinks').all() %}
-
-                            {% for flink in block.footerRightLink.all() %}
-                                <li><a href="{{ flink.uri }}">{{ flink.title }}</a></li>
-                            {% endfor %}
-
-                        {% endfor %}
-                        {#<li><a href="#">Quick links:</a></li>#}
-                        {#<li><a href="#">Resources</a></li>#}
-                        {#<li><a href="#">Real-life stories</a></li>#}
-                        {#<li><a href="#">Contact us</a></li>#}
-                        {#<li><a href="#">Subscribe</a></li>#}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 footer-inner">
-
-            </div>
-        </div>
-
-    </div>
-    <div class="container ">
-        <div class="row nogutters ">
-
-        </div>
-    </div>
 </footer>
 <!-- / footer -->

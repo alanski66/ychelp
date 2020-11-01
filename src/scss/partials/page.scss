@@ -4,7 +4,7 @@
   background-color: #eef6f9;
 }
 .homepage .text-overlay{
-    z-index: 99;
+    z-index: 9;
     width: 70%;
     /* height: 100%; */
     /* margin-left: 15%; */
@@ -52,6 +52,8 @@
 .homepage .block-cta .justify-content-lg-start li{
   margin:0 15px
 }
+
+
 @media(min-width:1200px) {
   .homepage .text-overlay {
     width:50%;
@@ -109,6 +111,24 @@
 .hero .image-holder img{
   width:100%;
   height:auto;
+}
+
+
+@media(max-width: 576px){
+
+  .homepage .image-row .text-overlay {
+    position: relative;
+    top: initial;
+    left: initial;
+    transform: initial;
+    width:100%;
+    text-align: center;
+    opacity: initial;
+
+  }
+  .homepage .image-row .text-overlay .btn{
+    width:100%;
+  }
 }
 
 @media(max-width: 990px){
