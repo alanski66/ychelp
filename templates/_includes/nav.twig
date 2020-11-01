@@ -15,12 +15,12 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-brand">
+            <div class="navbar-brand ml-4">
                 <a class="logo-wrap" href="/">
                     <img class="logo" src="{{ baseUrl }}/images/web-logo-strap-free.svg">
                 </a>
             </div>
-                        <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end">
+                        <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end mr-3 ">
                             {% for entry in pages %}
                                 {#{%  if entry.altNavTitle|length %}#}
                                 {#{%  set navTitle = entry.altNavTitle %}#}
@@ -57,12 +57,17 @@
                                     </li>
                                 {% endif %}
                             {% endfor %}
-
+                            <li class="nav-item level1"><a class="nav-link  level1" href="{{ donate.donateLink }}">Donate</a></li>
                         </ul>
+            <!-- global chat -->
+            {% for block in cta.ctaBlock  %}
+                <div class="chat d-flex align-self-center ">
+                    <a class="popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">
+                        <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
+                    </a>
+                </div>
+            {% endfor %}
 
-            <div class="chat d-flex align-self-center ">
-                <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
-            </div>
 
 
 

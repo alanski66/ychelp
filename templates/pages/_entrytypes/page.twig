@@ -20,12 +20,12 @@
 
             {% if downloadBlockCount > 1 %}
                 {# insert optional content here #}
-                <a href="#resources" class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+                <a href="#resources" class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
                 {% set downloadBlockCount = 0 %}
             {% endif %}
             {% if block.type == "usefullinks" %}
                 {% set label = 'Useful organisations' %}
-                <a href="#useful"  class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+                <a href="#useful"  class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
             {% endif %}
 
 
@@ -103,12 +103,12 @@
 
                         {% if downloadBlockCount > 1 %}
                             {# insert optional content here #}
-                            <a href="#resources" class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+                            <a href="#resources" class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
                             {% set downloadBlockCount = 0 %}
                         {% endif %}
                         {% if block.type == "usefullinks" %}
                             {% set label = 'Useful organisations' %}
-                            <a href="#useful"  class="scroll"><span class="badge badge-pill badge-primary mr-1">{{ label }}</span></a>
+                            <a href="#useful"  class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
                         {% endif %}
 
 
