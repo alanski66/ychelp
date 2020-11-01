@@ -1,6 +1,8 @@
 
 //homepage
-
+.bg-blue-light{
+  background-color: #eef6f9;
+}
 .homepage .text-overlay{
     z-index: 99;
     width: 70%;
@@ -11,6 +13,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+.homepage .text-overlay.button{
+  width:auto;
+}
+.homepage .text-overlay.button .btn{
+  white-space: nowrap;
+}
+
+.homepage .text-overlay.button .btn {
+  //height: 43.33px;
+  //width: 306.17px;
+  border-radius: 4px;
+  border:none;
+  background-color: rgba(0,137,191,0.8);
+}
+.homepage .text-overlay.button .btn:hover{
+  color:$white;
 }
 .homepage .img-overlay {
   position: absolute;

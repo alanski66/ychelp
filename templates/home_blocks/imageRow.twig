@@ -1,36 +1,31 @@
-<section class="content-block mb-5">
+<section class="help mb-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="women-story clearfix">
-                    <div class="skewbox">
-                    <div class="text-box">
-                        <span>{{ block.contentType | upper }}</span>
-                        <h1>{{ block.rowTitle | raw }}</h1>
-                        <p>{{ block.intro }} </p>
-                        {%  if block.buttonText |length and  block.buttonLink.one() |length %}
-                            <a href="{{ block.buttonLink.one().url }}">{{ block.buttonText }}</a>
-                        {% endif %}
-
-                    </div>
-                {%  if block.image |length %}
-                    <div class="image-holder">
-                        <div class="scene">
-                            <div class="panel">
-                                <img class="img-fluid" src="{{ block.image.one().getUrl('homeSkew') }}" alt="" />
-                            </div>
-                        </div>
-                        {#<div class="myskew">#}
-                            {#images/girl-img.png#}
-                            {#<img class="img-fluid" src="{{ block.image.one().getUrl('homeSkew') }}" alt="" />#}
-                        {#</div>#}
-
-                    </div>
-                        {%  endif %}
-                    </div>
-                </div>
-
+            <div class="col-12 col-lg-8 offset-lg-2 text-center mb-3">
+                <h3>{{ block.rowTitle }}</h3>
+                <p>{{ block.intro }}</p>
             </div>
+        </div>
+        <div class="row mb-5 ">
+            {% for block in block.imageColumn %}
+                {% set asset = block.image.one() ?? null %}
+                {%  if asset | length %}
+                {% set thumb = {
+                    mode: 'crop',
+                    width: 350,
+                    height: 207,
+                    quality: 85
+                } %}
+                {% endif %}
+            <div class="col-12 col-sm-4 mb-4">
+                <div class="position-relative d-flex justify-content-center">
+                    <img class="img-fluid" src="{{ asset.getUrl(thumb) }}"
+                         width="{{ asset.getWidth(thumb) }}"
+                         height="{{ asset.getHeight(thumb) }}">
+                    <div class="text-overlay button px-auto"><a href="{{ block.buttonLink.one().url }}" class="btn btn-primary">{{ block.buttonText }}</a></div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

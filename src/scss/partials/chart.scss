@@ -1,0 +1,23 @@
+.chart-container{
+  width:100%;
+  height:100%;
+  position: relative;
+}
+
+//font-aweosme color versions
+.chart-container .fa{
+  color: $blue-light
+}
+.chart-container .card-text{
+  line-height: 1.4;
+  //font-size:$font-size-sm;
+}
+@media (max-width:575px){
+  .chart-container{
+    text-align:center;
+    width:50%;
+    height:50%;
+    position: relative;
+    margin:0 auto;
+  }
+}
