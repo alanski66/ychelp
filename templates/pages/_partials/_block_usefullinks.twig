@@ -1,14 +1,25 @@
-{% if block.usefulLink |length %}
-
+{% if block.usefulOrgs |length %}
     <section class="block useful mb-3" id="useful">
         <div class="blue-border py-3">
     <h6>Useful links</h6>
             <ul class="list-unstyled m-0">
-                {% for link in block.usefulLink %}
-                    <li class="list-inline-item">
-                        <a href="#"><i class="fa fa-link "></i> {{ link.title }}
-                            {% if block.text|length %}: {{ block.text }}{% endif %}</a>
-                    </li>
+                {% for ulink in block.usefulOrgs %}
+
+                    {% if ulink.usefulLink | length %}
+                        {% for link in ulink.usefulLink %}
+                            <li class="list-inline-itm">
+                                    <a href="{{ link.url }}"><i class="fa fa-link "></i> {{ link.title }}
+                                        {% if link.text|length %}: {{ link.text }}{% endif %}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+
+                            <li class="list-inline-itm">
+                                <a href="{{ ulink.externalLink }}"><i class="fa fa-link "></i>
+                                    {% if ulink.text|length %}{{ ulink.text }}{% endif %}</a>
+                            </li>
+
+                    {% endif %}
                 {% endfor %}
             </ul>
 
