@@ -33,7 +33,7 @@
     </section>
     <!-- list content -->
 
-    {% set categories = craft.categories.group('supporters') %}
+    {% set categories = craft.categories.group('supporters').all() %}
 
 
     <section class="container page members">
@@ -41,11 +41,7 @@
         <div class="row mt-5">
             <div class="col-12 justify-content-center ">
 
-                {% set supporters = craft.entries()
-                    .section('supporters')
-                    
-                    .orderBy('title asc')
-                    .all() %}
+
 
                 {% for category in categories %}
                     {% set entries= craft.entries.relatedTo(category).orderBy('title asc')
@@ -54,7 +50,7 @@
                     <div class="row mb-5">
 
                         <div class="col-12 mb-3 text-center">
-                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}s</h2></div>
+                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
 
 
                         {% for entry in entries %}
