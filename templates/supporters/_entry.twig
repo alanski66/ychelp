@@ -1,0 +1,108 @@
+{% extends "_layouts/site.twig" %}
+
+
+
+
+{% block content %}
+
+
+    {#{% include '/_includes/featured_background.twig' %}#}
+
+    <section class="news blue  p-0" >
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-10  pb-2 ">
+                    <div class="page-heading mb-4">Sponsors</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Staff list Content -->
+    {% if entry is defined %}
+
+
+        {% set asset = entry.sponsorLogo.one() %}
+        <section class="gray p-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div class="media mb-5">
+                        {% if asset %}
+                            <img class="rounded-image mr-3" src="{{ asset.getUrl('sponsorLogo') }}" alt="Generic placeholder image">
+                        {% else %}
+                            <img class="mr-3" src="https://placehold.it/200x200" alt="Generic placeholder image">
+                        {% endif %}
+                        <div class="media-body">
+                            <h4 class="mt-0">{{ entry.title }}</h4>
+
+                            <div class="description">
+                                {% set text = entry.sponsorsMessage ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.' %}
+
+                                {{ text }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <section class="">
+        <div class="container-fluid  bg-light">
+            <div class="container">
+                <div class="row ">
+
+
+                    <div class="col-lg-12 mt-5">
+                        <h3>Our sponsors</h3>
+                    </div>
+
+
+                        <div class="col-sm-12 pb-5">
+                            <div class="row">
+
+                                {% set entries = craft.entries({
+                                section: 'sponsors',
+                                id: 'not ' ~ entry.id,
+                                    orderBy: 'title'
+                                }) %}
+
+                                {% for sentry in entries.all() %}
+
+                                    {% set asset = sentry.sponsorLogo.One() %}
+
+                                    {# start card layout #}
+                                    <div class="col-lg-3 col-sm-6 sponsor-item p-3">
+                                        <div class="card d-table-cell align-middle text-center">
+
+                                            <a href="{{ sentry.url }}">
+                                                {% if asset |length %}
+
+
+                                                    <img class="img-fluid" src="{{ asset.getUrl }}"  width="{{ asset.getWidth('sponsorLogoGrid') }}" height="{{ asset.getHeight('sponsorLogoGrid') }}"   alt="{{ sentry.title }}">
+                                                {% else %}
+                                                    <img class="card-img-top" src="https://placehold.it/200x200" alt="">
+                                                {% endif %}
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+                                    {# end card layout #}
+                                {% endfor %}
+                            </div>
+                        </div>
+
+
+
+
+                </div>
+            </div>
+        </div><!-- /.container -->
+        </section>
+
+    {% endif %}
+{% endblock %}

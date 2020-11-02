@@ -19,8 +19,13 @@
     <section class="news blue pt-lg-5 pb-lg-3 pt-sm-4 pb-sm-2">
         <div class="container">
             <div class="row ">
-                <div class="col-md-10">
-                    <div class="page-heading"><h1>{{ entry.title }}</h1></div>
+                <div class="col- col-md-8 offset-md-2  text-center">
+                    <div class="page-heading">
+                        <h1 class="pt-2 ">{{ entry.title }}</h1>
+                    </div>
+                    {% if entry.introText %}
+                        {{ entry.introText }}
+                    {% endif %}
                 </div>
 
             </div>
@@ -28,46 +33,55 @@
     </section>
     <!-- list content -->
 
+    {% set categories = craft.categories.group('supporters') %}
+
+
     <section class="container page members">
 
         <div class="row mt-5">
-            <div class="col-xs-12 col-md-12 col-lg-7 col-xl-7 ">
+            <div class="col-12 justify-content-center ">
 
                 {% set supporters = craft.entries()
                     .section('supporters')
-
+                    
                     .orderBy('title asc')
                     .all() %}
 
+                {% for category in categories %}
+                    {% set entries= craft.entries.relatedTo(category).orderBy('title asc')
+                        .all()  %}
 
-                <div class="row ">
-                    {% for entry in supporters %}
+                    <div class="row mb-5">
+
+                        <div class="col-12 mb-3 text-center">
+                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}s</h2></div>
 
 
+                        {% for entry in entries %}
                         {# start card layout #}
-                        <div class="col-md-4 mt-1  mb-4  ">
+                        <div class="col-6 col-md-4 mt-1  mb-4  ">
 
-                            <div class="card text-center h-100 justify-content-center {% if entry.websiteLink | length %}  {% endif %}">
+                            <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
 
 
 
-                                {#{% if entry.websiteLink | length %}#}
+                                {#{% if entry.customLink | length %}#}
 
                                 {%  set link = null %}
-                                {%  if  "http" in entry.websiteLink %}
-                                    {%  set link = entry.websiteLink %}
+                                {%  if  "http" in entry.customLink %}
+                                    {%  set link = entry.customLink %}
                                 {% else %}
-                                    {%  set link = "http://"~entry.websiteLink %}
+                                    {%  set link = "http://"~entry.customLink %}
                                 {% endif %}
 
-                                <a href="{{ entry.url }}" >
+                                <a href="{{ link }}" >
 
                                     <div class="my-auto">
                                         {% set image = entry.image[0] ?? null %}
 
                                         {% if image %}
                                             <div class="card-icon  ">
-                                                <img class="   m-2" src="{{ image.getUrl('memberLogo') }}"
+                                                <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
                                                      alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
                                             </div>
                                         {% else %}
@@ -77,16 +91,16 @@
                                             </div>
                                         {% endif %}
 
-                                        <div class="card-body p-0">
-                                            <h5 class="card-title p-2  mb-0">
+                                        <div class="card-body p-0 hide">
+                                            <h6 class="card-title p-2  mb-0">
                                                 {{ entry.title }}
 
-                                            </h5>
+                                            </h6>
 
                                         </div>
                                     </div>
                                 </a>
-                                {#{% if entry.websiteLink | length %} </a>{% endif %}#}
+                                {#{% if entry.customLink | length %} </a>{% endif %}#}
                             </div>
                         </div>
                         {# end card layout #}
@@ -96,11 +110,13 @@
                     {% endfor %}
 
                 </div>
+                {% endfor %}
             </div>
 
-            <div class="col-xs-12 col-md-12 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
-                {% include ('_includes/sidebar_nav.twig') %}
-            </div>
+
         </div>
     </section>
+    {%  css %}
+    .supporters{display:none}
+    {%  endcss %}
 {% endblock %}

@@ -143,3 +143,13 @@
     background: aliceblue;
   }
 }
+@media(min-width:1200px){
+  .hero-slider .text-overlay{
+    width:50%;
+  }
+}
+@media(min-width:1400px){
+  .hero-slider  .text-overlay{
+    width:40%;
+  }
+}
