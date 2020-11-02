@@ -44,8 +44,7 @@
 
 
                 {% for category in categories %}
-                    {% set entries= craft.entries.relatedTo(category).orderBy('title asc')
-                        .all()  %}
+                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
 
                     <div class="row mb-5">
 
@@ -70,7 +69,7 @@
                                     {%  set link = "http://"~entry.customLink %}
                                 {% endif %}
 
-                                <a href="{{ link }}" >
+                                <a href="{{ entry.url }}">
 
                                     <div class="my-auto">
                                         {% set image = entry.image[0] ?? null %}
