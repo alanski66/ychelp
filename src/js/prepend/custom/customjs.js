@@ -7,12 +7,25 @@ function updateChimpEmailValue($chimpEmail){
     $('input#mce-EMAIL').val($chimpEmail);
 }
 
-
+$(document).ready(function(){
+    $("#offcanvas").click(function(){
+        $(".offcanvas-collapse").fadeToggle();
+        $('.navbar-toggler-icon').toggleClass('open');
+        // $("#div2").fadeToggle("slow");
+        // $("#div3").fadeToggle(3000);
+    });
+    $("#offcanvas2").click(function(){
+        $(".offcanvas-collapse").fadeToggle();
+        $('.navbar-toggler-icon').toggleClass('open');
+        // $("#div2").fadeToggle("slow");
+        // $("#div3").fadeToggle(3000);
+    });
+});
     $('[data-toggle="offcanvas"]').on('click', function () {
 
-        $('.navbar-toggler-icon').toggleClass('open');
-        $('.offcanvas-collapse').toggleClass('open');
-        $('body').toggleClass("offcanvas-active");
+        // $('.navbar-toggler-icon').toggleClass('open');
+       // $('.offcanvas-collapse').fadeToggle('slow');
+        // $('body').toggleClass("offcanvas-active");
     })
 
     $('.navbar-nav>li>.nav-link').on('click', function(){

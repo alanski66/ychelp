@@ -30,10 +30,18 @@
             {#{% else %}#}
                 {#{% set navlink = entry.customLink %}#}
             {#{% endif %}#}
+            {% if entry.menuTitle|length %}
+                {% set navlink = entry.uri %}
+                {% set title = entry.menuTitle %}
+            {% else %}
+                {% set navlink = entry.uri %}
+                {% set title = entry.title %}
+            {% endif %}
+
             {% set navlink = entry.uri %}
             <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
                 <a href="{{ siteUrl }}{{ entry.uri }}"
-                   class="  level{{ entry.level }}">{{ entry.title }}</a>
+                   class="  level{{ entry.level }}">{{ title }}</a>
             </li>
 
         {% endfor %}

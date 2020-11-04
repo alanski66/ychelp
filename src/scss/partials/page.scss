@@ -45,6 +45,7 @@
   font-size:$font-size-lg;
   font-family: $font-family-sans-serif;
   font-weight: 200;
+  text-shadow: 1px 1px 1px #222;
 }
 .homepage .block-cta .justify-content-lg-start{
   justify-content: center!important;
@@ -54,14 +55,7 @@
 }
 
 
-@media(min-width:1200px) {
-  .homepage .text-overlay {
-    width:50%;
-  }
-  .homepage .hero h1 {
-    font-size: $font-size-xl;
-  }
-}
+
 //end homepage
 
 .section.landingpagerows.center ul{
@@ -114,26 +108,33 @@
 }
 
 
-@media(max-width: 576px){
+@media(max-width: 576px) {
 
   .homepage .image-row .text-overlay {
     position: relative;
     top: initial;
     left: initial;
     transform: initial;
-    width:100%;
+    width: 100%;
     text-align: center;
     opacity: initial;
 
   }
-  .homepage .image-row .text-overlay .btn{
-    width:100%;
+  .homepage .image-row .text-overlay .btn {
+    width: 100%;
+  }
+  .homepage .hero h1 {
+    color: $white;
+    font-size: $font-size-lg;
+    font-family: $font-family-sans-serif;
+    font-weight: 200;
+  }
+  .homepage .block-cta .cta-icons li {
+    margin: 0 8px;
   }
 }
 
 @media(max-width: 990px){
-
-
   .page-header .page-heading{
 
   }
@@ -143,13 +144,27 @@
     background: aliceblue;
   }
 }
+@media(min-width:768px){
+  .homepage .hero h1 {
+    font-size:2rem;
+  }
+}
 @media(min-width:1200px){
   .hero-slider .text-overlay{
     width:50%;
+  }
+ .homepage .text-overlay {
+    width:50%;
+  }
+  .homepage .hero h1 {
+    //font-size: $font-size-xl;
   }
 }
 @media(min-width:1400px){
   .hero-slider  .text-overlay{
     width:40%;
+  }
+  .homepage .hero h1 {
+    font-size:3rem;
   }
 }

@@ -64,14 +64,15 @@ li.nav-item .nav-link{
   padding-right: 1rem;
   padding-left: 1rem;
   overflow-y: auto;
-  margin-left: 1rem;
+  margin-left: 0rem;
   background-color: $blue;
+  //transition: transform .3s ease-in-out;
+  //transform: translateX(100%);
   opacity:0.93;
-  transition: transform .3s ease-in-out;
-  transform: translateX(100%);
+
 }
 .offcanvas-collapse.open {
-  transform: translateX(-1rem); /* Account for horizontal padding on navbar */
+  //transform: translateX(-1rem); /* Account for horizontal padding on navbar */
 }
 
 //.dropdown-menu{
@@ -139,6 +140,48 @@ li.nav-item {
   background-color: $red;// #d22017;
 }
 
+//caret
+.dropdown-toggle::after{
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+    color: $yellow;
+}
+.dropdown-menu{
+  border:none;
+  background: transparent;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  color: $yellow;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+//.nav-link .caret:before {
+//  border-top:2px solid #36b0d9;
+//  border-right: 0px solid transparent;
+//  border-left: 2px solid #36b0d9;
+//  position: relative;
+//  margin: 0;
+//  height: 8px;
+//  width: 8px;
+//  transform: rotate(225deg);
+//  transition: all 0.6s;
+//  margin-top:-5px;
+//  margin-left:4px;
+//}
+//.nav-link .caret:before {
+//  content:"";
+//}
+//.nav-link:hover .caret, .nav-link:hover .caret:before {
+//  border-color:#1e5c75;
+//}
+
 @media (max-width: 575px) {
   .navbar-brand img.logo{
     width:165px;
@@ -158,19 +201,28 @@ li.nav-item {
   li.nav-item:hover{
     //background: $blue-light;
     }
+  #offcanvas2{
+    display: none!important;
+  }
 }
 @media (min-width: 990px) {
   .header .navigation .navbar .navbar-brand {
     //position: absolute;
   }
+
+  #offcanvas2{
+    display: block!important;
+  }
 }
 @media(min-width: 1200px){
   .navbar .hznav  .level1 a.nav-link{
-    font-size:1.4 rem;
+    font-size:1.4rem;
     text-align: right;
   }
 }
-
+ul.navbar-nav{
+  //margin-left: -1rem;
+}
 
 .navbar-expand-lg .navbar-nav .nav-link {
   padding-right: 0rem;

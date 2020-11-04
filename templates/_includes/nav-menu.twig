@@ -1,7 +1,7 @@
 <!-- nav twig -->
 {% import '_macros' as macros %}
 {% set topNavPages = craft.entries.section('mainMenu').hidePage('< 1').all()  %}
- {% set pages = craft.entries.section('pages').hidePage('not 1').all()  %}
+ {% set pages = craft.entries.section('mainMenu').hidePage('not 1').all()  %}
 <div class="navigation">
     <div class="container">
 

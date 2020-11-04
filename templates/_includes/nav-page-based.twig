@@ -1,7 +1,7 @@
 <!-- nav twig -->
 {% import '_macros' as macros %}
 
- {% set pages = craft.entries.section('mainMenu').hidePage('not 1').all() %}
+ {% set pages = craft.entries.section('pages').hidePage('not 1').all() %}
    {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
             {% set navTitle = "" %}
             {% set navlink = "" %}
@@ -10,7 +10,7 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
-            <button class="d-block d-lg-none ml-4 navbar-toggler d-flex align-self-center " id="offcanvas" type="button"
+            <button class="navbar-toggler d-flex align-self-center " type="button" data-toggle="offcanvas"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,13 @@
                                 {#{% else %}#}
                                 {#{%  set navTitle = entry.title %}#}
                                 {#{% endif %}#}
-                                {% if entry.entryLink.one()|length %}
-                                    {% set navlink = entry.entryLink.one().uri %}
+                                {% set title = "" %}
+                                {% if entry.menuTitle|length %}
+                                    {% set navlink = entry.uri %}
+                                    {% set title = entry.menuTitle %}
                                 {% else %}
-                                    {% set navlink = entry.customLink %}
+                                    {% set navlink = entry.uri %}
+                                    {% set title = entry.title %}
                                 {% endif %}
 
                                 {% if entry.level == 1 %}
@@ -38,13 +41,23 @@
                                     {# set join tracker#}
                                     {% set joinTracker = null %}
                                     {% set target = null %}
-                                    
-                                    <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
-                                        <a id="{{ entry.title | kebab }}" href="{{ siteUrl }}{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                    {% if entry.title |lower  == "join" %}
+                                        {% set dataEventCategory = "Membership" %}
+                                        {% set dataEventAction = "Button" %}
+                                        {% set dataEventLabel = "Join" %}
+                                        {% set joinTracker = "data-event-category="~dataEventCategory %}
+                                        {% set joinTracker = joinTracker ~ " data-event-action="~dataEventAction %}
+                                        {% set joinTracker = joinTracker ~ " data-event-label="~dataEventLabel %}
+                                        {% set target = '' %}
+                                    {% endif %}
+                                    <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
+                                        <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title }}"
+                                                        href="{{ siteUrl }}{{ navlink }}"
+                                                        class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
-                            
+                            <li class="nav-item level1"><a class="nav-link  level1" href="{{ donate.donateLink }}">Donate</a></li>
                         </ul>
             <!-- global chat -->
             {% for block in cta.ctaBlock  %}
@@ -54,22 +67,23 @@
                     </a>
                 </div>
             {% endfor %}
-            
-            <button class=" ml-4 navbar-toggler d-flex align-self-center d-none d-lg-block" id="offcanvas2" type="button"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+
+
+
+
+
 
         </nav>
     </div>
 </div>
 <!-- offcanvas -->
-<div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent" style="display: none">
+<div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent">
     <!-- off c main nav -->
     <div class="container">
     <div class="navbar menuwrap">
-        <ul class="navbar-nav  ml-lg-auto    justify-content-end">
-            {% set burgermenu = craft.entries.section('mainMenu').all() %}
+        <ul class="navbar-nav mr-auto justify-content-end">
+            {% set burgermenu = craft.entries.section('pages').all() %}
             {% for entry in burgermenu %}
                 {#{%  if entry.altNavTitle|length %}#}
                 {#{%  set navTitle = entry.altNavTitle %}#}
@@ -77,10 +91,12 @@
                 {#{%  set navTitle = entry.title %}#}
                 {#{% endif %}#}
                 {% set title = "" %}
-                {% if entry.entryLink.one()|length %}
-                    {% set navlink = entry.entryLink.one().uri %}
+                {% if entry.menuTitle|length %}
+                    {% set navlink = entry.uri %}
+                    {% set title = entry.menuTitle %}
                 {% else %}
-                    {% set navlink = entry.customLink %}
+                    {% set navlink = entry.uri %}
+                    {% set title = entry.title %}
                 {% endif %}
 
                 {% if entry.level == 1 and entry.children|length %}
@@ -107,7 +123,7 @@
                                     {% set childlink = child.uri %}
                                     {% set title = child.title %}
                                     {#{% endif %}#}
-                                    <a id="{{ entry.title|kebab }}" href="{{ siteUrl }}{{ childlink }}"
+                                    <a id="{{ entry.title }}" href="{{ siteUrl }}{{ childlink }}"
                                        class="dropdown-item level {{ child.level }}">{{ title }}</a>
 
                                 {% endif %}
@@ -131,9 +147,9 @@
                         {% set target = '' %}
                     {% endif %}
                     <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
-                        <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title | kebab }}"
+                        <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title }}"
                                         href="{{ siteUrl }}{{ navlink }}"
-                                        class="nav-link hi {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                        class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
