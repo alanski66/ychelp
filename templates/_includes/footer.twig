@@ -81,6 +81,21 @@
 
 <footer class="footer">
 
+    <div class="d-flex  justify-content-center align-items-center list-unstyled">
+        {% set entries = craft.entries.section('footerNav').hidePage('not 1').all() %}
+
+        <ul class="d-flex text-centre m-0 footer-nav pt-4 py-2 ">
+            {% for entry in entries %}
+                {% if entry.entryLink.one()|length %}
+                    {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
+                {% else %}
+                    {% set navlink =  entry.customLink %}
+                {% endif %}
+                <li class="mr-0 list-inline-item"><a href="{{ navlink }}">{{ entry.title }}</a></li>
+            {% endfor %}
+            
+        </ul>
+    </div>
     <div class="d-flex  align-items-center">
         <div class="col-12 text-center p-3">
             <img class="align-self-center" src="{{ baseUrl }}/images/iswan-logo.svg">

@@ -50,3 +50,18 @@ section.supporters:before {
   //left: -3px;
   //right: -3px;
 }
+section.supporters a{
+  color:$blue-light;
+}
+.footer-nav li a{
+  color:$gray-600;
+  font-family: "BlissLight", sans-serif;
+font-weight: 200;
+}
+.footer-nav li {
+  border-right:1px solid $gray-500;
+  padding: 0 1rem;
+}
+.footer-nav li:last-child{
+  border-right: none;
+}

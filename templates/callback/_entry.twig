@@ -1,0 +1,138 @@
+{% extends "_layouts/site" %}
+
+{% block content %}
+
+    <section class="news blue pt-lg-5 pb-lg-3 pt-sm-4 pb-sm-2">
+        <div class="container">
+            <div class="row ">
+                <div class="col- col-md-8 offset-md-2  text-center">
+                    <div class="page-heading">
+                        <h3>Our partners & supporters</h3>
+                        <h1 class="pt-2 d-inline blue-border bottom">{{ entry.title }}</h1>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Page Content -->
+    <section class="page">
+        <div class="container">
+
+            {#<div class="row ">#}
+
+
+            {#<div class="col-lg-12 mb-3">#}
+            {#<h1>{{ entry.title }}</h1>#}
+            {#</div>#}
+            {#</div>#}
+
+            {% set lazyImage = false %}
+            {% set blockPrefix = "" %}
+            <div class="row ">
+                <div class="col-12 col-lg-8 offset-lg-2 text-center">
+
+                    {% if entry.image| length %}
+                        {% set image = entry.image[0] ?? null %}
+                        <img class=" mt-3 mb-5"  src="{{ image.getUrl('sponsorLogo') }}" width="{{ image.getWidth('sponsorLogo') }}" height="{{ image.getHeight('sponsorLogo') }}" alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: ''  }}">
+                    {% endif %}
+                    {% if entry.introText %}
+                        {{ entry.introText }}
+                    {% endif %}
+
+                    {% if entry.body %}
+                        {{ entry.body }}
+                    {% endif %}
+
+                    {% if entry.customLink | length %}
+                        <p><a href="{{ entry.customLink }}" target="_blank">Visit {{ entry.title }} at their website <i class="fa fa-external-link"></i></a></p>
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    {% set categories = craft.categories.group('supporters').all() %}
+
+
+    <section class="container page members">
+
+        <div class="row mt-5">
+            <div class="col-12 justify-content-center ">
+                {% for category in categories %}
+                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
+
+                    <div class="row mb-5">
+
+                        <div class="col-12 mb-3 text-center">
+                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
+
+
+                        {% for entry in entries %}
+                            {# start card layout #}
+                            <div class="col-6 col-md-4 mt-1  mb-4  ">
+
+                                <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
+
+
+
+                                    {#{% if entry.customLink | length %}#}
+
+                                    {%  set link = null %}
+                                    {%  if  "http" in entry.customLink %}
+                                        {%  set link = entry.customLink %}
+                                    {% else %}
+                                        {%  set link = "http://"~entry.customLink %}
+                                    {% endif %}
+
+                                    <a href="{{ entry.url }}">
+
+                                        <div class="my-auto">
+                                            {% set image = entry.image[0] ?? null %}
+
+                                            {% if image %}
+                                                <div class="card-icon  ">
+                                                    <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
+                                                         alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
+                                                </div>
+                                            {% else %}
+                                                <div class="card-icon  ">
+                                                    <img class="   m-2" src="{{ baseUrl }}/images/nologo-sm.png"
+                                                         alt="this member does not yet have a logo">
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="card-body p-0 hide">
+                                                <h6 class="card-title p-2  mb-0">
+                                                    {{ entry.title }}
+
+                                                </h6>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    {#{% if entry.customLink | length %} </a>{% endif %}#}
+                                </div>
+                            </div>
+                            {# end card layout #}
+
+
+
+                        {% endfor %}
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {%  css %}
+        section.supporters{display:none}
+    {%  endcss %}
+
+{% endblock %}

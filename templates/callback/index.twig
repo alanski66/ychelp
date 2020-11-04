@@ -1,0 +1,117 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/site" %}
+
+
+{% block content %}
+
+
+    <section class="news blue pt-lg-5 pb-lg-3 pt-sm-4 pb-sm-2">
+        <div class="container">
+            <div class="row ">
+                <div class="col- col-md-8 offset-md-2  text-center">
+                    <div class="page-heading">
+                        <h1 class="pt-2 ">{{ entry.title }}</h1>
+                    </div>
+                    {% if entry.introText %}
+                        {{ entry.introText }}
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- list content -->
+
+    {% set categories = craft.categories.group('supporters').all() %}
+
+
+    <section class="container page members">
+
+        <div class="row mt-5">
+            <div class="col-12 justify-content-center ">
+
+
+
+                {% for category in categories %}
+                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
+
+                    <div class="row mb-5">
+
+                        <div class="col-12 mb-3 text-center">
+                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
+
+
+                        {% for entry in entries %}
+                        {# start card layout #}
+                        <div class="col-6 col-md-4 mt-1  mb-4  ">
+
+                            <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
+
+
+
+                                {#{% if entry.customLink | length %}#}
+
+                                {%  set link = null %}
+                                {%  if  "http" in entry.customLink %}
+                                    {%  set link = entry.customLink %}
+                                {% else %}
+                                    {%  set link = "http://"~entry.customLink %}
+                                {% endif %}
+
+                                <a href="{{ entry.url }}">
+
+                                    <div class="my-auto">
+                                        {% set image = entry.image[0] ?? null %}
+
+                                        {% if image %}
+                                            <div class="card-icon  ">
+                                                <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
+                                                     alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
+                                            </div>
+                                        {% else %}
+                                            <div class="card-icon  ">
+                                                <img class="   m-2" src="{{ baseUrl }}/images/nologo-sm.png"
+                                                     alt="this member does not yet have a logo">
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="card-body p-0 hide">
+                                            <h6 class="card-title p-2  mb-0">
+                                                {{ entry.title }}
+
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </a>
+                                {#{% if entry.customLink | length %} </a>{% endif %}#}
+                            </div>
+                        </div>
+                        {# end card layout #}
+
+
+
+                    {% endfor %}
+
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </section>
+    {%  css %}
+    .supporters{display:none}
+    {%  endcss %}
+{% endblock %}

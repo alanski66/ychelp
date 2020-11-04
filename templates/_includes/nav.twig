@@ -1,6 +1,6 @@
 <!-- nav twig -->
 {% import '_macros' as macros %}
-{% set topNavPages = craft.entries.section('mainMenu').hidePage('< 1').all() %}
+
  {% set pages = craft.entries.section('pages').hidePage('not 1').all() %}
    {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
             {% set navTitle = "" %}
@@ -83,7 +83,8 @@
     <div class="container">
     <div class="navbar menuwrap">
         <ul class="navbar-nav mr-auto justify-content-end">
-            {% for entry in pages %}
+            {% set burgermenu = craft.entries.section('pages').all() %}
+            {% for entry in burgermenu %}
                 {#{%  if entry.altNavTitle|length %}#}
                 {#{%  set navTitle = entry.altNavTitle %}#}
                 {#{% else %}#}

@@ -1,4 +1,4 @@
-dateModified: 1604328002
+dateModified: 1604494835
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -12,10 +12,84 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  cookie-consent-banner:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+    settings:
+      allow: 'Allow cookies'
+      async_js: ''
+      auto_inject: '1'
+      decline: Decline
+      defer_js: ''
+      disable_in_live_preview: ''
+      dismiss: 'Got it!'
+      dismiss_on_scroll: '0'
+      dismiss_on_timeout: '0'
+      excluded_categories: null
+      excluded_entry_types: null
+      expiry_days: '365'
+      honour_do_not_track_header: ''
+      layout: block
+      learn: 'Learn More'
+      learn_more_link: 'http://cookiesandyou.com/'
+      message: 'This website uses cookies to ensure you get the best experience on our website.'
+      palette: default
+      palette_banner: '#000000'
+      palette_banner_text: '#ffffff'
+      palette_button: '#f1d600'
+      palette_button_text: '#000000'
+      palette_left_button_bg: '#f8e71c'
+      palette_left_button_text: '#000000'
+      palette_link: '#ffffff'
+      position: bottom
+      preload_css: ''
+      revokable: '1'
+      secure_only: '1'
+      target: _blank
+      type: info
   feed-me:
     edition: standard
     enabled: true
     schemaVersion: 2.1.2
+  guest-entries:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.0
+    settings:
+      enableCsrfProtection: '1'
+      entryVariable: entry
+      sections:
+        __assoc__:
+          -
+            - 0142231a-9a28-4802-bda0-21494e18d138
+            -
+              __assoc__:
+                -
+                  - sectionUid
+                  - 0142231a-9a28-4802-bda0-21494e18d138
+                -
+                  - allowGuestSubmissions
+                  - '1'
+                -
+                  - enabledByDefault
+                  - ''
+                -
+                  - runValidation
+                  - '1'
+                -
+                  - authorUid
+                  - eafd6230-c8ab-44aa-9aa6-e64957b5af9b
+  guest-entries-notification:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      confirmationTemplate: callback/_entry.twig
+      emailSubject: 'New callback request created'
+      emailTo: yachtcrewhelp.org
+      fromEmail: web@yachtcrewhelp.org
+      fromName: 'Yacht Crew Help Website'
   imager:
     edition: standard
     enabled: true
@@ -29,6 +103,10 @@ plugins:
     enabled: true
     schemaVersion: 1.0.0
   position-fieldtype:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  recaptchaguest:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
