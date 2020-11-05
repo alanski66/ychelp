@@ -40,7 +40,7 @@
                                     {% set target = null %}
                                     
                                     <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
-                                        <a id="{{ entry.title | kebab }}" href="{{ siteUrl }}{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                        <a id="{{ entry.title | kebab }}" href="{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
@@ -94,7 +94,7 @@
                         <div class="dropdown-menu " aria-labelledby="{{ entry.title | kebab }}">
 
                             <a href="{{ navlink }}"
-                               class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ title }}</a>
+                               class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ entry.title }}</a>
 
 
                             <!-- get children -->
@@ -119,22 +119,10 @@
 
                 {% elseif entry.level == 1 and not entry.hasDescendants() %}
 
-                    {# set join tracker#}
-                    {% set joinTracker = null %}
-                    {% set target = null %}
-                    {% if entry.title |lower  == "join" %}
-                        {% set dataEventCategory = "Membership" %}
-                        {% set dataEventAction = "Button" %}
-                        {% set dataEventLabel = "Join" %}
-                        {% set joinTracker = "data-event-category="~dataEventCategory %}
-                        {% set joinTracker = joinTracker ~ " data-event-action="~dataEventAction %}
-                        {% set joinTracker = joinTracker ~ " data-event-label="~dataEventLabel %}
-                        {% set target = '' %}
-                    {% endif %}
                     <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
-                        <a {{ target }} data-on="click" {{ joinTracker }} id="{{ entry.title | kebab }}"
-                                        href="{{ siteUrl }}{{ navlink }}"
-                                        class="nav-link hi {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                        <a  id="{{ entry.title | kebab }}"
+                                        href="{{ navlink }}"
+                                        class="nav-link  {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
