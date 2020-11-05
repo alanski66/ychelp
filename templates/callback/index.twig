@@ -31,87 +31,93 @@
             </div>
         </div>
     </section>
-    <!-- list content -->
+    <!-- form content -->
+    <div class="container site page">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 main">
 
-    {% set categories = craft.categories.group('supporters').all() %}
+                <style>
+                    #callback label.error{ font-size:12px;font-weight:normal;color:red!important}
+                </style>
 
+                {% macro errorList(errors) %}
+                    {% if errors %}
+                        <ul class="errors">
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endmacro %}
 
-    <section class="container page members">
+                {% from _self import errorList %}
 
-        <div class="row mt-5">
-            <div class="col-12 justify-content-center ">
+                <form method="post" class="form callbackform" id="callback" action="" accept-charset="UTF-8">
+                    {{ csrfInput() }}
 
+                    <input type="hidden" class="ignore" name="action" value="guest-entries/save">
+                    {{ redirectInput('callback-thanks') }}
+                    <input type="hidden" class="ignore"  name="sectionUid" value="0142231a-9a28-4802-bda0-21494e18d138">
+                    <input type="hidden" name="fields[ipaddress]" value="{{ craft.request.getIpAddress() }}">
 
+                    <div class="form-group">
+                        <label for="title">{{ "Name" | t }}</label>
+                        <input id="title" type="text" class="form-control"  name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="callbackTel">{{ "Telephone number (including the country code for where you are)" | t }}</label>
+                        <input id="callbackTel" type="text" class="form-control"  name="fields[callbackTelephone]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="callbackemail">{{ "Email" | t }}</label>
+                        <input id="callbackemail" type="text" class="form-control" name="fields[callbackEmail]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">{{ "Language you would like us to talk to you in?" | t }}</label>
+                        <input id="language" type="text" class="form-control" name="fields[language]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="callbacktime">{{ "When would you like us to call you?" | t }}</label>
+                        <input id="callbacktime" type="text" class="form-control" name="fields[callbackTime]" required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="body">{{ "What do you want to talk about?" | t }}</label>
+                        <textarea class="form-control" id="body" name="fields[body]" required></textarea>
 
-                {% for category in categories %}
-                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
+                    </div>
+                    <div class="form-group hide">
+                        <div class="g-recaptcha" data-sitekey="{{ craft.app.config.general.recaptcha_v2_public}}" data-callback="recaptchaCallback"></div>
+                        <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
 
-                    <div class="row mb-5">
-
-                        <div class="col-12 mb-3 text-center">
-                            <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
-
-
-                        {% for entry in entries %}
-                        {# start card layout #}
-                        <div class="col-6 col-md-4 mt-1  mb-4  ">
-
-                            <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
-
-
-
-                                {#{% if entry.customLink | length %}#}
-
-                                {%  set link = null %}
-                                {%  if  "http" in entry.customLink %}
-                                    {%  set link = entry.customLink %}
-                                {% else %}
-                                    {%  set link = "http://"~entry.customLink %}
-                                {% endif %}
-
-                                <a href="{{ entry.url }}">
-
-                                    <div class="my-auto">
-                                        {% set image = entry.image[0] ?? null %}
-
-                                        {% if image %}
-                                            <div class="card-icon  ">
-                                                <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
-                                                     alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
-                                            </div>
-                                        {% else %}
-                                            <div class="card-icon  ">
-                                                <img class="   m-2" src="{{ baseUrl }}/images/nologo-sm.png"
-                                                     alt="this member does not yet have a logo">
-                                            </div>
-                                        {% endif %}
-
-                                        <div class="card-body p-0 hide">
-                                            <h6 class="card-title p-2  mb-0">
-                                                {{ entry.title }}
-
-                                            </h6>
-
-                                        </div>
-                                    </div>
-                                </a>
-                                {#{% if entry.customLink | length %} </a>{% endif %}#}
-                            </div>
-                        </div>
-                        {# end card layout #}
+                    </div>
+                    <div class="form-group justify-content-center mx-auto text-center">
+                        <input type="submit"   class="btn btn-primary" value="{{ 'Submit' | t }}">
+                    </div>
+                    <input type="hidden"  class="ignore" name="enabled" value="0">
+                    <input type="hidden"  class="ignore" name="postDate" value="{{ now|date('Y-m-j H:i:s') }}" />
 
 
-
-                    {% endfor %}
-
+                </form>
+                <div class="row thanks" style="display:none">
+                    <div class="col-md-12">
+                        <p class="thankyou alert alert-success">
+                            {{ "Thank you." | t }}
+                        </p>
+                    </div>
                 </div>
-                {% endfor %}
+                <a href="#content-top" id="testbutton" class="hide btn btn-default pagescroll">test scroll</a>
             </div>
+            <div class="col-md-3 col-md-offset-1 sidebar">
 
 
+
+            </div>
         </div>
-    </section>
-    {%  css %}
-    .supporters{display:none}
-    {%  endcss %}
-{% endblock %}
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?&hl=%252525252525252525252525252525252525252525257B%252525252525252525252525252525252525252525257BcurrentLocale%252525252525252525252525252525252525252525257D%252525252525252525252525252525252525252525257D&ckcachebust=626272099"
+            async defer>
+    </script>
+
+   {% endblock %}

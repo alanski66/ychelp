@@ -1,4 +1,4 @@
-dateModified: 1604494835
+dateModified: 1604579960
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -87,8 +87,8 @@ plugins:
     settings:
       confirmationTemplate: callback/_entry.twig
       emailSubject: 'New callback request created'
-      emailTo: yachtcrewhelp.org
-      fromEmail: web@yachtcrewhelp.org
+      emailTo: help@yachtcrewhelp.org
+      fromEmail: help@yachtcrewhelp.org
       fromName: 'Yacht Crew Help Website'
   imager:
     edition: standard

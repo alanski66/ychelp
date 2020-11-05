@@ -1,0 +1,136 @@
+{#
+# Page entry template
+# -------------------
+#
+# This template gets loaded whenever a News entry’s URL is
+# requested. That’s because the News section’s Template setting is
+# set to “news/_entry”, the path to this template.
+#
+# When this template is loaded, it will already have an ‘entry’
+# variable, set to the requested News entry.
+#
+# See this page for more details on how Craft routes requests:
+# http://buildwithcraft.com/docs/routing
+#}
+
+{% extends "_layouts/site" %}
+{% set pageClass = "callback"  %}
+{% block content %}
+
+<div class="container site page">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1 main">
+
+            <div class="row ">
+                <div class="col-md-12">
+
+                    <article>
+                        <h1>{{ entry.title }}</h1>
+
+                        <div class="error">
+                        </div>
+                        <div class="callbackform"> {{ entry.body }}
+                        </div>
+
+                    </article>
+                </div>
+            </div>
+            <style>
+                #callback label.error{ font-size:12px;font-weight:normal;color:red!important}
+            </style>
+
+            <form method="post" class="form callbackform" id="callback" action="" accept-charset="UTF-8">
+                {{ getCsrfInput() }}
+
+                <input type="hidden" class="ignore" name="action" value="guestEntries/saveEntry">
+                <input type="hidden" class="ignore"  name="redirect" value="success">
+                <input type="hidden" class="ignore"  name="sectionId" value="7">
+                <input type="hidden" name="fields[ipaddress]" value="{{ craft.request.getIpAddress() }}">
+
+                <div class="form-group">
+                    <label for="title">{{ "Name" | t }}</label>
+                    <input id="title" type="text" class="form-control"  name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="callbackTel">{{ "Telephone number (including the country code for where you are)" | t }}</label>
+                    <input id="callbackTel" type="text" class="form-control"  name="fields[callbackTelephone]" required>
+                </div>
+                <div class="form-group">
+                    <label for="callbackemail">{{ "Email" | t }}</label>
+                    <input id="callbackemail" type="text" class="form-control" name="fields[callbackemail]" required>
+                </div>
+                <div class="form-group">
+                    <label for="language">{{ "Language you would like us to talk to you in?" | t }}</label>
+                    <input id="language" type="text" class="form-control" name="fields[language]" required>
+                </div>
+                <div class="form-group">
+                    <label for="callbacktime">{{ "When would you like us to call you?" | t }}</label>
+                    <input id="callbacktime" type="text" class="form-control" name="fields[callBackTimeTxt]" required>
+                </div>
+                <div class="form-group hide ">
+                    <label for="calltime">{{ "When would you like us to call you?" | t }}</label>
+                    <select id="calltime" name="fields[callTime]" class="form-control " >
+
+                        <option selected="">Please select...</option>
+                        <option value="now">Now</option>
+                        <option value="15 mins">15 mins</option>
+                        <option value="30 mins">30 mins</option>
+                        <option value="1 hour">1 hour</option>
+                        <option value="2 hours">2 hours</option>
+                        <option value="This evening">This evening</option>
+                        <option value="Tomorrow morning">Tomorrow morning</option>
+                        <option value="Tomorrow afternoon">Tomorrow afternoon</option>
+                        <option value="Tomorrow evening">Tomorrow evening</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="body">{{ "What do you want to talk about?" | t }}</label>
+                    <textarea class="form-control" id="body" name="fields[body]" required></textarea>
+
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LeiISYTAAAAAOGwkve0rS_o59sabPnho6cZwzmI" data-callback="recaptchaCallback"></div>
+                    <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+
+                </div>
+
+                <input type="submit"   class="btn btn-primary" value="{{ 'Submit' | t }}">
+                <input type="hidden"  class="ignore" name="enabled" value="0">
+                <input type="hidden"  class="ignore" name="postDate" value="{{ now|date('Y-m-j H:i:s') }}" />
+
+
+            </form>
+            <div class="row thanks" style="display:none">
+                <div class="col-md-12">
+                    <p class="thankyou alert alert-success">
+                        {{ "Thank you." | t }}
+                    </p>
+                </div>
+            </div>
+            <a href="#content-top" id="testbutton" class="hide btn btn-default pagescroll">test scroll</a>
+        </div>
+        <div class="col-md-3 col-md-offset-1 sidebar">
+
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?&hl={{currentLocale}}"
+        async defer>
+</script>
+{% set formJSVal = baseUrl  ~ 'assets/js/validation/jquery.validate.min.js' %}
+{% includeJsFile formJSVal %}
+
+{% if  currentLocale == "en" %}
+{% else %}
+{% set validationLocalesPath = 'assets/js/validation/localization/messages_' ~ currentLocale  ~ ".min.js" %}
+{% includeJsFile baseUrl ~ validationLocalesPath %}
+{% endif %}
+
+
+{% set formJS = baseUrl  ~ 'assets/js/forms.js?' ~  now|date("Y-m-j H:i:s") %}
+{% includeJsFile formJS %}
+
+{% endblock %}

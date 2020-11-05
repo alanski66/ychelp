@@ -39,6 +39,8 @@ return [
         ],
         'recaptcha_v3_public' => getenv('RECAPTCHAV3_PUBLIC'),
         'recaptcha_v3_private' => getenv('RECAPTCHAV3_PRIVATE'),
+        'recaptcha_v2_public' => getenv('RECAPTCHA2_SITE_KEY'),
+        'recaptcha_v2_private' => getenv('RECAPTCHA2_SECRET_KEY'),
     ],
 
     // Dev environment settings

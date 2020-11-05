@@ -93,6 +93,10 @@
                 {% endif %}
                 <li class="mr-0 list-inline-item"><a href="{{ navlink }}">{{ entry.title }}</a></li>
             {% endfor %}
+            <li class="list-inline-item">
+                <!-- global subscribe newsletter -->
+                <a  href="#" data-toggle="modal" data-target="#subscribeModal">Subscribe</a>
+            </li>
             
         </ul>
     </div>
@@ -119,32 +123,7 @@
         </div>
     </div>
 
-    <div class="container hide ">
-
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="footer-inner">
-                    <h3>Contact</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="tel:{{ organisationDetails.organisationTelephone }}">{{ organisationDetails.organisationTelephone }}</a>
-                        </li>
-                        <li><a
-                                    data-event-category="Contact"
-                                    data-event-action="Text link"
-                                    data-event-label="LinkedIn"
-                                    href="mailto:{{ organisationDetails.organisationEmail }}">{{ organisationDetails.organisationEmail }}</a>
-                        </li>
-                    </ul>
-                    <p>
-                        {{ organisationDetails.organisationAddress }}
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
+   {%  include('_includes/footer-mailchimp-modal') %}
 
 </footer>
 <!-- / footer -->

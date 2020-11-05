@@ -138,6 +138,7 @@
   .page-header .page-heading{
 
   }
+
   // blue box on mboile single column
   .side-box{
     padding:15px;
@@ -147,6 +148,11 @@
 @media(min-width:768px){
   .homepage .hero h1 {
     font-size:2rem;
+  }
+}
+@media(min-width:990px){
+  input#email{
+    width:75% !important
   }
 }
 @media(min-width:1200px){

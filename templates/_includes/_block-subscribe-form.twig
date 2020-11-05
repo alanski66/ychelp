@@ -1,0 +1,10 @@
+<!-- global subscribe newsletter -->
+<div class="newsletter my-5">
+    <h4 class="mb-3">{{ subscribe.subscribeBoxSideHeading | default("Stay updated") }}</h4>
+    <form action="#" class="chimpy">
+        <input type="email" name="email" id="email" class="w-50 mb-3 pass-email form-control" placeholder="Email">
+        <button class="btn btn-primary btn-sm" type="reset" value="subscribe" name="subscribe" data-toggle="modal" data-target="#subscribeModal" >
+            {{ subscribe.subscribeButtonText | default("Subscribe") }}
+        </button>
+    </form>
+</div>

@@ -92,28 +92,45 @@
                 {% include ('_includes/sidebar_nav.twig') %}
 
                 {% set downloadBlockCount = 0 %}
+                {% set onpage = null %}
                 <div class="onpage-nav mb-3 d-none d-lg-block">
+
+                    {% for block in entry.contentBlock.all() %}
+                        {% if block.type == "downloads" or block.type == "usefullinks" %}
+                            {% set onpage = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if onpage %}
                     <h5>On this page</h5>
+                    {% endif %}
+{#                    {{ entry.contentBlock.block.downloads[0] | length }}#}
                     {% for block in entry.contentBlock.all() %}
 
+                        {% if downloadBlockCount > 0 %}
+
+                        {% endif %}
                         {% if block.type == "downloads" %}
                             {% set label = 'Guides' %}
+
                             {% set downloadBlockCount = downloadBlockCount + 1 %}
                         {% endif %}
 
-                        {% if downloadBlockCount > 1 %}
+                        {% if downloadBlockCount == 1 %}
                             {# insert optional content here #}
-                            <a href="#resources" class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
+                            <a href="#resources" class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }} label</span></a>
                             {% set downloadBlockCount = 0 %}
                         {% endif %}
                         {% if block.type == "usefullinks" %}
-                            {% set label = 'Useful organisations' %}
+                            {% set label = 'Useful links' %}
                             <a href="#useful"  class="scroll"><span class="p-2 badge badge-pill badge-light mr-1">{{ label }}</span></a>
                         {% endif %}
 
 
                     {% endfor %}
                 </div>
+
+                {%  include('_includes/_block-subscribe-form.twig') %}
             </div>
         </div>
 
