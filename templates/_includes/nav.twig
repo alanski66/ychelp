@@ -78,7 +78,7 @@
                 {#{% endif %}#}
                 {% set title = "" %}
                 {% if entry.entryLink.one()|length %}
-                    {% set navlink = entry.entryLink.one().uri %}
+                    {% set navlink = entry.entryLink.one().url %}
                 {% else %}
                     {% set navlink = entry.customLink %}
                 {% endif %}
@@ -93,22 +93,23 @@
 
                         <div class="dropdown-menu " aria-labelledby="{{ entry.title | kebab }}">
 
-                            <a href="{{ siteUrl }}{{ navlink }}"
+                            <a href="{{ navlink }}"
                                class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ title }}</a>
 
 
                             <!-- get children -->
-                            {% for child in entry.getDescendants().hidePage('not 1') %}
+                            {% for child in entry.getDescendants() %}
                                 {% if child is defined %}
                                     {# get child custom link or entry uri #}
-                                    {#{% if child.entryLink.one()|length %}#}
-                                    {#{% set childlink = child.entryLink.one().uri %}#}
-                                    {#{% else %}#}
-                                    {% set childlink = child.uri %}
-                                    {% set title = child.title %}
+                                    {% if child.entryLink.one()|length %}
+                                    {% set childlink = child.entryLink.one().url %}
+
+                                        {% else %}
+                                            {% set childlink = entry.customLink %}
+                                    {% endif %}
                                     {#{% endif %}#}
-                                    <a id="{{ entry.title|kebab }}" href="{{ siteUrl }}{{ childlink }}"
-                                       class="dropdown-item level {{ child.level }}">{{ title }}</a>
+                                    <a id="{{ entry.title|kebab }}" href="{{ childlink }}"
+                                       class="dropdown-item level {{ child.level }}">{{ child.title }}</a>
 
                                 {% endif %}
                             {% endfor %}

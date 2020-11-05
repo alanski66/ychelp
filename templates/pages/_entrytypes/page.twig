@@ -112,8 +112,7 @@
                         {% endif %}
                         {% if block.type == "downloads" %}
                             {% set label = 'Guides' %}
-
-                            {% set downloadBlockCount = downloadBlockCount + 1 %}
+                            {% set downloadBlockCount = 1 %}
                         {% endif %}
 
                         {% if downloadBlockCount == 1 %}
@@ -128,6 +127,7 @@
 
 
                     {% endfor %}
+                    {{ downloadBlockCount }}
                 </div>
 
                 {%  include('_includes/_block-subscribe-form.twig') %}
