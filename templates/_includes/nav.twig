@@ -28,16 +28,12 @@
                                 {#{%  set navTitle = entry.title %}#}
                                 {#{% endif %}#}
                                 {% if entry.entryLink.one()|length %}
-                                    {% set navlink = entry.entryLink.one().uri %}
+                                    {% set navlink = entry.entryLink.one().url %}
                                 {% else %}
                                     {% set navlink = entry.customLink %}
                                 {% endif %}
 
                                 {% if entry.level == 1 %}
-
-                                    {# set join tracker#}
-                                    {% set joinTracker = null %}
-                                    {% set target = null %}
                                     
                                     <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
                                         <a id="{{ entry.title | kebab }}" href="{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
