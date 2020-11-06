@@ -24,7 +24,7 @@
                         <h1 class="pt-2 ">{{ entry.title }}</h1>
                     </div>
                     {% if entry.introText %}
-                        {{ entry.introText }}
+                        {{ entry.introText  }}
                     {% endif %}
                 </div>
 
@@ -44,7 +44,16 @@
 
 
                 {% for category in categories %}
-                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
+                    
+                    {%  if category.id  == "494" %}
+
+                        {%  set orderE = 'initialSupporter desc' %}
+                    {% elseif category.id  == "496" %}
+                        {%  set orderE = 'lft asc' %}
+                    {% endif %}
+
+                    {% set entries= craft.entries.relatedTo(category).orderBy(orderE).all()  %}
+{#                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}#}
 
                     <div class="row mb-5">
 
