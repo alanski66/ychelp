@@ -15,13 +15,16 @@
 {% import '_macros' as macros %}
 
 
-{% if rootOfSection.hasDescendants() %}
+{#{% if rootOfSection.hasDescendants() %}#}
 
 <div class="side-box mb-5">
     <h3><a href="{{ rootOfSection.url }}">{{ rootOfSection.title }}</a></h3>
     <ul class="list-unstyled">
         {#Get entries to build the sub-menu#}
         {% set subMenu = craft.entries.descendantOf(rootOfSection) %}
+
+
+
 
         {#Output the sub menu#}
         {% for entry in subMenu.all() %}
@@ -31,24 +34,31 @@
                 {#{% set navlink = entry.customLink %}#}
             {#{% endif %}#}
             {% if entry.menuTitle|length %}
-                {% set navlink = entry.uri %}
+                {% set navlink = entry.url%}
                 {% set title = entry.menuTitle %}
             {% else %}
-                {% set navlink = entry.uri %}
+                {% set navlink = entry.url %}
                 {% set title = entry.title %}
             {% endif %}
 
             {% set navlink = entry.uri %}
             <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
-                <a href="{{ siteUrl }}{{ entry.uri }}"
+                <a href="{{ siteUrl }}{{ entry.url }}"
                    class="  level{{ entry.level }}">{{ title }}</a>
             </li>
 
-        {% endfor %}
 
+
+        {% endfor %}
+        {%  if entry.pageSubNav | length %}
+            <!-- pagesubnav -->
+            {%  for entry in entry.pageSubNav %}
+                <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
+                    <a href="#" class="  level{{ entry.level }}">{{ entry.title }}</a>
+                </li>
+            {% endfor %}
+        {% endif %}
     </ul>
 
-
-
     </div>
-{% endif %}
+{#{% endif %}#}

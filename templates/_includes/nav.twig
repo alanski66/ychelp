@@ -22,11 +22,7 @@
             </div>
                         <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end mr-3 ">
                             {% for entry in pages %}
-                                {#{%  if entry.altNavTitle|length %}#}
-                                {#{%  set navTitle = entry.altNavTitle %}#}
-                                {#{% else %}#}
-                                {#{%  set navTitle = entry.title %}#}
-                                {#{% endif %}#}
+
                                 {% if entry.entryLink.one()|length %}
                                     {% set navlink = entry.entryLink.one().url %}
                                 {% else %}

@@ -22,7 +22,9 @@
                     <img class="d-none d-sm-block img-fluid" src="{{ asset.getUrl(thumb) }}"
                          width="{{ asset.getWidth(thumb) }}"
                          height="{{ asset.getHeight(thumb) }}">
+                    {% if block.buttonLink.one() | length %}
                     <div class="text-overlay button px-auto"><a href="{{ block.buttonLink.one().url }}" class="btn btn-primary">{{ block.buttonText }}</a></div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

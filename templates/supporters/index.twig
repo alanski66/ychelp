@@ -24,7 +24,7 @@
                         <h1 class="pt-2 ">{{ entry.title }}</h1>
                     </div>
                     {% if entry.introText %}
-                        {{ entry.introText  }}
+                        <p>{{ entry.introText  | raw}}</p>
                     {% endif %}
                 </div>
 
