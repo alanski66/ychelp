@@ -17,6 +17,7 @@
     {% set baseUrl = alias('@web') ~ '/' %}
     {%  set nullImage = baseUrl ~ 'https://placeimg.com/350/207/people' %}
     {%  set nullImage2 = 'https://placeimg.com/350/207/nature' %}
+    {%  set nullImage3 = 'https://via.placeholder.com/120x90' %}
     {% set gaTrackingId = getenv('GA_TRACKING_ID') %}
     {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
     {# -- Twig output from the render; this must be in a block -- #}

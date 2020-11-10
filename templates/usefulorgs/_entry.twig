@@ -104,7 +104,12 @@
                                 {% if image %}
                                     <img class="mr-3 h-100" src="{{ image.getUrl('sponsorLogoGrid') }}"
                                          alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
+                                {% else %}
+                                    <img class="img-fluid mr-3 h-100" src="{{ nullImage3 }}"
+                                         alt="{{ entry.title }}">
+
                                 {% endif %}
+
                             </div>
                             <div class=" media-body text-left">
                                 <h5 class="mt-0 mb-1">{{ entry.title }}</h5>
