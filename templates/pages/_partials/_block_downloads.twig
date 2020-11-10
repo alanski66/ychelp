@@ -22,19 +22,21 @@
                     <div class="row">
                         {% for doc in block.download.all() %}
                             {%  set asset = doc.pdfThumbnailImage.one() ?? null %}
+                            {%  set pdf = doc.pdfDocument.one() ?? null %}
                             <div class="col-6  mb-3">
-                                <div class="card">
+                                <div class="card shadow">
                                     {%  if asset | length %}
-                                        <a href="">
+                                        {%  if pdf.url | length %}
+                                            <a href="{{ pdf.url }}">{% endif %}
                                             <img class="card-img-top img-fluid" data-mh="imgh" src="{{ asset.getUrl('pdfportraitsmall') }}" alt="{{ asset.title }}">
-                                        </a>
+                                        {%  if pdf.url | length %}</a>{% endif %}
 
                                     <div class="card-body" data-mh="textbody">
                                         <div class="card-title ">
-                                            {%  if doc.url | length %}
-                                            <a href="{{ doc.url }}">{% endif %}
+                                            {%  if pdf.url | length %}
+                                            <a href="{{ pdf.url }}">{% endif %}
                                                 {{ doc.title }}
-                                                {%  if doc.url | length %}</a>{% endif %}
+                                                {%  if pdf.url | length %}</a>{% endif %}
 
                                         </div>
 
