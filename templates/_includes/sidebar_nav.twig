@@ -41,9 +41,9 @@
                 {% set title = entry.title %}
             {% endif %}
 
-            {% set navlink = entry.uri %}
+            {% set navlink = entry.url %}
             <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
-                <a href="{{ siteUrl }}{{ entry.url }}"
+                <a href="{{ entry.url }}"
                    class="  level{{ entry.level }}">{{ title }}</a>
             </li>
 
@@ -54,9 +54,12 @@
             <!-- pagesubnav -->
             {%  for entry in entry.pageSubNav %}
                 <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
-                    <a href="#" class="  level{{ entry.level }}">{{ entry.title }}</a>
+                    <a href="{{ entry.url }}" class="  level{{ entry.level }}">{{ entry.title }}</a>
                 </li>
             {% endfor %}
+            <li class="">
+                <a href="{{ donate.donateLink }}" class="  level{{ entry.level }}">Donate</a>
+            </li>
         {% endif %}
     </ul>
 

@@ -29,7 +29,7 @@
                         {% set title = child.title %}
                         {%  set asset = child.image.one() ?? null %}
                       <div class="col-12 col-sm-6 mb-3">
-                            <div class="card">
+                            <div class="card shadow mb-4">
                                 {%  if asset | length %}
                                 <a href="{{ child.url }}">
                                 <img class="card-img-top img-fluid" src="{{ asset.getUrl('cardLandscape') }}" alt="{{ asset.title }}">

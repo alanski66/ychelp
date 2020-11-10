@@ -1,30 +1,45 @@
 {% if block.usefulOrgs |length %}
-    <section class="block useful mb-3" id="useful">
-        <div class="blue-border py-3">
-    <h6>Useful links</h6>
-            <ul class="list-unstyled m-0">
-                {% for ulink in block.usefulOrgs %}
+    {% set useful = '0' %}
+    {% for ulink in block.usefulOrgs %}
+        {% if ulink.usefulLink | length %}
+            {% for link in ulink.usefulLink %}
+                {% if link.url | length %}
+                    {% set useful = '1' %}
+                {% else %}
+                    {% set useful = '0' %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
 
-                    {% if ulink.usefulLink | length %}
-                        {% for link in ulink.usefulLink %}
-                            <li class="list-inline-itm">
+    {% if useful == '1' %}
+        <section class="block useful mb-3" id="useful">
+            <div class="blue-border py-3">
+                <h6>Useful links</h6>
+                <ul class="list-unstyled m-0">
+                    {% for ulink in block.usefulOrgs %}
+
+
+                        {% if ulink.usefulLink | length %}
+                            {% for link in ulink.usefulLink %}
+                                <li class="list-inline-itm">
                                     <a href="{{ link.url }}"><i class="fa fa-link "></i> {{ link.title }}
                                         {% if link.text|length %}: {{ link.text }}{% endif %}</a>
-                            </li>
-                        {% endfor %}
-                    {% else %}
+                                </li>
+                            {% endfor %}
+                        {% else %}
 
                             <li class="list-inline-itm">
                                 <a href="{{ ulink.externalLink }}"><i class="fa fa-link "></i>
                                     {% if ulink.text|length %}{{ ulink.text }}{% endif %}</a>
                             </li>
 
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
 
-        </div>
-{#        <div class="blue-border bottom"></div>#}
-    </section>
-
+            </div>
+            {#        <div class="blue-border bottom"></div>#}
+        </section>
+    {% endif %}
 {% endif %}
