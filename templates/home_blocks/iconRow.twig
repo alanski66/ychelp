@@ -1,52 +1,41 @@
 {% import '_macros' as macros %}
 {# register fonts #}
  {% do view.registerAssetBundle("plugins\\dolphiq\\iconpicker\\assets\\sharedAsset") %}
-<section class="involved-sec">
+
+<section class="research mb-5  bg-blue-light py-4">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="involved-inner">
-                    <div class="hedding">
-                        {%  set heading = block.heading |replace({'[': "<span>", ']': "</span>"})  %}
-                        <h2>{{ heading | raw }}</h2>
-                    </div>
-                    {# supertable#}
-                    <div class="row">
-                        {% for col in block.icons.all() %}
-                            <div class="col-md-4">
-                                <div class="involved-box">
-
-                                    {%  if col.customIcon |length %}
-                                        {% set icon =  col.customIcon.one().url %}
-                                        <img src="{{ icon }}" alt="col.customIcon.one().title" />
-                                    {%  else %}
-                                    {%  if col.iconColor |length %}
-                                        {%  set style = "style=color:" ~col.iconColor~ "" %}
-                                        {% else %}
-                                            {%  set style ="" %}
-                                            {%  endif %}
-                                        <i {{ style }} class='fa {{ col.icon.iconClass }}  {{ col.iconSize }}'>{{ col.icon.iconChar|raw }}</i>
-                                    {%  endif %}
-
-                                    <p>
-                                        {{ macros.addSpan(col.text) }}
-                                       </p>
-                                    {{ col.buttonText }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    {%  if block.buttonText |length %}
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="get-involved">{{ block.icons.buttonText }}
-                                <a href="{{ block.buttonLink.one().url }}">Get involved</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
+        <div class="row ">
+            <div class="col-12 col-lg-8 offset-lg-2 text-center ">
+                <h3>{{ block.heading }}</h3>
+                <p>{{ block.subHeadingText }}</p>
             </div>
         </div>
+        <div class="row mb-3">
+            {% for col in block.icons.all() %}
+                <div class="col-12 col-sm-4">
+                    <div class="chart-container text-center">
+                        {%  if col.iconColor |length %}
+                            {%  set style = "style=color:" ~col.iconColor | default("#0089bf")~ "" %}
+                        {% else %}
+                            {%  set style ="" %}
+                        {%  endif %}
+                        <i {{ style }} class='fa {{ col.icon.iconClass }}  {{ col.iconSize }}'>{{ col.icon.iconChar|raw }}</i>
+
+                        <div class="card-body">
+                            <p class="card-text text-center">{{ col.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {%  if block.buttonText |length %}
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{{ block.buttonLink.one().url }}">{{ block.buttonText }}</a>
+
+            </div>
+        </div>
+        {% endif %}
     </div>
 </section>
+

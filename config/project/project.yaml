@@ -1,4 +1,4 @@
-dateModified: 1604579960
+dateModified: 1605182095
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -48,10 +48,14 @@ plugins:
       secure_only: '1'
       target: _blank
       type: info
+  dolphiq-iconpicker:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   feed-me:
     edition: standard
     enabled: true
-    schemaVersion: 2.1.2
+    schemaVersion: 4.3.0
   guest-entries:
     edition: standard
     enabled: true
@@ -145,9 +149,3 @@ system:
   retryDuration: null
   schemaVersion: 3.5.13
   timeZone: America/Los_Angeles
-users:
-  allowPublicRegistration: false
-  defaultGroup: null
-  photoSubpath: null
-  photoVolumeUid: null
-  requireEmailVerification: true
