@@ -82,7 +82,16 @@
   background-color: $gray-500;
 }
 
-
+.self-title{
+  font-weight: 700;
+  text-transform: uppercase;
+  background: aliceblue;
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #0089bf;
+  color:$blue;
+}
 .side-box h3{
   color:$gray-500;
 }

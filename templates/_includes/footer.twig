@@ -41,9 +41,8 @@
                 <div class="col-12 text-center justify-content-center">
                 {% for entry in toptier %}
                     {% set asset = entry.image[0] %}
-                    <div class="text-center d-inline mx-3">
-                        <img class="my-auto" src="{{ asset.getUrl('topTier') }}">
-                    </div>
+                    
+                    <img class="mx-3 py-3 py-sm-0 mb-2 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}">
                 {% endfor %}
                 </div>
             </div>
@@ -60,7 +59,7 @@
                 {% endif %}
                 {% set asset = entry.image[0] %}
                 <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
-                    <img class="my-auto" src="{{ asset.getUrl('carouselPartnerLogo') }}">
+                    <img class="my-auto " src="{{ asset.getUrl('carouselPartnerLogo') }}">
                 </div>
             {% endfor %}
         </div>

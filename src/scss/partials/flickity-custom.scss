@@ -53,3 +53,13 @@ div.center-wrap.supporters   .flickity-slider {
     display: none;
   }
 }
+@media(min-width: 768px){
+  div.center-wrap.partners  .carousel-cell {
+    margin:0 15px;
+  }
+}
+@media(min-width: 990px){
+  div.center-wrap.partners  .carousel-cell {
+    margin:0 25px;
+  }
+}

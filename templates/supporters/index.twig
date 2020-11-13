@@ -33,12 +33,34 @@
     </section>
     <!-- list content -->
 
-    {% set categories = craft.categories.group('supporters').all() %}
+    {% set categories = craft.categories.group('supporters').id('not ' ~ 2160).all() %}
 
 
     <section class="container page members">
 
-        <div class="row mt-5">
+        <div class="row mt-3 ">
+            {% set toptier = craft.categories.group('supporters').slug('top-tier').one() %}
+
+            {% set toptier = craft.entries()
+                .section('supporters')
+                .with(['image'])
+                .relatedTo(toptier)
+                .all()
+            %}
+            {% if toptier | length %}
+                <div class="container pt-0 pb-4 mb-5">
+                    <div class="row">
+                        <div class="col-12 text-center justify-content-center">
+                            {% for entry in toptier %}
+                                {% set asset = entry.image[0] %}
+                                <a href="{{ entry.url }}">
+                                <img class="mx-3  mb-4 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             <div class="col-12 justify-content-center ">
 
 
@@ -55,7 +77,7 @@
                     {% set entries= craft.entries.relatedTo(category).orderBy(orderE).all()  %}
 {#                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}#}
 
-                    <div class="row mb-5">
+                    <div class="row mb-5 py-3">
 
                         <div class="col-12 mb-3 text-center">
                             <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
