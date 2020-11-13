@@ -1,12 +1,20 @@
 <!-- Footer -->
 <section class="supporters py-4">
     {#{% set category = entry.supporterCategory.one() %}#}
+    {% set toptier = craft.categories.group('supporters').slug('top-tier').one() %}
     {% set partners = craft.categories.group('supporters').slug('partner').one() %}
     {% set supporters = craft.categories.group('supporters').slug('supporter').one() %}
     {% set allpartners = craft.entries()
         .section('supporters')
         .with(['image'])
         .relatedTo(partners)
+        .all()
+    %}
+
+    {% set toptier = craft.entries()
+        .section('supporters')
+        .with(['image'])
+        .relatedTo(toptier)
         .all()
     %}
 
@@ -22,15 +30,29 @@
     <!-- Partner Carousel container -->
     <div class="container">
         <div class="row ">
-            <div class="col-12  col-lg-8 offset-lg-2 text-center">
-                <div class="thx blue-border pt-4">
-                    <p>We are grateful to our primary sponsors  &amp; partners for their continued support:</p>
+            <div class="col-12  col-lg-8 offset-lg-2 text-center ">
+                <div class="thx blue-border pt-4 pb-1">
+                    <p>{{ footerFunders.footerFundersHeading | default('We are grateful to our primary sponsors  & partners for their continued support:')}}</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="center-wrap partners my-3">
+    {% if toptier | length %}
+        <div class="container pt-4 pb-0">
+            <div class="row">
+                <div class="col-12 text-center justify-content-center">
+                {% for entry in toptier %}
 
+                    {% set asset = entry.image[0] %}
+                    <div class="text-center d-inline mx-3">
+                        <img class="my-auto" src="{{ asset.getUrl('topTier') }}">
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="center-wrap partners my-3">
         <div class="main-carousel w-100 container">
             {% for entry in allpartners %}
 
@@ -44,7 +66,6 @@
                     <img class="my-auto" src="{{ asset.getUrl('carouselPartnerLogo') }}">
                 </div>
             {% endfor %}
-
         </div>
         {#    </div>#}
         {#    </div>#}
