@@ -42,7 +42,10 @@
                 {% for entry in toptier %}
                     {% set asset = entry.image[0] %}
                     
-                    <img class="mx-3 py-3 py-sm-0 mb-2 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}">
+                    <img class="mx-3 py-3 py-sm-0 mb-2 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}"
+                         width="{{ asset.getWidth('topTier') }}"
+                         height="{{ asset.getHeight('topTier') }}"
+                    >
                 {% endfor %}
                 </div>
             </div>
@@ -59,7 +62,10 @@
                 {% endif %}
                 {% set asset = entry.image[0] %}
                 <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
-                    <img class="my-auto " src="{{ asset.getUrl('carouselPartnerLogo') }}">
+                    <img class="my-auto " src="{{ asset.getUrl('carouselPartnerLogo') }}"
+                         width="{{ asset.getWidth('carouselPartnerLogo') }}"
+                         height="{{ asset.getHeight('carouselPartnerLogo') }}"
+                    >
                 </div>
             {% endfor %}
         </div>
@@ -84,7 +90,10 @@
                 {% endif %}
                 {% set asset = entry.image[0] %}
                 <div class="carousel-cell text-center  {{ initialSupporterIndex }}">
-                    <img class="my-auto" src="{{ asset.getUrl('carouselSupporterLogo') }}">
+                    <img class="my-auto" src="{{ asset.getUrl('carouselSupporterLogo') }}"
+                         width="{{ asset.getWidth('carouselSupporterLogo') }}"
+                         height="{{ asset.getHeight('carouselSupporterLogo') }}"
+                    >
                 </div>
             {% endfor %}
 

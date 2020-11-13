@@ -108,7 +108,10 @@
                                         {% if image %}
                                             <div class="card-icon  ">
                                                 <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
-                                                     alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
+                                                     alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}"
+                                                     width="{{ image.getWidth('sponsorLogoGrid') }}"
+                                                     height="{{ image.getHeight('sponsorLogoGrid') }}"
+                                                >
                                             </div>
                                         {% else %}
                                             <div class="card-icon  ">
