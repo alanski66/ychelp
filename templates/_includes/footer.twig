@@ -22,10 +22,8 @@
     {% set slidecount = allpartners|length %}
 
     {% js %}
-
         slidecount = {{ slidecount }};
-        console.log("tmpl slidecount = " + slidecount);
-
+{#        console.log("tmpl slidecount = " + slidecount);#}
     {% endjs %}
     <!-- Partner Carousel container -->
     <div class="container">
@@ -42,7 +40,6 @@
             <div class="row">
                 <div class="col-12 text-center justify-content-center">
                 {% for entry in toptier %}
-
                     {% set asset = entry.image[0] %}
                     <div class="text-center d-inline mx-3">
                         <img class="my-auto" src="{{ asset.getUrl('topTier') }}">
