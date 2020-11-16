@@ -17,7 +17,7 @@
         </div>
     </section>
     <!-- Page Content -->
-    <section class="page">
+    <section class="page mb-5">
         <div class="container">
 
             {#<div class="row ">#}
@@ -30,8 +30,8 @@
 
             {% set lazyImage = false %}
             {% set blockPrefix = "" %}
-            <div class="row ">
-                <div class="col-12 col-lg-8 offset-lg-2 text-center">
+            <div class="row mb-5">
+                <div class="col-12 col-lg-8 offset-lg-2 text-center mb-5">
 
                     {% if entry.image| length %}
                         {% set image = entry.image[0] ?? null %}
@@ -53,7 +53,7 @@
                         <p><a href="{{ entry.customLink }}" target="_blank">Visit {{ entry.title }} at their website <i class="fa fa-external-link"></i></a></p>
                     {% endif %}
 
-
+<hr>
                 </div>
 
 
@@ -62,77 +62,116 @@
         </div>
     </section>
 
-    {% set categories = craft.categories.group('supporters').all() %}
+    {% set categories = craft.categories.group('supporters').id('not ' ~ 2160).all() %}
 
 
     <section class="container page members">
 
-        <div class="row mt-5">
-            <div class="col-12 justify-content-center ">
-                {% for category in categories %}
-                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}
+        <div class="row mt-3 ">
+            {% set toptier = craft.categories.group('supporters').slug('top-tier').one() %}
 
-                    <div class="row mb-5">
+            {% set toptier = craft.entries()
+                .section('supporters')
+                .with(['image'])
+                .relatedTo(toptier)
+                .all()
+            %}
+            {% if toptier | length %}
+                <div class="container pt-0 pb-4 mb-5">
+                    <div class="row">
+                        <div class="col-12 text-center justify-content-center">
+                            {% for entry in toptier %}
+                                {% set asset = entry.image[0] %}
+                                <a href="{{ entry.url }}">
+                                <img class="mx-3  mb-4 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="col-12 justify-content-center ">
+
+
+
+                {% for category in categories %}
+
+                    {%  if category.id  == "494" %}
+
+                        {%  set orderE = 'initialSupporter desc' %}
+                    {% elseif category.id  == "496" %}
+                        {%  set orderE = 'lft asc' %}
+                    {% endif %}
+
+                    {% set entries= craft.entries.relatedTo(category).orderBy(orderE).all()  %}
+{#                    {% set entries= craft.entries.relatedTo(category).orderBy('initialSupporter desc').all()  %}#}
+
+                    <div class="row mb-5 py-3">
 
                         <div class="col-12 mb-3 text-center">
                             <h2 class="blue-border bottom p-2 pl-4 pr-4 d-inline">{{ category.title }}</h2></div>
 
 
                         {% for entry in entries %}
-                            {# start card layout #}
-                            <div class="col-6 col-md-4 mt-1   ">
+                        {# start card layout #}
+                        <div class="col-6 col-md-4 mt-1  mb-4  ">
 
-                                <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
+                            <div class="card border-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
 
 
 
-                                    {#{% if entry.customLink | length %}#}
+                                {#{% if entry.customLink | length %}#}
 
-                                    {%  set link = null %}
-                                    {%  if  "http" in entry.customLink %}
-                                        {%  set link = entry.customLink %}
-                                    {% else %}
-                                        {%  set link = "http://"~entry.customLink %}
-                                    {% endif %}
+                                {%  set link = null %}
+                                {%  if  "http" in entry.customLink %}
+                                    {%  set link = entry.customLink %}
+                                {% else %}
+                                    {%  set link = "http://"~entry.customLink %}
+                                {% endif %}
 
-                                    <a href="{{ entry.url }}">
+                                <a href="{{ entry.url }}">
 
-                                        <div class="my-auto">
-                                            {% set image = entry.image[0] ?? null %}
+                                    <div class="my-auto">
+                                        {% set image = entry.image[0] ?? null %}
 
-                                            {% if image %}
-                                                <div class="card-icon  ">
-                                                    <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
-                                                         alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}">
-                                                </div>
-                                            {% else %}
-                                                <div class="card-icon  ">
-                                                    <img class="   m-2" src="{{ baseUrl }}/images/nologo-sm.png"
-                                                         alt="this member does not yet have a logo">
-                                                </div>
-                                            {% endif %}
-
-                                            <div class="card-body p-0 hide">
-                                                <h6 class="card-title p-2  mb-0">
-                                                    {{ entry.title }}
-
-                                                </h6>
-
+                                        {% if image %}
+                                            <div class="card-icon  ">
+                                                <img class="   m-2" src="{{ image.getUrl('sponsorLogoGrid') }}"
+                                                     alt="{{ image.title ? image.title : entry.title }} {{ image.imageCredit ? image.imageCredit: '' }}"
+                                                     width="{{ image.getWidth('sponsorLogoGrid') }}"
+                                                     height="{{ image.getHeight('sponsorLogoGrid') }}"
+                                                >
                                             </div>
+                                        {% else %}
+                                            <div class="card-icon  ">
+                                                <img class="   m-2" src="{{ baseUrl }}/images/nologo-sm.png"
+                                                     alt="this member does not yet have a logo">
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="card-body p-0 hide">
+                                            <h6 class="card-title p-2  mb-0">
+                                                {{ entry.title }}
+
+                                            </h6>
+
                                         </div>
-                                    </a>
-                                    {#{% if entry.customLink | length %} </a>{% endif %}#}
-                                </div>
+                                    </div>
+                                </a>
+                                {#{% if entry.customLink | length %} </a>{% endif %}#}
                             </div>
-                            {# end card layout #}
+                        </div>
+                        {# end card layout #}
 
 
 
-                        {% endfor %}
+                    {% endfor %}
 
-                    </div>
+                </div>
                 {% endfor %}
             </div>
+
+
         </div>
     </section>
     {%  css %}
