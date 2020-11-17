@@ -6,20 +6,26 @@
 
 {#  set up useful lnk nav #}
     {% set download = '0' %}
+    {% set dlink = '0' %}
     {% set useful = '0' %}
     {% set downloadBlockCount = 0 %}
     {% set onpage = null %}
+
+    {# breaks the loop below!????   {{entry.contentBlock.type('downloads').one().id }} #}
+
     {% for block in entry.contentBlock.all() %}
         {% if block.type == "downloads" %}
 
             {% if block.download.one().title | length %}
                 {% set download = '1' %}
+                {% set dlink = block.download.one().id %}
             {% else %}
                 {% set download = '0' %}
+                {% set dlink = '' %}
             {% endif %}
         {% endif %}
+        
         {% if block.type == "usefullinks" %}
-
             {% if block.usefulOrgs | length %}
                 {% for ulink in block.usefulOrgs %}
                     {% if ulink.usefulLink | length %}
@@ -70,10 +76,13 @@
                 <div class="col-xs-12 col-md-12 col-lg-7 col-xl-7">
 
                     {% for block in entry.contentBlock.all() %}
+
+{#                     
                         {% switch block.type %}
-                        {% default %}
+                        {% default %} #}
+
                             {% include ('pages/_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %}
-                        {% endswitch %}
+                        {# {% endswitch %} #}
                     {% endfor %}
                     {% include ('_includes/block_cta.twig') %}
 

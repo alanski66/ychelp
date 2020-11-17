@@ -1,6 +1,6 @@
 {% if block.usefulOrgs |length %}
     {% set useful = '0' %}
-    {% for ulink in block.usefulOrgs %}
+    {% for ulink in block.usefulOrgs.all() %}
         {% if ulink.usefulLink | length %}
             {% for link in ulink.usefulLink %}
                 {% if link.url | length %}
@@ -17,7 +17,7 @@
             <div class="blue-border py-3">
                 <h6>Useful links</h6>
                 <ul class="list-unstyled m-0">
-                    {% for ulink in block.usefulOrgs %}
+                    {% for ulink in block.usefulOrgs.all() %}
 
 
                         {% if ulink.usefulLink | length %}

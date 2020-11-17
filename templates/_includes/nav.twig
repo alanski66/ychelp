@@ -9,7 +9,7 @@
     <div class="container">
 
 
-        <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between pl-0">
+        <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between pl-0 pr-0">
             <button class="d-block d-lg-none  navbar-toggler d-flex align-self-center " id="offcanvas" type="button"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                                 {% if entry.level == 1 %}
                                     
                                     <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
-                                        <a id="{{ entry.title | kebab }}" href="{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                        <a id="mnu-{{ entry.title | kebab }}" href="{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
@@ -112,7 +112,7 @@
                 {% elseif entry.level == 1 and not entry.hasDescendants() %}
 
                     <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
-                        <a  id="{{ entry.title | kebab }}"
+                        <a  id="menu-{{ entry.title | kebab }}"
                                         href="{{ navlink }}"
                                         class="nav-link  {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
                     </li>

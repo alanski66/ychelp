@@ -3,7 +3,7 @@
 {% if block.displayStyle | length %}
     {% set style = block.displayStyle %}
 {% endif %}
-<section class="mb-4 mt-4  {{ style }}" id="resources">
+<section class="mb-4 mt-4  {{ style }}" id="{% if block.id == entry.contentBlock.type('downloads').one().id %}resources{% else %} {{block.id}}{% endif %}">
 
                 {% if block.heading |length %}
                     <h5 class="{{ style }}">

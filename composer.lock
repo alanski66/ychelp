@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d647a109a15adb27feaa1f0fb06709d3",
+    "content-hash": "af9b5842c271704413237470ffc65d61",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -4766,11 +4766,11 @@
         },
         {
             "name": "studioespresso/craft-splashingimages",
-            "version": "2.1.2",
+            "version": "2.1.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/studioespresso/craft3-unsplash/zipball/de648f47d01546246baf65ad418325986033555e",
-                "reference": "de648f47d01546246baf65ad418325986033555e",
+                "url": "https://api.github.com/repos/studioespresso/craft3-unsplash/zipball/0b1a2bc1319bcba09665a20f03407977898dc8bc",
+                "reference": "0b1a2bc1319bcba09665a20f03407977898dc8bc",
                 "shasum": ""
             },
             "require": {
@@ -4813,7 +4813,7 @@
                 "docs": "https://github.com/studioespresso/craft3-unsplash/blob/develop/README.md",
                 "issues": "https://github.com/studioespresso/craft3-unsplashs/issues"
             },
-            "time": "2020-11-03T17:59:54+00:00"
+            "time": "2020-11-13T12:01:36+00:00"
         },
         {
             "name": "sunra/php-simple-html-dom-parser",
@@ -6715,11 +6715,11 @@
         },
         {
             "name": "xpertbot/craft-wheelform",
-            "version": "2.5.2",
+            "version": "2.5.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xpertbot/craft-wheelform/zipball/81093b1f48b8284b65a0269ee462f70861a3c9f2",
-                "reference": "81093b1f48b8284b65a0269ee462f70861a3c9f2",
+                "url": "https://api.github.com/repos/xpertbot/craft-wheelform/zipball/b9275380b2783cb0c02700e1a7d9ed37fd14a749",
+                "reference": "b9275380b2783cb0c02700e1a7d9ed37fd14a749",
                 "shasum": ""
             },
             "require": {
@@ -6762,7 +6762,7 @@
                 "docs": "https://github.com/xpertbot/craft-wheelform/blob/master/README.md",
                 "issues": "https://github.com/xpertbot/craft-wheelform/issues"
             },
-            "time": "2020-10-06T02:10:12+00:00"
+            "time": "2020-11-15T20:33:28+00:00"
         },
         {
             "name": "xpertbot/wheelformhelper",
