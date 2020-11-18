@@ -30,7 +30,7 @@
         <div class="row ">
             <div class="col-12  col-lg-8 offset-lg-2 text-center ">
                 <div class="thx blue-border pt-4 pb-1">
-                    <p>{{ footerFunders.footerFundersHeading | default('We are grateful to our primary sponsors  & partners for their continued support:')}}</p>
+                    <p>{{ footerFunders.footerFundersHeading | default('We are grateful to our primary sponsors & partners for their continued support:')}}</p>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 {% for entry in toptier %}
                     {% set asset = entry.image[0] %}
                     
-                    <img class="mx-3 py-3 py-sm-0 mb-2 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}"
+                    <img class="mx-3 mb-2 d-inline d-sm-inline-block" src="{{ asset.getUrl('topTier') }}"
                          width="{{ asset.getWidth('topTier') }}"
                          height="{{ asset.getHeight('topTier') }}"
                     >
