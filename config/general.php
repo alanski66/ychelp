@@ -63,6 +63,6 @@ return [
         // Base site URL
         'siteUrl' => null,
         // Disable project config changes on production
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
     ],
 ];
