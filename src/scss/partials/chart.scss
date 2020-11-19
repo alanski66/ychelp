@@ -15,9 +15,13 @@
 @media (max-width:575px){
   .chart-container{
     text-align:center;
-    width:50%;
+    width:100%;
     height:50%;
     position: relative;
     margin:0 auto;
+  }
+  .col-12:nth-child(3) .chart-container{
+    margin-bottom:0!important;
+    // background-color: aqua;
   }
 }

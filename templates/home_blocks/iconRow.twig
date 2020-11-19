@@ -10,10 +10,10 @@
                 <p>{{ block.subHeadingText }}</p>
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3 ">
             {% for col in block.icons.all() %}
-                <div class="col-12 col-sm-4">
-                    <div class="chart-container text-center">
+                <div class="col-12 col-sm-4 ">
+                    <div class="chart-container mb-3 text-center h-100">
                         {%  if col.iconColor |length %}
                             {%  set style = "style=color:" ~col.iconColor | default("#0089bf")~ "" %}
                         {% else %}
