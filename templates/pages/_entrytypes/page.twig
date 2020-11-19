@@ -27,9 +27,9 @@
         
         {% if block.type == "usefullinks" %}
             {% if block.usefulOrgs | length %}
-                {% for ulink in block.usefulOrgs %}
+                {% for ulink in block.usefulOrgs.all() %}
                     {% if ulink.usefulLink | length %}
-                        {% for link in ulink.usefulLink %}
+                        {% for link in ulink.usefulLink.all() %}
                             {% if link.url | length %}
                                 {% set useful = '1' %}
                             {% else %}

@@ -1,6 +1,6 @@
 <section class="block-cta my-3 my-sm-5">
 <ul class="list-unstyled cta-icons d-flex justify-content-center justify-content-lg-start mb-0">
-{% for block in cta.ctaBlock  %}
+{% for block in cta.ctaBlock.all()  %}
 
     <li class="list-inline-item">
         <a class="icon-circle popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">

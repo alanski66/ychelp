@@ -52,7 +52,7 @@
         {% endfor %}
         {%  if entry.pageSubNav | length %}
             <!-- pagesubnav -->
-            {%  for entry in entry.pageSubNav %}
+            {%  for entry in entry.pageSubNav.all() %}
                 <li class=" {{ macros.isActiveChildClass(entry.slug)|trim }} level{{ entry.level }}">
                     <a href="{{ entry.url }}" class="  level{{ entry.level }}">{{ entry.title }}</a>
                 </li>

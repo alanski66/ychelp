@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="row mb-5 ">
-            {% for block in block.imageColumn %}
+            {% for block in block.imageColumn.all() %}
                 {% set asset = block.image.one() ?? null %}
                 {%  if asset | length %}
                 {% set thumb = {

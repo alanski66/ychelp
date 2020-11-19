@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af9b5842c271704413237470ffc65d61",
+    "content-hash": "ef38f552e023836a2182f3f309704a5b",
     "packages": [
         {
             "name": "aelvan/imager",
@@ -3567,11 +3567,11 @@
         },
         {
             "name": "nystudio107/craft-seomatic",
-            "version": "3.3.22",
+            "version": "3.3.23",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/3d9113e9a407d797da9a794883c494e199a12f33",
-                "reference": "3d9113e9a407d797da9a794883c494e199a12f33",
+                "url": "https://api.github.com/repos/nystudio107/craft-seomatic/zipball/b908f4ea4389e86bc1cd8977d88f2659f10a504c",
+                "reference": "b908f4ea4389e86bc1cd8977d88f2659f10a504c",
                 "shasum": ""
             },
             "require": {
@@ -3635,7 +3635,7 @@
                 "docs": "https://nystudio107.com/plugins/seomatic/documentation",
                 "issues": "https://nystudio107.com/plugins/seomatic/support"
             },
-            "time": "2020-10-20T16:34:40+00:00"
+            "time": "2020-11-18T16:51:42+00:00"
         },
         {
             "name": "nystudio107/craft-typogrify",
@@ -6054,11 +6054,11 @@
         },
         {
             "name": "verbb/cloner",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/cloner/zipball/0b3e7a5246f3192861643e5e0540af7a2e311f34",
-                "reference": "0b3e7a5246f3192861643e5e0540af7a2e311f34",
+                "url": "https://api.github.com/repos/verbb/cloner/zipball/efbd15651a0613c04acdba89a29d8a3899391f1e",
+                "reference": "efbd15651a0613c04acdba89a29d8a3899391f1e",
                 "shasum": ""
             },
             "require": {
@@ -6102,7 +6102,7 @@
                 "docs": "https://github.com/verbb/cloner",
                 "rss": "https://github.com/verbb/cloner/commits/v2.atom"
             },
-            "time": "2020-09-29T07:46:17+00:00"
+            "time": "2020-11-18T21:19:10+00:00"
         },
         {
             "name": "verbb/super-table",

@@ -21,7 +21,7 @@
 
 
                         {% if ulink.usefulLink | length %}
-                            {% for link in ulink.usefulLink %}
+                            {% for link in ulink.usefulLink.all() %}
                                 <li class="list-inline-itm">
                                     <a href="{{ link.url }}"><i class="fa fa-link "></i> {{ link.title }}
                                         {% if link.text|length %}: {{ link.text }}{% endif %}</a>

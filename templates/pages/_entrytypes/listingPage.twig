@@ -22,7 +22,7 @@
                 <!-- get children -->
                     {%  set children = entry.getDescendants().hidePage('not 1') %}
 {#                    {{ children | length }}#}
-                {% for child in children %}
+                {% for child in children.all() %}
                     {% if child is defined %}
 
                         {% set childlink = child.uri %}

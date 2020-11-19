@@ -58,7 +58,7 @@
                     <input type="hidden" class="ignore" name="action" value="guest-entries/save">
                     {{ redirectInput('callback-thanks') }}
                     <input type="hidden" class="ignore"  name="sectionUid" value="0142231a-9a28-4802-bda0-21494e18d138">
-                    <input type="hidden" name="fields[ipaddress]" value="{{ craft.request.getIpAddress() }}">
+                    <input type="hidden" name="fields[ipaddress]" value="{{ craft.app.request.userIP() }}">
 
                     <div class="form-group">
                         <label for="title">{{ "Name" | t }}</label>
@@ -116,7 +116,7 @@
         </div>
     </div>
 
-    <script src="https://www.google.com/recaptcha/api.js?&hl=%252525252525252525252525252525252525252525257B%252525252525252525252525252525252525252525257BcurrentLocale%252525252525252525252525252525252525252525257D%252525252525252525252525252525252525252525257D&ckcachebust=626272099"
+    <script src="https://www.google.com/recaptcha/api.js?&hl=%25252525252525252525252525252525252525252525257B%25252525252525252525252525252525252525252525257BcurrentLocale%25252525252525252525252525252525252525252525257D%25252525252525252525252525252525252525252525257D&ckcachebust=627481706"
             async defer>
     </script>
 

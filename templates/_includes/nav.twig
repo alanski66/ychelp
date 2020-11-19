@@ -39,7 +39,7 @@
                             
                         </ul>
             <!-- global chat -->
-            {% for block in cta.ctaBlock  %}
+            {% for block in cta.ctaBlock.all()  %}
                 <div class="chat d-flex align-self-center ">
                     <a class="popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">
                         <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">

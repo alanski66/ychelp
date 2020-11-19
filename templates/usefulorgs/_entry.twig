@@ -92,13 +92,9 @@
 
 
             <div class="row ">
-                {% for entry in orgs %}
+                {% for entry in orgs.all() %}
                     {# start card layout #}
-
-
                     <ul class="m-0 text-center h-100 justify-content-center {% if entry.customLink | length %}  {% endif %}">
-
-
                         {% set image = entry.image[0] ?? null %}
                         {%  set link = null %}
                         {%  if  "http" in entry.customLink %}
