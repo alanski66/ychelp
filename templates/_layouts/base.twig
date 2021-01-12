@@ -22,21 +22,13 @@
     <meta name="msapplication-TileColor" content="#eeeeee">
     <meta name="msapplication-config" content="{{ baseUrl }}/favicos/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-<!-- 
+<!--
     {% set isMobile = craft.mobileDetect.isMobile ? '1' : '0' %}
 {#    {% set menu = craft.entries.section('pages').hidePage('not 1').all()  %}#}
  -->
     <!-- Custom styles for this template -->
     <link href="{{ baseUrl }}/css/style.css" rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM09YJ1BZK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-ZHFXGD8ZSN');
-    </script>
+    
 </head>
 {% if bodyClass is not defined %}
     {% set bodyClass = entry is defined ? entry.type : craft.app.request.segments|first  %}
