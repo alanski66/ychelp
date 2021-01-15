@@ -27,14 +27,24 @@
                                 <div class="card shadow">
                                     {%  if asset | length %}
                                         {%  if pdf.url | length %}
-                                            <a href="{{ pdf.url }}">{% endif %}
+                                            <a href="{{ pdf.url }}"
+                                            data-on="click"
+                                            data-event-category="Downloads"
+                                            data-event-action="Resource item download"
+                                            data-event-label="{{ pdf.filename }}"
+                                            >{% endif %}
                                             <img class="card-img-top img-fluid" data-mh="imgh" src="{{ asset.getUrl('pdfportraitsmall') }}" alt="{{ asset.title }}">
                                         {%  if pdf.url | length %}</a>{% endif %}
 
                                     <div class="card-body" data-mh="textbody">
                                         <div class="card-title ">
                                             {%  if pdf.url | length %}
-                                            <a href="{{ pdf.url }}">{% endif %}
+                                            <a href="{{ pdf.url }}"
+                                               data-on="click"
+                                               data-event-category="Downloads"
+                                               data-event-action="Resource item download"
+                                               data-event-label="{{ pdf .filename }}"
+                                            >{% endif %}
                                                 {{ doc.title }}
                                                 {%  if pdf.url | length %}</a>{% endif %}
 

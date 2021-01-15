@@ -28,7 +28,7 @@
  -->
     <!-- Custom styles for this template -->
     <link href="{{ baseUrl }}/css/style.css" rel="stylesheet">
-    
+    <script async src="{{baseUrl}}/js/autotrack.js"></script>
 </head>
 {% if bodyClass is not defined %}
     {% set bodyClass = entry is defined ? entry.type : craft.app.request.segments|first  %}
