@@ -1,23 +1,23 @@
 {
   "require": {
     "aelvan/imager": "v2.4.0",
-    "by/guest-entries-notification": "1.0.0",
-    "craftcms/cms": "3.5.15.1",
-    "craftcms/feed-me": "4.3.1",
+    "by/guest-entries-notification": "1.0.1",
+    "craftcms/cms": "3.6.12",
+    "craftcms/feed-me": "4.3.6",
     "craftcms/guest-entries": "2.3.0",
-    "craftcms/redactor": "2.8.3",
+    "craftcms/redactor": "2.8.6",
     "dolphiq/iconpicker": "1.0.5",
-    "hybridinteractive/craft-position-fieldtype": "1.0.16",
+    "hybridinteractive/craft-position-fieldtype": "1.0.17",
     "joomkit/pdfthumbnailer": "^1.0",
-    "nystudio107/craft-seomatic": "3.3.23",
+    "nystudio107/craft-seomatic": "3.3.40",
     "nystudio107/craft-typogrify": "1.1.18",
-    "pennebaker/craft-architect": "2.3.3",
-    "studioespresso/craft-splashingimages": "2.1.4",
+    "pennebaker/craft-architect": "2.4.2",
+    "studioespresso/craft-splashingimages": "2.1.7",
     "superbig/craft3-mobiledetect": "1.0.2",
     "verbb/cloner": "1.2.2",
-    "verbb/super-table": "2.6.3",
+    "verbb/super-table": "2.6.7",
     "vlucas/phpdotenv": "^3.4.0",
-    "xpertbot/craft-wheelform": "2.5.4",
+    "xpertbot/craft-wheelform": "2.5.6",
     "xpertbot/wheelformhelper": "^1.1"
   },
   "require-dev": {
@@ -48,7 +48,7 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.0"
+      "php": "7.3"
     }
   },
   "scripts": {

@@ -1,4 +1,4 @@
-dateModified: 1606054306
+dateModified: 1619171848
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
@@ -89,9 +89,9 @@ plugins:
     enabled: true
     schemaVersion: 1.0.0
     settings:
-      confirmationTemplate: callback/_entry.twig
+      confirmationTemplate: callback/_mail.twig
       emailSubject: 'New callback request created'
-      emailTo: help@yachtcrewhelp.org
+      emailTo: joomkit@gmail.com
       fromEmail: help@yachtcrewhelp.org
       fromName: 'Yacht Crew Help Website'
   imager:
@@ -121,6 +121,7 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
+    licenseKey: P96JFW6UWT87S9LP9H2KIUR8
     schemaVersion: 3.0.9
   splashing-images:
     edition: standard
@@ -147,5 +148,5 @@ system:
   live: true
   name: 'Yacht Crew Help'
   retryDuration: null
-  schemaVersion: 3.5.13
+  schemaVersion: 3.6.8
   timeZone: America/Los_Angeles
