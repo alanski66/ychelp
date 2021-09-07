@@ -64,6 +64,18 @@
   color:$white;
 }
 
+.emergency.small {
+  background: #AF2127;
+  color: #fff;
+  text-align: center;
+  font-size:1rem;
+}
+.emergency.small .fa-info-circle,
+.emergency.small a{
+  color:$white;
+  font-size:1rem;
+}
+
 //end homepage
 
 .section.landingpagerows.center ul{

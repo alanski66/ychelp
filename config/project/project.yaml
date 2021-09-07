@@ -1,8 +1,328 @@
-dateModified: 1619171848
+dateModified: 1631017158
 email:
   fromEmail: info@joomkit.com
   fromName: 'Yacht Crew Help'
   transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    0aab1fd2-8906-4b68-ae49-e86e9f40be6d: Copyright # Copyright
+    0b5b238f-d882-4d68-b79a-3e6ebf5e452e: Image # Image
+    00b6e23a-2138-4ce7-856a-a8c6e818feff: 'Entry to promote' # Entry to promote
+    0b214217-c5d8-4343-86f2-ddb074e85b94: Slide # Slide
+    0c1255b4-55f4-4086-bb1e-d9f44fc40cee: Callback # Callback
+    0d2b4759-959f-41f9-8bc5-34499d41f1a5: 'PDf thumbs' # PDf thumbs
+    0d17b66a-cd19-4df2-861a-90576664f74e: TickList # TickList
+    0d715051-14fc-44b9-b6db-dba067dc6052: 'Call status' # Call status
+    0dc8a341-8175-4d32-8de4-06b280e0ef2a: Subline # Subline
+    0f4f6383-616d-4ffe-870b-cb3eb4262624: Banners # Banners
+    0f5bbdcc-188f-4584-9b82-61800bdcb760: News # News
+    1a28e039-1b55-4bc5-979c-5475acbdec21: 'Button Link' # Button Link
+    1a79e2d6-ed94-4ea3-8593-de83ce84ea1b: 'Button link' # Button link
+    1d2268ae-a64f-4f4b-bd7b-ff20d73462d4: 'Mobile body' # Mobile body
+    1d9527a1-816c-4cf5-ac9b-cbd153563eea: 'Card list group' # Card list group
+    1db79d86-3c6a-4ab8-af8e-f545af173786: Flickr # Flickr
+    1e257c82-5971-4f79-ba84-e4c0c92c6cc1: Banner # Banner
+    1ee414a2-9549-45fe-b126-d49c85fe0687: Menu # Menu
+    1f7c4f30-c52a-42e5-b6e9-31f8f1c96033: 'Useful link' # Useful link
+    1fd4a478-1907-4255-b12f-d7af5fe5f5e0: 'Footer funders' # Footer funders
+    2a5aef8d-134f-449e-847d-6785f037fe0b: Thumb # Thumb
+    2c6a4b83-787a-4bce-8d7f-cd1f4d468539: 'Button text' # Button text
+    02c30737-a6e9-4dcf-a11c-38c0820d4f97: 'Custom link title' # Custom link title
+    2e770f25-a90f-4ebf-888c-e1a7ad524ae4: 'Resource page media' # Resource page media
+    2febaced-b5a4-4b7e-b941-5ae89456cbf4: 'Cookie button text' # Cookie button text
+    3af48960-a927-4fb1-bf32-38c48536547c: 'Ship documents' # Ship documents
+    3b78bc58-20e3-4d13-89bb-5b629557524d: 'Card Thumb' # Card Thumb
+    3bfd5985-56cc-43e0-984c-770fdcefda61: 'Card text' # Card text
+    3d063ec9-8ecf-444b-9073-3f35be894ebd: Image # Image
+    3d324029-3dc6-4a59-93fb-4a4c61136c6b: 'Button link' # Button link
+    03e79f6c-078d-4f55-a010-5a69c873c392: 'Initial Sponsor' # Initial Sponsor
+    3e237f2c-59a8-4212-888a-5f42107cf72e: 'Citation link' # Citation link
+    4a21e974-ebcd-4857-ad8f-3183d7d0787e: SEO # SEO
+    04ab8d26-1aa6-4382-876b-969e1e6bdee9: Website # Website
+    4b4f147b-392d-4c06-ad7d-97ef9c656589: 'Feature title' # Feature title
+    4c78bef1-0358-4ca8-a5d8-9112a3311aee: Image # Image
+    4c100a4e-a9d7-4013-aa94-f7be4cbffbbe: 'Icon row' # Icon row
+    04ccbc83-e105-4b78-9167-63b8f75f3894: 'Useful orgs' # Useful orgs
+    4d8e1527-deab-46a5-8302-623783913d20: 'Section row' # Section row
+    4d97bb57-65e2-4a24-a25f-de74c14bb806: Copyright # Copyright
+    4e5df93d-4ec7-455e-b4e9-93ef387b37fc: 'Citation intro' # Citation intro
+    4e42df72-e86c-476f-a84d-d99e7e93fa40: 'Supporters index' # Supporters index
+    4e23428b-7a68-4521-a585-b8cfd846f0de: 'Entry link' # Entry link
+    4f7f38cd-7805-4044-bca1-07aa1cd81acd: Text # Text
+    5c7fbd6e-c550-4722-b52e-8233e842d40a: Editors # Editors
+    5c41bdef-bb14-4e77-a5d8-b77d58560134: Category # Category
+    5d3eb806-7acb-46b0-a34b-547b7f97f9a7: 'CTA Block' # CTA Block
+    5f51c5de-afdc-4865-9b42-f6540e2b2aea: 'news intro' # news intro
+    5f888b63-f0b9-4647-92f5-ced1232a6941: 'Card title' # Card title
+    6a2bdfda-aa20-4cb1-a774-149f36fbd798: 'Old news image' # Old news image
+    6a790902-45bf-469d-9d40-b12dd79fee3b: Sponsors # Sponsors
+    6c1e2d0e-8509-4b5f-aa62-18ea3952dc37: 'Callback email' # Callback email
+    6cef57f3-e94e-4810-9ae7-a0d294fd496f: Position # Position
+    6dc9c4b6-51a1-491f-aaa0-7ca14b9b5bcf: Page # Page
+    6e0ce7b7-9e83-4bdb-8190-14f14310c565: item # item
+    6ee69112-e67d-4d6b-924d-6cff1c682e77: Tags # Tags
+    7a2dfa74-227b-4b52-ad17-ea240052d284: 'Intro text' # Intro text
+    7adb7369-10ca-4d06-8870-5b5e40abb51b: 'Mobile specific' # Mobile specific
+    7bc96546-dce7-418b-894a-2c37efb7fbf7: 'List header' # List header
+    7c6ad96b-9196-468a-b9a9-85ffef50074c: 'Cookie deny button text' # Cookie deny button text
+    7d4bae54-8c2a-45d8-aca1-3aedfd288caa: Value # Value
+    07d6c086-8295-48a4-ad25-f87ce9cf736a: 'Global CTA' # Global CTA
+    7d11f393-a6fe-4a75-a977-bc55615f2182: 'Top tier' # Top tier
+    7da6316c-7322-4ec9-bb46-a72d2c23b84b: PdfportraitSmall # PdfportraitSmall
+    7dc5c0c2-32b3-4361-ac74-9a7c8a6131a2: 'Page sub nav' # Page sub nav
+    7dd24d53-efc0-4b80-8eeb-bb44d6ef5ad1: 'Sponsor self title' # Sponsor self title
+    7e196ce3-c44e-4cf1-9082-a1de218c1b58: 'External link' # External link
+    8a2aa11b-b2db-4cc2-9c6c-25d99ddb3913: 'Content block' # Content block
+    8a55486d-0851-419d-8e21-6fd7cbaaf13a: Supporters # Supporters
+    8c74c5ae-bf1a-4b25-af8a-e3495afbbf74: 'Organisation name' # Organisation name
+    9b64ac14-7705-4b60-870d-8e7a0b2fd917: 'Image link' # Image link
+    9c3626f8-517c-4fdb-9606-811e6e0cd966: 'Cookie policy link text' # Cookie policy link text
+    9e367c9e-445f-4859-9596-317192202ea8: 'Supporter message' # Supporter message
+    9f0c1a20-5b50-4304-b8bf-85f13791fe7a: Icons # Icons
+    9ff2cb4c-21a3-4247-bf68-ad57786f3883: Title # Title
+    11dcf51d-fc00-4c66-8efc-3b0d9b78a6f6: 'Subscribe form title' # Subscribe form title
+    15c61aa2-c57c-4dcd-a96f-2bc59dad7eae: 'Callback time' # Callback time
+    15e89b51-4361-4062-b9d8-68967172a627: 'Public Schema' # Public Schema
+    15eef50e-9647-44d4-aa25-93cd576fa59a: 'Useful organisations' # Useful organisations
+    16f45758-d16f-4854-acbc-7d2d963ffdc2: 'Sponsor CTA button title' # Sponsor CTA button title
+    17b74605-e3e0-478f-a368-ca9a569d917a: 'Small square' # Small square
+    19cfc195-3f0a-4640-b283-1faf9a827e99: 'Custom link title' # Custom link title
+    20b006cd-861c-41f6-b8fd-ae54baccfa79: 'PDF document' # PDF document
+    30efa9b1-5323-434c-b1fe-fef34e8ee339: 'Custom link' # Custom link
+    30f69f73-a8e3-4862-8bf4-095dccd0c543: Facebook # Facebook
+    32cc13f6-0b48-475a-9b17-f55311fa81b6: 'Organisation details' # Organisation details
+    34c2cd62-9787-4d4a-9974-4e4b1c7868d7: Common # Common
+    35c8638d-ca7a-4396-acab-1e6f328c116d: 'CTA link' # CTA link
+    35c85561-4388-4ade-8076-b12aa08b7aa2: Instagram # Instagram
+    36f6766e-e188-4d25-9161-9c673db5c821: 'Organisation telephone' # Organisation telephone
+    39cb28b0-c735-434f-9b08-3fa2fb9181da: 'Charity number' # Charity number
+    40c475e0-a837-4c63-98fe-c5e39febf18d: LinkedIn # LinkedIn
+    40f717a5-1487-456c-bf77-fb1d5299754d: Homepage # Homepage
+    50b87e9d-61cd-4c34-867f-944e70ac9b4b: 'Social action button' # Social action button
+    53f6abb8-8a9e-43c7-bd2b-16d6beb67f57: 'Image credit' # Image credit
+    55bb8032-1277-4c1a-bf59-58aadb7ebce1: 'Link for supporters' # Link for supporters
+    55c30801-6379-4098-a544-cdab0bc2c9af: 'Social category' # Social category
+    59d2222b-9f7b-433a-8efe-47caebb06702: Supporters # Supporters
+    60f46ded-110e-4f3e-961b-0ad5a6c7fa6a: Author # Author
+    61d6b9e9-6c47-412a-b718-b4d1e92f09aa: 'Supporter website url' # Supporter website url
+    63e43ff2-ed91-4ea8-8953-f731e35599f2: 'Data label' # Data label
+    64b04bb9-48e7-4874-a0c8-80f0b83b02d0: 'Page Description' # Page Description
+    64dd7d0f-4a2f-4e8e-ba31-0d43b2e3165e: Video # Video
+    65aebe37-64ef-44f7-85e2-55b1788e8ebd: Cards # Cards
+    69e6ebb4-ac73-4192-aa99-7f4b26165ac3: 'Callback language' # Callback language
+    70a4ac64-abe7-4301-99e0-99b3b5709e6e: Resources # Resources
+    71ade6a8-de0c-4007-aff4-f701ee291471: 'Contact category' # Contact category
+    71bd5112-bab5-45e3-bdd6-a9b952e02499: 'Donate link' # Donate link
+    71f37a6a-d34f-4e03-a782-b3fc771183d0: Promotion # Promotion
+    73d7fc53-8df4-4ad9-86b1-00c70c43206d: Quote # Quote
+    75f645c5-7151-4595-8817-c3ffe1b6fbb3: 'Quote row' # Quote row
+    75f22887-c825-4075-958b-9c96e74a4567: Callback # Callback
+    76f4a5fd-0766-440a-9811-d21593447836: 'Landing pages' # Landing pages
+    79d27892-fe61-4baf-86af-59731d26fec4: 'Supporters index' # Supporters index
+    81ddc3c9-69fd-4767-a0ec-a8937e3e737e: 'Yacht Crew Help' # Yacht Crew Help
+    82d93093-1d9e-4be4-b5ca-fb25a70bd973: ipaddress # ipaddress
+    82e59281-d6be-4eb2-adf5-853f9dc798d9: Default # Default
+    85d7e71c-8097-40a0-b95b-39ec57cf3f11: Callback # Callback
+    88e38313-a1f7-4c31-bf7a-99737cf55aff: 'Useful organisations' # Useful organisations
+    88fba76f-5a36-4b7e-a9c5-4b2ce902c8c3: Copyright # Copyright
+    092a7f40-a254-4f2d-8173-b70bd1dfee2d: 'Organisation address' # Organisation address
+    093ea485-ea6b-45a5-b0be-109cd9d0fdd1: Icon # Icon
+    99d3c778-4f2e-4bc5-8a7b-1b6be947749a: Copyright # Copyright
+    117fb661-d2a4-407c-a55a-d1f8fb648842: Donate # Donate
+    118e35c9-2543-4382-80aa-59987109b314: 'Banner image' # Banner image
+    206a7b8d-a09f-47e4-b472-5d0c046d9105: 'CTA custom' # CTA custom
+    238b0655-d619-452a-81f3-5c9e4e29dab6: 'Contact link' # Contact link
+    254b2e3d-8c85-40b5-95f3-8e2866d819e4: 'Button text' # Button text
+    303dcdec-2176-4fa7-887f-18f59505e244: 'Card button custom link' # Card button custom link
+    380c502e-e141-4d83-896c-738ca23d319a: 'Box heading' # Box heading
+    388af95c-9755-4484-8d28-6de30e4ae54a: 'Global contact' # Global contact
+    418e2fe7-63c7-498f-917d-7f01386f0f71: 'CTA button text' # CTA button text
+    494a4f58-4260-4f51-9b54-24f4b3be683e: Sticky # Sticky
+    496b2a82-24a6-4d0f-9d77-e3c185dfa0e0: 'Example links' # Example links
+    500c4a94-e40d-4ee8-aebd-aff3570a9d88: 'CTA button color' # CTA button color
+    528b0d00-159a-4866-aca8-d9394e99bb05: Images # Images
+    555a43ff-93fe-46ef-866a-725644f9e387: 'Organisation email' # Organisation email
+    555e3276-84c9-40b9-8c48-272022865157: 'Button link' # Button link
+    0562c443-473b-4356-a1d0-b0d65712ce3f: Quote # Quote
+    595d4ed2-c885-4326-a1b0-0e71b7ae90ad: 'Social action link' # Social action link
+    620de6f4-fd75-4c1f-a24d-3770d7ce8b8b: 'Publication date' # Publication date
+    00656a77-5f71-4968-ae71-873c0e20b7db: Category # Category
+    670a426f-5790-4bb3-9041-04ae032d45c1: 'List item' # List item
+    672eb1f0-5bd8-4043-b8b0-2a50a5a15a6a: Subscribe # Subscribe
+    673ffe9e-dc49-4117-8af3-4d239882fc78: News # News
+    0741a81e-b94c-4c08-837d-b22caab4c5d8: 'Chart type' # Chart type
+    852d1b23-fc46-4506-87d1-5df093ae2f21: 'Useful link' # Useful link
+    869aea63-e053-4c48-99f3-7c363219b37d: Chart # Chart
+    957da3ea-21f1-4493-a9ad-e0779c39ca26: Heading # Heading
+    0984d2d0-6cf3-4fbe-b23c-253b7e9381a5: Phone # Phone
+    01487a7f-4903-46f2-a5b0-5924c5685e25: 'Card button' # Card button
+    2050e617-3379-4055-92a5-db2dd43f8eee: Chat # Chat
+    2096fef3-250e-4128-b7ea-4e553003f901: 'Image column' # Image column
+    2547db65-b57a-4f23-ba45-7123b8e97626: 'Organisation category' # Organisation category
+    2691c7ac-516d-4909-a877-c3075919238c: 'Charity organisation statement' # Charity organisation statement
+    2862efef-057b-4a02-a887-57f77dd7b564: 'Card image' # Card image
+    3052e924-b84d-4d3c-a968-0df7f4320698: 'Yacht Crew Help' # Yacht Crew Help
+    3737ce07-64cc-493a-9079-7bb8fedba689: Heading # Heading
+    3810ca41-1258-4df2-8e1b-a99d27c92545: Text # Text
+    4443e604-b1b9-423f-82bd-880a43c8a595: 'Display style' # Display style
+    4756c00f-8268-4b23-90fc-d55840b86e55: 'Button text' # Button text
+    6228b2d8-34a9-4fb7-8b48-4be93d151412: 'Subscribe box side heading' # Subscribe box side heading
+    6440fa8f-7d18-4ed0-bdea-1e3018bee1c1: 'Document link' # Document link
+    6729b1ef-49f8-46ef-9286-620f3b8edb11: CTA # CTA
+    6869de47-dc27-4046-9ae6-33fafd01b908: Caption # Caption
+    7135d77d-f5e7-4d12-9d35-0c6e40777ee2: Pages # Pages
+    7426de1a-dca2-44bd-8654-d0527a326493: Text # Text
+    7696ff79-21ff-41cb-900a-22e0118e0781: Homepage # Homepage
+    8605bc24-1933-4510-9e68-0258c0e2ace5: 'Resource page with multiple documents' # Resource page with multiple documents
+    9113b4e5-c9db-40b7-8b9d-f161272c680c: 'Cookie message' # Cookie message
+    14229ff8-c2d6-477d-9475-11f6f23c514e: Social # Social
+    16936aab-c642-455c-b533-669594c1212e: Supporters # Supporters
+    21686fc5-b840-4187-b102-42cfc44b2948: Pages # Pages
+    30900e82-1122-4f68-9993-575261d0fb79: 'Subscribe pop up image header' # Subscribe pop up image header
+    31305e73-ef23-400a-8aa0-c2d3efc27374: 'Sponsor logos' # Sponsor logos
+    031506de-ff1d-4ddf-a179-708f5af3269f: 'Footer left links' # Footer left links
+    33559dd3-a4ba-47d9-8d99-123def6bb7cd: menu # menu
+    37933c0b-64de-4f23-afb5-eb15d802c699: 'Custom text' # Custom text
+    40299c62-439b-49f4-949f-e0b4318c942d: 'Carousel supporter logo' # Carousel supporter logo
+    51228c2c-6771-4288-b8fa-4f9c1e2f0da9: Email # Email
+    058368b3-dbf3-43c0-8b26-e02fe1b0803b: Social # Social
+    108829d4-1418-4222-a0d6-9c89fc440b69: 'Site info' # Site info
+    135681fe-93a1-46be-aae9-7e1a067b68c0: 'Pdf portrait' # Pdf portrait
+    0142231a-9a28-4802-bda0-21494e18d138: Callbacks # Callbacks
+    199058a2-e5b9-48c8-bb58-af2d3f89bfbc: 'Hide sponsorship cta and sponsors' # Hide sponsorship cta and sponsors
+    385268ae-1633-4634-9179-08d3e71b7876: 'Page Image' # Page Image
+    564996aa-b9f1-4570-9881-390740555064: 'Custom link' # Custom link
+    862850f9-670d-461c-a698-dd8cdf0b442a: Emergencies # Emergencies
+    987469de-36ec-433a-b1f8-d49dc60ea2e7: 'Sponsor settings' # Sponsor settings
+    3602008c-51bc-4606-a5df-b450478a0c04: 'Include tracking scripts here' # Include tracking scripts here
+    4948066d-1240-4a7d-8fac-c9b04cbefee1: 'Author role' # Author role
+    6019761f-418a-4db8-9606-0ba84cce6afc: 'Footer right links' # Footer right links
+    40749053-27f4-42fb-a2e2-06d699959fbf: 'CTA text short version' # CTA text short version
+    42226111-7b4d-40ef-b7bb-c5d99f87e72d: 'Card landscape' # Card landscape
+    43321487-c0cf-4014-9c35-7d648822348c: seo # seo
+    46669250-3cbe-479e-930f-c978ba021a94: 'Sponsor logo ' # Sponsor logo 
+    63074133-1929-42ea-b9ae-9ab4e13cec84: Body # Body
+    71592556-ad3c-410c-a7c9-fba3b43f128f: 'Home skew' # Home skew
+    88864984-f15f-466e-a1fa-0227ae6d5b10: 'Listing page' # Listing page
+    a01f49c2-68ca-412f-860e-24b57d55884c: 'Sub heading text' # Sub heading text
+    a04cac6c-b190-4e7c-92a6-7737bb5600a8: 'Icon size' # Icon size
+    a0930684-6c6c-45ad-9356-086cfc04ad85: 'Sponsorship end date' # Sponsorship end date
+    a4a137d8-5552-460d-8e40-6145a2bb9b86: 'Card button link' # Card button link
+    a5d2a5e0-aeeb-4935-9e10-5d836c931e2e: 'Global Content' # Global Content
+    a6d18702-6e80-49cd-ba69-0b57c6b74c50: 'Image caption' # Image caption
+    a6e5da57-6dee-4e78-9148-025396c1fe65: Image # Image
+    a7df7184-ffa8-44e2-a567-d42249ff60fb: Intro # Intro
+    a8fc2019-959b-4466-9b8c-2f87c114496a: 'Data color' # Data color
+    a85f91d3-6437-4e05-8e0c-aca0a3be3e5d: Carousel # Carousel
+    a96a311b-81f3-40c8-81d7-2bc536cd7b40: 'Links heading' # Links heading
+    a442c253-2edc-4ab1-ba05-f9e407e4771d: 'Initial supporter' # Initial supporter
+    ab8fa44c-a2cc-43be-bfd0-177ba076737f: Sponsorships # Sponsorships
+    ab1038d7-9433-4401-b13d-001163c38d42: 'Page Intro text' # Page Intro text
+    abe4c0dd-b946-4efc-b344-e52d5b2002ed: 'Global subscribe' # Global subscribe
+    ac95aba3-9fab-4eb8-b3cf-d21bf3e429dd: 'Nav settings' # Nav settings
+    ac591f65-95a6-4475-93d1-e7420a09d3b7: 'Company number' # Company number
+    ac709188-fdc5-4ca3-a5b3-3de424e6ec02: Hero # Hero
+    afee777a-fdbd-46e9-b57f-9b1e103b590d: Intro # Intro
+    b0004545-2185-4176-924f-d77cdefe0bb2: Headline # Headline
+    b2c9f4ce-2736-42e4-a687-1d439b667a1b: Sponsored # Sponsored
+    b2ea93f7-39b1-45fc-8bd8-028340e3ccd6: 'Page not found' # Page not found
+    b3cdf578-7f9a-4376-94f1-b87e9e24c41c: 'Tick list item' # Tick list item
+    b5e52e1c-7011-4c42-8ac3-854834f71dda: Ticklist # Ticklist
+    b5ed2835-508b-4d72-aa69-f9754f9cd275: 'Hide page' # Hide page
+    b5fb5f11-8dcf-4ed0-9e7f-44fa8acb3c82: 'Calls to action' # Calls to action
+    b6ed1656-f81a-4252-961f-03de30b0e693: 'Resource page' # Resource page
+    b72bdc10-24a3-47ea-831e-b53073cc2fb4: 'Callback telephone' # Callback telephone
+    b250c29d-89a3-47e9-8814-4e3ad1c5d224: 'Content type' # Content type
+    b620b7ae-6825-4bcd-86f3-46d1f8b9a7f8: 'CTA text' # CTA text
+    b4462f20-6b0e-40a3-b91a-c71a2ef6d9d5: 'Global sponsor settings' # Global sponsor settings
+    b29804a1-4b02-4861-acaa-0f45e8ed9969: 'Button text' # Button text
+    b84435db-37fd-4264-943e-fadaa7fc1814: 'Sponsored by heading' # Sponsored by heading
+    ba782d24-db73-4ae4-8593-bfa7b9166f5c: 'Global tracking links' # Global tracking links
+    bb9c5da5-0477-42ad-9c0c-245f02f419fb: Twitter # Twitter
+    bb607a26-226b-48b5-b616-dfa0583d8755: News # News
+    bbddee31-288a-42dc-99aa-c48680b8ca5a: Text # Text
+    bccbe5e7-459a-476e-905c-a93ac10b478b: Documents # Documents
+    bdb68389-947a-4e95-8d08-235731870346: Quote # Quote
+    bf83c817-4a55-4652-a271-03941c29834f: 'Social links' # Social links
+    c0c580ed-04be-44f7-bb24-3c9c255f5335: 'Heading for additional documents' # Heading for additional documents
+    c0edbdb9-2bd3-4f1e-aa84-e79baf874c81: 'Supporter logo' # Supporter logo
+    c03fcaf6-3a9b-46d1-aabc-b3e3cd1f8b1c: 'Feature first document' # Feature first document
+    c4f8eadf-f0c0-4cef-b198-00fb9eb0deec: 'Show cookie info' # Show cookie info
+    c5dcd598-c0c0-4341-969e-a5677d081540: 'Splash page' # Splash page
+    c7f55471-d85d-452c-80a1-b5a68208e265: 'Show emergency alert' # Show emergency alert
+    c8a0cc25-0bc9-4906-bb91-0f55e69cefc9: 'Cookie type' # Cookie type
+    c23acdba-daa9-4e35-b607-6abc12976545: Sponsorships # Sponsorships
+    c836dc54-9d5a-4594-8b77-bcb451a2416a: Sponsoredby # Sponsoredby
+    c899c7ad-06e8-4e34-a6b3-72d0823a686a: Health # Health
+    c7901a79-bade-490c-88c7-c3d3ac41d639: 'Feature content' # Feature content
+    c559144d-bf21-4453-8901-3c7d62aeb2ce: Home # Home
+    c911806d-bb05-4960-ba79-1a7cc2fec2ea: Unsplash # Unsplash
+    ca18236e-e848-475d-8898-4bf04e130099: 'External link' # External link
+    ce47295a-a3d8-4bcf-beec-283f57de4f52: 'Global donate' # Global donate
+    cf05dcf7-253f-4b03-97dc-4377cc175f93: 'Publishers name(s)' # Publishers name(s)
+    d1c3675d-e44a-4ce5-a39c-776293471c1c: Media # Media
+    d3f5720a-dd16-4fc0-88ba-9a4e33c9481e: 'Pdf transform' # Pdf transform
+    d5c7c763-e9c9-4f92-846a-0ba8585a038c: 'Image row' # Image row
+    d9a6d503-a209-488b-aefe-2f59b9403a29: Image # Image
+    d435eef5-799f-4679-8343-ac26438416ca: 'Global site info' # Global site info
+    d643ac1d-0d2c-42ef-b7cf-332f4bd79daa: 'Sponsor logo small' # Sponsor logo small
+    d2570f16-7a9e-4d8d-9af9-17372923f6c7: Heading # Heading
+    daeb1928-8918-4f06-ac17-5bc3c9a45d3b: 'Supporter category' # Supporter category
+    ddabdb38-40a0-4b9b-a77c-237c5e452c47: 'Footer left link' # Footer left link
+    dec9d364-393f-43a3-a48b-4c3804d173ef: 'Feature button hide' # Feature button hide
+    dec725ab-1bdc-4ef1-b754-4fdae22a1bad: Image # Image
+    e0fed65c-6734-432f-a1af-0da4f3911edd: Tracking # Tracking
+    e08627f2-bf20-438b-b455-7a7f3051fb20: Title # Title
+    e1ca4944-7a70-4566-a3b9-2492018ada06: 'Custom link' # Custom link
+    e4c93e4d-84b8-421f-a362-6d1d686ec986: 'Global Footer' # Global Footer
+    e7b68281-4428-48c1-9486-d27ecb1bf6fc: 'Hide banner' # Hide banner
+    e8b7696b-e86b-4577-a197-6d55663a0d7f: 'Useful links' # Useful links
+    e55f6fd2-a584-4957-8dc7-382dd28b341c: 'Mobile intro' # Mobile intro
+    e74c291e-df7d-48c0-8ac9-e5f31884e718: 'CTA section bg color' # CTA section bg color
+    e86fcaf6-0b98-4977-9100-7f35bc1009c7: 'Main menu' # Main menu
+    e95c1894-b467-4f3a-a6c1-8c23b4db9623: 'Chart description' # Chart description
+    e158d21d-7cb2-4590-bb0c-8841f82257ec: 'Useful links' # Useful links
+    e189f6c2-029e-4fdb-9527-36dc28b8f579: 'Icon color' # Icon color
+    e305cf1e-d626-4141-b218-a52d68ad17fd: Citation # Citation
+    e593da86-93a7-4358-b912-fd7b9f9858d0: 'Feature link' # Feature link
+    e650f7b8-2ff8-4084-acc6-cb0d6178e82e: 'Menu title' # Menu title
+    e894dbd6-c23d-4143-9472-4ae03f6639f7: 'List thumb' # List thumb
+    e8025471-95d2-4074-8bde-5d93c6f77ec3: Tags # Tags
+    ea2f43e0-6c9d-4646-8a6d-af8e535ce1a0: 'Splash page' # Splash page
+    ea75f985-83a7-446a-b7b1-6fa46b00715c: CTA # CTA
+    ea165e16-8c84-4fc7-ba40-0a31274ccc37: Chart # Chart
+    eaaa4136-98fa-474f-8362-d08d11f02a76: Title # Title
+    eb613a5f-95cc-4242-930d-ee9b10e550ac: Emergencies # Emergencies
+    eb93743b-bdd9-4aaf-8608-363189bbadbf: Featured # Featured
+    eb351109-24d4-41fe-893a-9d6fecd7b71b: Video # Video
+    ebc82c3a-ec82-4631-a6de-1738a99a94c6: 'Global copyright' # Global copyright
+    ec4f633c-45c3-401a-bdf0-385a089e8b9d: 'Footer nav' # Footer nav
+    ec89078b-41c0-45da-9e55-a849a8cc7a37: 'Chart title' # Chart title
+    ed251471-70d9-4f55-ac52-1fe54d582335: 'Subscribe button  text' # Subscribe button  text
+    ee1a1187-0557-4a96-a0a7-2fcebed07734: Resources # Resources
+    eef7af78-8aef-4777-8f4b-9e7e3baf20c1: 'Useful links' # Useful links
+    ef36e0ed-43d9-4805-830a-334b8c20803e: 'Footer funders heading' # Footer funders heading
+    f020b2f3-d04a-4601-8c6f-4146190d751f: Callback # Callback
+    f1dadb78-d606-4d32-afdd-11db560ef686: Text # Text
+    f3c3d71e-cc72-408b-b260-43d32898ba20: 'Card image top' # Card image top
+    f7d0a984-acb2-4bd7-8240-59eab595b89d: 'Footer right link' # Footer right link
+    f7f618cd-8651-4d21-8055-18085e36d726: Menu # Menu
+    f23a2f33-8227-4fca-a371-66d9177e4d18: Join # Join
+    f35d2165-a747-407e-ac92-866bb9e2bde9: 'Tick item' # Tick item
+    f73f364d-6a0d-4df4-a9be-2cd85dbaa9c1: Members # Members
+    f774d424-5b09-4cb1-9a5a-35f2b6118c3a: 'Sponsor logo grid' # Sponsor logo grid
+    f8588790-cde2-4131-83f1-4776b3861078: Carousel # Carousel
+    fa906440-8a51-44b7-9c9a-d9d6d728a6da: Callbacks # Callbacks
+    fb41a945-621b-4d21-b5ae-7b9155ee742f: Resources # Resources
+    fb72befd-3dc3-446c-874b-5ee205bb23ca: 'Custom links' # Custom links
+    fb82ef36-0c40-4f24-a454-7140f2da98ca: 'CTA Block' # CTA Block
+    fc94dd78-cd02-4e18-9997-3618eef450de: 'Health pages' # Health pages
+    fd2e2944-c4b3-4b61-8f25-b4e5bc8bd21b: 'Carousel partner logo' # Carousel partner logo
+    fd72834e-a2a0-4270-8bb2-83577ad71434: 'Hide sponsorship' # Hide sponsorship
+    fe8664cc-8429-4548-ac23-d13fe3eced8a: 'Feature image' # Feature image
+    feb4e47d-bb64-4049-a864-be7ae9604cb0: 'PDF Thumbnail image' # PDF Thumbnail image
+    fec22782-6687-44b7-b82e-367a8bfbeb60: Intro # Intro
+    ff135204-13af-48d7-9b1d-c82cd47cf2eb: Download # Download
 plugins:
   architect:
     edition: standard
@@ -66,12 +386,12 @@ plugins:
       sections:
         __assoc__:
           -
-            - 0142231a-9a28-4802-bda0-21494e18d138
+            - 0142231a-9a28-4802-bda0-21494e18d138 # Callbacks
             -
               __assoc__:
                 -
                   - sectionUid
-                  - 0142231a-9a28-4802-bda0-21494e18d138
+                  - 0142231a-9a28-4802-bda0-21494e18d138 # Callbacks
                 -
                   - allowGuestSubmissions
                   - '1'
@@ -122,7 +442,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: P96JFW6UWT87S9LP9H2KIUR8
-    schemaVersion: 3.0.9
+    schemaVersion: 3.0.11
   splashing-images:
     edition: standard
     enabled: true
@@ -148,5 +468,5 @@ system:
   live: true
   name: 'Yacht Crew Help'
   retryDuration: null
-  schemaVersion: 3.6.8
+  schemaVersion: 3.7.8
   timeZone: America/Los_Angeles

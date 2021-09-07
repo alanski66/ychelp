@@ -1,5 +1,10 @@
 <!-- Home Page Hero Content -->
-<section class=" ">
+ {% set emergency = globalContent.showEmergencyAlert %}
+ {% set mb = "mb-5" %}
+            {% if emergency %}
+            {% set mb = "" %}
+            {% endif %}
+<section class="{{ mb }}">
     <div class=" hero-slider position-relative">
         
                 {% set asset = block.image.one() ?? null %}
