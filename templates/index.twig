@@ -6,6 +6,29 @@
     {% for block in entry.sectionRow.all() %}
 
          {% include ('home_blocks/'~block.type.handle) %}
+
+         {% if loop.index == 1 %}
+         {% set emergency = globalContent.showEmergencyAlert %}
+            {% if emergency %}
+            {% set alerts = craft.entries.section('emergencies').limit(1) %}
+            <div class="emergency text-center">
+                <div class="row mb-2" >
+                    <div class="m-auto p-2">
+                        {% for entry in alerts %}
+                        <h3><i class="fa fa-info-circle mr-2" aria-hidden="true"></i>  <a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+                        <div class="date">
+                            Issued : {{ entry.postDate.format('F d, Y') }}
+                        </div>
+
+                        {% endfor %}
+
+
+
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+{% endif %}
     {% endfor %}
 
 

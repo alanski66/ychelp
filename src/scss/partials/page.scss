@@ -54,7 +54,15 @@
   margin:0 15px
 }
 
-
+.emergency {
+  background: #AF2127;
+  color: #fff;
+  text-align: center;
+}
+.emergency .fa-info-circle,
+.emergency a{
+  color:$white;
+}
 
 //end homepage
 
