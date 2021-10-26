@@ -15,44 +15,74 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-brand m-0">
+            <div class="navbar-brand m-0 text-center">
                 <a class="logo-wrap" href="/">
                     <img class="logo" src="{{ baseUrl }}/images/web-logo-strap-free.svg">
 
                 </a> <br>
-                <div class="operated w-100" >Operated by ISWAN</div>
-            </div>
-                        <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end mr-3 ">
-                            {% for entry in pages %}
-
-                                {% if entry.entryLink.one()|length %}
-                                    {% set navlink = entry.entryLink.one().url %}
-                                {% else %}
-                                    {% set navlink = entry.customLink %}
-                                {% endif %}
-
-                                {% if entry.level == 1 %}
-                                    
-                                    <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
-                                        <a id="mnu-{{ entry.title | kebab }}" href="{{ navlink }}" class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                            
-                        </ul>
-            <!-- global chat -->
-            {% for block in cta.ctaBlock.all()  %}
-                <div class="chat d-flex align-self-center ">
-                    <a class="popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">
-                        <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
-                    </a>
+                <div class="operated w-100">Operated by ISWAN</div>
+                <div class="row">
+                    <div class=" d-flex d-lg-none text-white  justify-content-center mobile">
+                        {% for block in cta.ctaBlock.all() %}
+                            {% if block.email | length %}
+                                <a class="extra-contact gray" href="mailto:{{ block.email }}">{{ block.email }}</a>
+                            {% endif %}
+                            {% if block.phone | length %}
+                                <a class="pl-3 extra-contact gray" href="tel:+44 203 713 7273">{{ block.phone }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-            {% endfor %}
-            
-            <button class=" ml-5 navbar-toggler d-flex align-self-center d-none d-lg-block" id="offcanvas2" type="button"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            </div>
+            <!-- <-lg -->
+            <div class="row">
+                <div class="col-12 d-none d-lg-flex text-white  justify-content-end mb-3 ">
+                    {% for block in cta.ctaBlock.all() %}
+                        {% if block.email | length %}
+                            <a class="extra-contact gray" href="mailto:{{ block.email }}">{{ block.email }}</a>
+                        {% endif %}
+                        {% if block.phone | length %}
+                            <a class="pl-3 extra-contact gray" href="tel:+44 203 713 7273">{{ block.phone }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-12  text-white d-flex justify-content-between pr-0 pt-2">
+                    <ul class="d-none d-lg-flex hznav navbar-nav ml-auto justify-content-end mr-3 ">
+                        {% for entry in pages %}
+
+                            {% if entry.entryLink.one()|length %}
+                                {% set navlink = entry.entryLink.one().url %}
+                            {% else %}
+                                {% set navlink = entry.customLink %}
+                            {% endif %}
+
+                            {% if entry.level == 1 %}
+
+                                <li class="nav-item {{ macros.isMenuActive(entry.slug|trim) }} level{{ entry.level }} {{ entry.title |lower }}">
+                                    <a id="mnu-{{ entry.title | kebab }}" href="{{ navlink }}"
+                                       class="nav-link {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                    <!-- global chat -->
+                    {% for block in cta.ctaBlock.all() %}
+                        <div class="chat d-flex align-self-center ">
+                            <a class="popup" target="_self"
+                               href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">
+                                <img class="ico-chat" src="{{ baseUrl }}/images/icons/icn-chat-white.svg">
+                            </a>
+                        </div>
+                    {% endfor %}
+                    <button class=" ml-5 navbar-toggler d-flex align-self-center d-none d-lg-block" id="offcanvas2"
+                            type="button"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+
 
         </nav>
     </div>
@@ -61,67 +91,67 @@
 <div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent" style="display: none">
     <!-- off c main nav -->
     <div class="container">
-    <div class="navbar menuwrap">
-        <ul class="navbar-nav  ml-lg-auto    justify-content-end">
-            {% set burgermenu = craft.entries.section('mainMenu').all() %}
-            {% for entry in burgermenu %}
-                {#{%  if entry.altNavTitle|length %}#}
-                {#{%  set navTitle = entry.altNavTitle %}#}
-                {#{% else %}#}
-                {#{%  set navTitle = entry.title %}#}
-                {#{% endif %}#}
-                {% set title = "" %}
-                {% if entry.entryLink.one()|length %}
-                    {% set navlink = entry.entryLink.one().url %}
-                {% else %}
-                    {% set navlink = entry.customLink %}
-                {% endif %}
+        <div class="navbar menuwrap">
+            <ul class="navbar-nav  ml-lg-auto    justify-content-end">
+                {% set burgermenu = craft.entries.section('mainMenu').all() %}
+                {% for entry in burgermenu %}
+                    {# {%  if entry.altNavTitle|length %} #}
+                    {# {%  set navTitle = entry.altNavTitle %} #}
+                    {# {% else %} #}
+                    {# {%  set navTitle = entry.title %} #}
+                    {# {% endif %} #}
+                    {% set title = "" %}
+                    {% if entry.entryLink.one()|length %}
+                        {% set navlink = entry.entryLink.one().url %}
+                    {% else %}
+                        {% set navlink = entry.customLink %}
+                    {% endif %}
 
-                {% if entry.level == 1 and entry.children|length %}
-                    <li class="nav-item dropdown {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">
+                    {% if entry.level == 1 and entry.children|length %}
+                        <li class="nav-item dropdown {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">
 
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
-                           data-length="{{ entry.title|length }}" aria-haspopup="true"
-                           aria-expanded="true" id="{{ entry.title | kebab }}">{{ entry.title }}<span
-                                    class="caret"></span></a>
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                               data-length="{{ entry.title|length }}" aria-haspopup="true"
+                               aria-expanded="true" id="{{ entry.title | kebab }}">{{ entry.title }}<span
+                                        class="caret"></span></a>
 
-                        <div class="dropdown-menu " aria-labelledby="{{ entry.title | kebab }}">
+                            <div class="dropdown-menu " aria-labelledby="{{ entry.title | kebab }}">
 
-                            <a href="{{ navlink }}"
-                               class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                                <a href="{{ navlink }}"
+                                   class="dropdown-item parent{{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }}">{{ entry.title }}</a>
 
 
-                            <!-- get children -->
-                            {% for child in entry.getDescendants() %}
-                                {% if child is defined %}
-                                    {# get child custom link or entry uri #}
-                                    {% if child.entryLink.one()|length %}
-                                    {% set childlink = child.entryLink.one().url %}
+                                <!-- get children -->
+                                {% for child in entry.getDescendants() %}
+                                    {% if child is defined %}
+                                        {# get child custom link or entry uri #}
+                                        {% if child.entryLink.one()|length %}
+                                            {% set childlink = child.entryLink.one().url %}
 
                                         {% else %}
                                             {% set childlink = entry.customLink %}
+                                        {% endif %}
+                                        {# {% endif %} #}
+                                        <a id="{{ entry.title|kebab }}" href="{{ childlink }}"
+                                           class="dropdown-item level {{ child.level }}">{{ child.title }}</a>
+
                                     {% endif %}
-                                    {#{% endif %}#}
-                                    <a id="{{ entry.title|kebab }}" href="{{ childlink }}"
-                                       class="dropdown-item level {{ child.level }}">{{ child.title }}</a>
+                                {% endfor %}
 
-                                {% endif %}
-                            {% endfor %}
+                            </div>
+                        </li>
 
-                        </div>
-                    </li>
+                    {% elseif entry.level == 1 and not entry.hasDescendants() %}
 
-                {% elseif entry.level == 1 and not entry.hasDescendants() %}
+                        <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
+                            <a id="menu-{{ entry.title | kebab }}"
+                               href="{{ navlink }}"
+                               class="nav-link  {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
 
-                    <li class="nav-item {{ macros.activeLinkClass(navlink, entry.level)|trim }} level{{ entry.level }} {{ entry.title |lower }}">
-                        <a  id="menu-{{ entry.title | kebab }}"
-                                        href="{{ navlink }}"
-                                        class="nav-link  {{ macros.activeLinkClass(navlink, entry.level) |trim }} level{{ entry.level }}">{{ entry.title }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-
-        </ul>
-    </div>
+            </ul>
+        </div>
     </div>
 </div>

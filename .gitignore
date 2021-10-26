@@ -30,3 +30,4 @@ bootstrapOld
 /src/scss/bootstrapOld/
 /config/project/
 ychelp.code-workspace
+config/project/project.yaml
