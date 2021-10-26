@@ -1,6 +1,8 @@
 //navbar font
 //active menu item  color 0089BF
 
+//by iswan
+
 .navbar .hznav  .level1 a.nav-link{
   font-size:1.2rem;
   text-align: right;
@@ -208,12 +210,23 @@ li.nav-item {
   #offcanvas2{
     display: none!important;
   }
+  .operated{
+    font-size: 11px;
+    color: #979797!important;
+    margin-top: 5px;
+    text-align: center;
+  }
 }
 @media (min-width: 990px) {
   .header .navigation .navbar .navbar-brand {
     //position: absolute;
   }
-
+  .operated{
+    font-size: 11px;
+    color: #979797!important;
+    margin-top: 5px;
+    text-align: right;
+  }
   #offcanvas2{
     display: block!important;
   }
