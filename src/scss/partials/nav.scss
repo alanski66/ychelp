@@ -165,13 +165,21 @@ li.nav-item {
   text-decoration: none;
   background-color: transparent;
 }
-
+.gray{
+  color:#d3d3d3e0 !important;
+}
 .extra-contact{
   color:#ffda1ae0 !important;
   font-size:90%;
 }
 .extra-contact.gray{
   color:#d3d3d3e0 !important;
+  font-family: "BlissLight", sans-serif;
+}
+a.extra-contact:hover .fa,
+a.extra-contact:hover{
+  color:$yellow;
+  color:$white!important;
 }
 .mobile .extra-contact{
   font-size:75%

@@ -25,7 +25,7 @@
                     <div class=" d-flex d-lg-none text-white  justify-content-center mobile">
                         {% for block in cta.ctaBlock.all() %}
                             {% if block.email | length %}
-                                <a class="extra-contact gray" href="mailto:{{ block.email }}">{{ block.email }}</a>
+                               <i class="fa fa-mail-forward"></i> <a class="extra-contact gray" href="mailto:{{ block.email }}">{{ block.email }}</a>
                             {% endif %}
                             {% if block.phone | length %}
                                 <a class="pl-3 extra-contact gray" href="tel:+44 203 713 7273">{{ block.phone }}</a>
@@ -36,13 +36,13 @@
             </div>
             <!-- <-lg -->
             <div class="row">
-                <div class="col-12 d-none d-lg-flex text-white  justify-content-end mb-3 ">
+                <div class="col-12 d-none d-lg-flex text-white  justify-content-end mb-3 align-items-center">
                     {% for block in cta.ctaBlock.all() %}
                         {% if block.email | length %}
-                            <a class="extra-contact gray" href="mailto:{{ block.email }}">{{ block.email }}</a>
+                            <a class="extra-contact gray mr-2" href="mailto:{{ block.email }}"><i class="fa fa-envelope-o  gray pr-1" aria-hidden="true"></i>{{ block.email }}</a>
                         {% endif %}
                         {% if block.phone | length %}
-                            <a class="pl-3 extra-contact gray" href="tel:+44 203 713 7273">{{ block.phone }}</a>
+                            <a class="extra-contact gray" href="tel:+44 203 713 7273"><i class="pl-3 pr-1 fa fa-phone gray" aria-hidden="true"></i>{{ block.phone }}</a>
                         {% endif %}
                     {% endfor %}
                 </div>
