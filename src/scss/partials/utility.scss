@@ -7,6 +7,12 @@
 
 }
 
+html, body {
+  overflow-x: hidden;
+}
+body {
+  position: relative
+}
 
 div.cardrow > [class^="ti-"]{
   font-size:26px;

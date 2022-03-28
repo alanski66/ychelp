@@ -107,17 +107,17 @@
 
 <footer class="footer">
 
-    <div class="d-flex  justify-content-center align-items-center list-unstyled">
+    <div class="d-flex justify-content-center align-items-center ">
         {% set entries = craft.entries.section('footerNav').hidePage('not 1').all() %}
 
-        <ul class=" text-center m-0 footer-nav pt-4 py-2 ">
+        <ul class=" text-center footer-nav pt-4 py-2 ml-0 list-unstyled">
             {% for entry in entries %}
                 {% if entry.entryLink.one()|length %}
                     {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
                 {% else %}
                     {% set navlink =  entry.customLink %}
                 {% endif %}
-                <li class="mr-0 list-inline-item mb-2"><a href="{{ navlink }}">{{ entry.title }}</a></li>
+                <li class="list-inline-item mb-2"><a href="{{ navlink }}">{{ entry.title }}</a></li>
             {% endfor %}
             <li class="list-inline-item mb-2">
                 <!-- global subscribe newsletter -->
