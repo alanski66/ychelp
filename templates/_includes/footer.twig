@@ -110,22 +110,22 @@
     <div class="d-flex  justify-content-center align-items-center list-unstyled">
         {% set entries = craft.entries.section('footerNav').hidePage('not 1').all() %}
 
-        <ul class="d-flex text-centre m-0 footer-nav pt-4 py-2 ">
+        <ul class=" text-center m-0 footer-nav pt-4 py-2 ">
             {% for entry in entries %}
                 {% if entry.entryLink.one()|length %}
                     {% set navlink = siteUrl ~ entry.entryLink.one().uri %}
                 {% else %}
                     {% set navlink =  entry.customLink %}
                 {% endif %}
-                <li class="mr-0 list-inline-item"><a href="{{ navlink }}">{{ entry.title }}</a></li>
+                <li class="mr-0 list-inline-item mb-2"><a href="{{ navlink }}">{{ entry.title }}</a></li>
             {% endfor %}
-            <li class="list-inline-item">
+            <li class="list-inline-item mb-2">
                 <!-- global subscribe newsletter -->
                 <a  href="#" data-toggle="modal" data-target="#subscribeModal">Subscribe</a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item mb-2 pb-0">
                 <!-- facebook -->
-                <a  href="{{ social.facebook}}" ><i class="fa fa-facebook-square" style="font-size:20px"></i></a>
+                <a  class="d-inline-block" href="{{ social.facebook}}" ><i class="d-inline-block fa fa-facebook-square"></i></a>
             </li>
             
         </ul>
