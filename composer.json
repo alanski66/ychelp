@@ -1,59 +1,63 @@
 {
-  "require": {
-    "aelvan/imager": "v2.4.0",
-    "by/guest-entries-notification": "1.0.1",
-    "craftcms/cms": "3.7.17.2",
-    "craftcms/feed-me": "4.4.0",
-    "craftcms/guest-entries": "2.4.0",
-    "craftcms/redactor": "2.8.8",
-    "dolphiq/iconpicker": "1.0.5",
-    "hybridinteractive/craft-position-fieldtype": "1.0.17",
-    "joomkit/pdfthumbnailer": "^1.0",
-    "nystudio107/craft-seomatic": "3.4.17",
-    "nystudio107/craft-typogrify": "1.1.18",
-    "pennebaker/craft-architect": "2.4.3",
-    "studioespresso/craft-splashingimages": "2.1.8",
-    "superbig/craft3-mobiledetect": "1.0.2",
-    "verbb/cloner": "1.2.2",
-    "verbb/super-table": "2.6.8",
-    "vlucas/phpdotenv": "^3.4.0",
-    "xpertbot/craft-wheelform": "2.6.2",
-    "xpertbot/wheelformhelper": "^1.1"
-  },
-  "require-dev": {
-    "yiisoft/yii2-shell": "^2.0.3"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "plugins/joomkit/*",
-      "options": {
-        "symlink": true
-      }
+    "require": {
+        "aelvan/imager": "v2.4.0",
+        "by/guest-entries-notification": "1.0.1",
+        "craftcms/cms": "3.7.55.1",
+        "craftcms/feed-me": "4.5.3",
+        "craftcms/guest-entries": "2.4.0",
+        "craftcms/redactor": "2.10.10",
+        "dolphiq/iconpicker": "1.0.5",
+        "hybridinteractive/craft-position-fieldtype": "1.0.17",
+        "joomkit/pdfthumbnailer": "^1.0",
+        "nystudio107/craft-seomatic": "3.4.17",
+        "nystudio107/craft-typogrify": "1.1.19",
+        "pennebaker/craft-architect": "2.4.3",
+        "studioespresso/craft-splashingimages": "2.1.8",
+        "superbig/craft3-mobiledetect": "1.0.2",
+        "verbb/cloner": "1.2.2",
+        "verbb/super-table": "2.7.3",
+        "vlucas/phpdotenv": "^3.4.0",
+        "xpertbot/craft-wheelform": "2.7.2",
+        "xpertbot/wheelformhelper": "^1.1"
     },
-    {
-      "type": "path",
-      "url": "plugins/xpertbot/*",
-      "options": {
-        "symlink": true
-      }
+    "require-dev": {
+        "yiisoft/yii2-shell": "^2.0.3"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "plugins/joomkit/*",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "plugins/xpertbot/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "modules\\": "modules/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.3"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "modules\\": "modules/"
-    }
-  },
-  "config": {
-    "sort-packages": true,
-    "optimize-autoloader": true,
-    "platform": {
-      "php": "7.3"
-    }
-  },
-  "scripts": {
-    "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
-  }
 }

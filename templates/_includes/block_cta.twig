@@ -3,25 +3,30 @@
 {% for block in cta.ctaBlock.all()  %}
 
     <li class="list-inline-item">
-        <a class="icon-circle popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en">
+        <a class="icon-circle popup" target="_self" href="https://hosted1.whoson.com/newchat/chat.aspx?domain={{ block.chat }}&lang=en" title="Live chat">
 
             <img src="{{ baseUrl }}/images/icons/icon-chat.svg">
         </a>
         </li>
     <li class="list-inline-item">
-        <a class="icon-circle" href="tel:{{ block.phone  }}">
+        <a class="icon-circle" href="tel:{{ block.phone  }}" title="Phone">
             <img src="{{ baseUrl }}/images/icons/icon-phone.svg">
         </a>
     </li>
     <li class="list-inline-item">
-        <a class="icon-circle" href="mailto:{{ block.email }}">
+        <a class="icon-circle" href="mailto:{{ block.email }}" title="Email">
             <img src="{{ baseUrl }}/images/icons/icon-email.svg">
         </a>
     </li>
     </li>
     <li class="list-inline-item">
-        <a class="icon-circle" href="{{ block.callback.one().url }}">
+        <a class="icon-circle" href="{{ block.callback.one().url }}" title="Callback">
             <img src="{{ baseUrl }}/images/icons/icon-callback.svg">
+        </a>
+    </li>
+    <li class="list-inline-item">
+        <a class="icon-circle" href="tel:{{ block.whatsapp  }}" title="WhatsApp">
+            <img src="{{ baseUrl }}/images/icons/icon-whatsapp.svg">
         </a>
     </li>
 {% endfor %}
